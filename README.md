@@ -1,4 +1,4 @@
-# DevCamp2016-Team4: Remakest
+# DevCamp2016-Team4: Remake Studio
 
 ## Project
 1. BeeBack
