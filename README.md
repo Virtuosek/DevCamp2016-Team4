@@ -1,4 +1,4 @@
-# DevCamp2016-Team4: Rekamest
+# DevCamp2016-Team4: Remakest
 
 ## Members
 *	Stéphane Vidouse,  Cassio
