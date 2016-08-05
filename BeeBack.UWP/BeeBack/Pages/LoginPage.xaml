@@ -9,7 +9,7 @@
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d" DataContext="{Binding LoginVM, Mode=OneWay, Source={StaticResource Locator}}">
     <Page.Resources>
-        <ResourceDictionary Source="\Dictionary1.xaml">
+        <ResourceDictionary Source="/Dictionary1.xaml">
         </ResourceDictionary>
     </Page.Resources>
 
