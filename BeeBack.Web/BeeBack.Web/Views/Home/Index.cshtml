@@ -2,36 +2,46 @@
     ViewBag.Landing = true;
 }
 
-
 @section preheader {
-<!-- FullScreen -->
-<div class="intro-header">
-    <div class="col-xs-12 text-center abcen1">
-        <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">BeeBack</h1>
-        <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Parce que vos enfants sont notre priorité.</h3>
-        <ul class="list-inline intro-social-buttons">
-            <li>
-                <a href="https://twitter.com/galantiandrea" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s">
-                    <span class="network-name">Trouver un co-voiturage</span>
-                </a>
-            </li>
-            <li id="download">
+    <!-- FullScreen -->
+    <div class="intro-header">
+        <div class="col-xs-12 text-center abcen1">
+            <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">BeeBack</h1>
+            <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Parce que vos enfants sont notre priorité.</h3>
+            <ul class="list-inline intro-social-buttons">
+                <li>
+                    <a href="@Url.Action("Index", "Activities")" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s">
+                        <span class="network-name">Trouver un co-voiturage</span>
+                    </a>
+                </li>
+                <li id="download">
+                    @* ReSharper disable once Html.IdNotResolved *@
+                    <a href="#whatis" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s">
+                        <span class="network-name">Comment cela fonctionne t'il ?</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.container -->
+        <div class="col-xs-12 text-center abcen wow fadeIn">
+            <div class="button_down ">
                 @* ReSharper disable once Html.IdNotResolved *@
-                <a href="#whatis" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s">
-                    <span class="network-name">Comment cela fonctionne t'il ?</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <!-- /.container -->
-    <div class="col-xs-12 text-center abcen wow fadeIn">
-        <div class="button_down ">
-            @* ReSharper disable once Html.IdNotResolved *@
-            <a class="imgcircle wow bounceInUp" data-wow-duration="1.5s" href="#whatis"> <img class="img_scroll" src="~/img/icon/circle.png" alt=""> </a>
+                <a class="imgcircle wow bounceInUp" data-wow-duration="1.5s" href="#whatis"> <img class="img_scroll" src="~/img/icon/circle.png" alt=""> </a>
+            </div>
         </div>
     </div>
-</div>
 
+}
+
+@section navbar{
+
+    <ul class="nav navbar-nav">
+        <li class="menuItem"><a href="#whatis">Introduction</a></li>
+        <li class="menuItem"><a href="#screen">Application</a></li>
+        <li class="menuItem"><a href="#team">L'équipe</a></li>
+        <li class="menuItem"><a href="#contact">Contact</a></li>
+        <li role="separator" class="divider"></li>
+    </ul>
 }
 
 <!-- What is -->
@@ -40,12 +50,10 @@
 
         <div class="col-md-6 col-md-offset-3 text-center wrap_title">
             <h2>Comment cela fonctionne t'il ?</h2>
-            <p class="lead" style="margin-top:0">Grâce à vous bien sûr.</p>
-
         </div>
 
         <div class="row">
-            
+
             <div class="col-sm-4 wow fadeInDown text-center">
                 <img class="rotate" src="~/img/icon/search.svg" alt="Generic placeholder image">
                 <h3>Recherchez une activité</h3>
@@ -70,142 +78,16 @@
 
         </div><!-- /.row -->
 
-        <div class="row tworow">
-
-            <div class="col-sm-4  wow fadeInDown text-center">
-                <img class="rotate" src="~/img/icon/laptop.svg" alt="Generic placeholder image">
-                <h3>Responsive</h3>
-                <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-                <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-            </div><!-- /.col-lg-4 -->
-
-            <div class="col-sm-4 wow fadeInDown text-center">
-                <img class="rotate" src="~/img/icon/map.svg" alt="Generic placeholder image">
-                <h3>Google</h3>
-                <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-                <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-            </div><!-- /.col-lg-4 -->
-
-            <div class="col-sm-4 wow fadeInDown text-center">
-                <img class="rotate" src="~/img/icon/browser.svg" alt="Generic placeholder image">
-                <h3>Bootstrap</h3>
-                <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-                <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-            </div><!-- /.col-lg-4 -->
-
-        </div><!-- /.row -->
     </div>
-</div>
-
-<!-- Use it -->
-<div id="useit" class="content-section-a">
-
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-sm-6 pull-right wow fadeInRightBig">
-                <img class="img-responsive " src="~/img/ipad.png" alt="">
-            </div>
-
-            <div class="col-sm-6 wow fadeInLeftBig" data-animation-delay="200">
-                <h3 class="section-heading">Full Responsive</h3>
-                <div class="sub-title lead3">Lorem ipsum dolor sit atmet sit dolor greand fdanrh<br> sdfs sit atmet sit dolor greand fdanrh sdfs</div>
-                <p class="lead">
-                    In his igitur partibus duabus nihil erat, quod Zeno commuta rest gestiret.
-                    Sed virtutem ipsam inchoavit, nihil ampliusuma. Scien tiam pollicentur,
-                    uam non erat mirum sapientiae lorem cupido
-                    patria esse cariorem. Quae qui non vident, nihilamane umquam magnum ac cognitione.
-                </p>
-
-                <p>
-                    <a class="btn btn-embossed btn-primary" href="#" role="button">View Details</a>
-                    <a class="btn btn-embossed btn-info" href="#" role="button">Visit Website</a>
-                </p>
-            </div>
-        </div>
-    </div>
-    <!-- /.container -->
-</div>
-
-<div class="content-section-b">
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 wow fadeInLeftBig">
-                <div id="owl-demo-1" class="owl-carousel">
-                    <a href="~/img/iphone.png" class="image-link">
-                        <div class="item">
-                            <img class="img-responsive img-rounded" src="~/img/iphone.png" alt="">
-                        </div>
-                    </a>
-                    <a href="~/img/iphone.png" class="image-link">
-                        <div class="item">
-                            <img class="img-responsive img-rounded" src="~/img/iphone.png" alt="">
-                        </div>
-                    </a>
-                    <a href="~/img/iphone.png" class="image-link">
-                        <div class="item">
-                            <img class="img-responsive img-rounded" src="~/img/iphone.png" alt="">
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-sm-6 wow fadeInRightBig" data-animation-delay="200">
-                <h3 class="section-heading">Drag Gallery</h3>
-                <div class="sub-title lead3">Lorem ipsum dolor sit atmet sit dolor greand fdanrh<br> sdfs sit atmet sit dolor greand fdanrh sdfs</div>
-                <p class="lead">
-                    In his igitur partibus duabus nihil erat, quod Zeno commuta rest gestiret.
-                    Sed virtutem ipsam inchoavit, nihil ampliusuma. Scien tiam pollicentur,
-                    uam non erat mirum sapientiae lorem cupido
-                    patria esse cariorem. Quae qui non vident, nihilamane umquam magnum ac cognitione.
-                </p>
-
-                <p>
-                    <a class="btn btn-embossed btn-primary" href="#" role="button">View Details</a>
-                    <a class="btn btn-embossed btn-info" href="#" role="button">Visit Website</a>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="content-section-a">
-
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-sm-6 pull-right wow fadeInRightBig">
-                <img class="img-responsive " src="~/img/doge.png" alt="">
-            </div>
-
-            <div class="col-sm-6 wow fadeInLeftBig" data-animation-delay="200">
-                <h3 class="section-heading">Font Awesome & Glyphicon</h3>
-                <p class="lead">
-                    A special thanks to Death to the Stock Photo for
-                    providing the photographs that you see in this template.
-                </p>
-
-                <ul class="descp lead2">
-                    <li><i class="glyphicon glyphicon-signal"></i> Reliable and Secure Platform</li>
-                    <li><i class="glyphicon glyphicon-refresh"></i> Everything is perfectly orgainized for future</li>
-                    <li><i class="glyphicon glyphicon-headphones"></i> Attach large file easily</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
 </div>
 
 <!-- Screenshot -->
-<div id="screen" class="content-section-b">
+<div id="screen" class="content-section-a">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center wrap_title ">
-                <h2>Screen App</h2>
-                <p class="lead" style="margin-top:0">A special thanks to Death.</p>
+                <h2>L'application mobile</h2>
+                <p class="lead" style="margin-top:0">Gérer vos trajets où que vous soyez.</p>
             </div>
         </div>
         <div class="row wow bounceInUp">
@@ -257,20 +139,20 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center white">
-                <h2>Get Live Updates</h2>
-                <p class="lead" style="margin-top:0">A special thanks to Death.</p>
+                <h2>Ne loupez rien !</h2>
+                <p class="lead" style="margin-top:0">Restez au courant de nos dernières nouveautés</p>
             </div>
             <div class="col-md-6 col-md-offset-3 text-center">
                 <div class="mockup-content">
                     <div class="morph-button wow pulse morph-button-inflow morph-button-inflow-1">
-                        <button type="button "><span>Subscribe to our Newsletter</span></button>
+                        <button type="button"><span>Abonnez-vous à notre newsletter</span></button>
                         <div class="morph-content">
                             <div>
                                 <div class="content-style-form content-style-form-4 ">
-                                    <h2 class="morph-clone">Subscribe to our Newsletter</h2>
+                                    <h2 class="morph-clone">Abonnez-vous à notre newsletter</h2>
                                     <form>
-                                        <p><label>Your Email Address</label><input type="text" /></p>
-                                        <p><button>Subscribe me</button></p>
+                                        <p><label>Votre adresse email</label><input type="text" /></p>
+                                        <p><button>Abonnez moi</button></p>
                                     </form>
                                 </div>
                             </div>
@@ -282,14 +164,14 @@
     </div>
 </div>
 
-<!-- Credits -->
-<div id="credits" class="content-section-a">
+<!-- Team -->
+<div id="team" class="content-section-a">
     <div class="container">
         <div class="row">
 
             <div class="col-md-6 col-md-offset-3 text-center wrap_title">
-                <h2>Credits</h2>
-                <p class="lead" style="margin-top:0">A special thanks to Death.</p>
+                <h2>L'équipe</h2>
+                <p class="lead" style="margin-top: 0">Remake Studio</p>
             </div>
 
             <div class="col-sm-6  block wow bounceIn">
@@ -298,7 +180,7 @@
                         <i class="fa fa-desktop fa-4x "> </i>
                     </div>
                     <div class="col-md-8 box-ct">
-                        <h3> Bootstrap </h3>
+                        <h3> Stéphane Vidouse </h3>
                         <p> Lorem ipsum dolor sit ametconsectetur adipiscing elit. Suspendisse orci quam. </p>
                     </div>
                 </div>
@@ -309,8 +191,8 @@
                         <i class="fa fa-picture-o fa-4x "> </i>
                     </div>
                     <div class="col-md-8 box-ct">
-                        <h3> Owl-Carousel </h3>
-                        <p> Nullam mo  arcu ac molestie scelerisqu vulputate, molestie ligula gravida, tempus ipsum.</p>
+                        <h3> Matthieu Vandenhende </h3>
+                        <p> Nullam mo arcu ac molestie scelerisqu vulputate, molestie ligula gravida, tempus ipsum.</p>
                     </div>
                 </div>
             </div>
@@ -323,7 +205,7 @@
                         <i class="fa fa-magic fa-4x "> </i>
                     </div>
                     <div class="col-md-8 box-ct">
-                        <h3> Codrops </h3>
+                        <h3> Renaud Dumont </h3>
                         <p> Lorem ipsum dolor sit ametconsectetur adipiscing elit. Suspendisse orci quam. </p>
                     </div>
                 </div>
@@ -334,8 +216,8 @@
                         <i class="fa fa-heart fa-4x "> </i>
                     </div>
                     <div class="col-md-8 box-ct">
-                        <h3> Lorem Ipsum</h3>
-                        <p> Nullam mo  arcu ac molestie scelerisqu vulputate, molestie ligula gravida, tempus ipsum.</p>
+                        <h3> Kévin Rapaille </h3>
+                        <p> Nullam mo arcu ac molestie scelerisqu vulputate, molestie ligula gravida, tempus ipsum.</p>
                     </div>
                 </div>
             </div>
@@ -343,33 +225,20 @@
     </div>
 </div>
 
-<!-- Banner Download -->
-<div id="downloadlink" class="banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center wrap_title">
-                <h2>Download Free</h2>
-                <p class="lead" style="margin-top:0">Pay with a Tweet</p>
-                <p><a class="btn btn-embossed btn-primary view" role="button">Free Download</a></p>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Contact -->
-<div id="contact" class="content-section-a">
+<div id="contact" class="content-section-b">
     <div class="container">
         <div class="row">
 
             <div class="col-md-6 col-md-offset-3 text-center wrap_title">
-                <h2>Contact Us</h2>
-                <p class="lead" style="margin-top:0">A special thanks to Death.</p>
+                <h2>Contactez-nous</h2>
+                <p class="lead" style="margin-top:0">Nous adorons les jolis mots.</p>
             </div>
 
             <form role="form" action="" method="post">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="InputName">Your Name</label>
+                        <label for="InputName">Votre nom</label>
                         <div class="input-group">
                             <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
                             <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
@@ -377,7 +246,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="InputEmail">Your Email</label>
+                        <label for="InputEmail">Votre Email</label>
                         <div class="input-group">
                             <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required>
                             <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span>
@@ -392,25 +261,24 @@
                         </div>
                     </div>
 
-                    <input type="submit" name="submit" id="submit" value="Submit" class="btn wow tada btn-embossed btn-primary pull-right">
+                    <input type="submit" name="submit" id="submit" value="Envoyer" class="btn wow tada btn-embossed btn-primary pull-right">
                 </div>
             </form>
 
             <hr class="featurette-divider hidden-lg">
             <div class="col-md-5 col-md-push-1 address">
                 <address>
-                    <h3>Office Location</h3>
+                    <h3>Adresse du bureau</h3>
                     <p class="lead">
                         <a href="https://www.google.com/maps/preview?ie=UTF-8&q=The+Pentagon&fb=1&gl=us&hq=1400+Defense+Pentagon+Washington,+DC+20301-1400&cid=12647181945379443503&ei=qmYfU4H8LoL2oATa0IHIBg&ved=0CKwBEPwSMAo&safe=on">
-                            The Pentagon<br>
-                            Washington, DC 20301
-                        </a><br>
-                        Phone: XXX-XXX-XXXX<br>
-                        Fax: XXX-XXX-YYYY
+                            NTWRK Office<br>
+                            Rue de la terre du Prince, 17<br />
+                            7000 Mons, Belgium
+                        </a>
                     </p>
                 </address>
 
-                <h3>Social</h3>
+                <h3>Réseaux sociaux</h3>
                 <li class="social">
                     <a href="#"><i class="fa fa-facebook-square fa-size"> </i></a>
                     <a href="#"><i class="fa  fa-twitter-square fa-size"> </i> </a>

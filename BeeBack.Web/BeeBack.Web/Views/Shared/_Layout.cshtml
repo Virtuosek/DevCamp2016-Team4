@@ -34,7 +34,7 @@
     <link href="~/css/owl.theme.css" rel="stylesheet">
     <link href="~/css/style.css" rel="stylesheet">
     <link href="~/css/animate.css" rel="stylesheet">
-    <link href="~/css/toastr.css" rel="stylesheet"/>
+    <link href="~/css/toastr.css" rel="stylesheet" />
 
     <!-- Magnific Popup core CSS file -->
     <link rel="stylesheet" href="~/css/magnific-popup.css">
@@ -55,7 +55,7 @@
 </head>
 
 <body id="home" data-action="@Request.RequestContext.RouteData.Values["action"]"
-                data-controller="@Request.RequestContext.RouteData.Values["controller"]">
+      data-controller="@Request.RequestContext.RouteData.Values["controller"]">
 
     <!-- Preloader -->
     <div id="preloader">
@@ -79,27 +79,26 @@
             </div>
 
             <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+                @RenderSection("navbar", false)
                 <ul class="nav navbar-nav">
+                    <li class="menuItem">
+                        <a href="@Url.Action("Index", "Activities")">Activités</a>
+                    </li>
 
-                    <li class="menuItem"><a href="#whatis">Comment ?</a></li>
-                    <li class="menuItem"><a href="#useit">Use It</a></li>
-                    <li class="menuItem"><a href="#screen">Screenshot</a></li>
-                    <li class="menuItem"><a href="#credits">Credits</a></li>
-                    <li class="menuItem"><a href="#contact">Contact</a></li>
                     @if (Request.IsAuthenticated)
                     {
                         <li class="menuItem">
                             @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                         </li>
-                        @*<li class="menuItem">
-                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
-                                {
-                                    <span>@Html.AntiForgeryToken()</span>
+                            @*<li class="menuItem">
+                                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                    {
+                                        <span>@Html.AntiForgeryToken()</span>
 
 
-                                    <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-                                }
-                            </li>*@
+                                        <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                                    }
+                                </li>*@
                     }
                     else
                     {
@@ -113,14 +112,16 @@
 
     @if (ViewBag.Landing == null || !ViewBag.Landing)
     {
-        @:<div class="content-section-b" style="border-top: 0; padding: 0 0 24px 0"><div class="container">
+        @:<div class="content-section-b" style="border-top: 0; padding: 0 0 24px 0">
+        @:<div class="container">
     }
 
     @RenderBody()
 
     @if (ViewBag.Landing == null || !ViewBag.Landing)
     {
-        @:</div></div>
+        @:</div>
+        @:</div>
     }
 
     <footer>
