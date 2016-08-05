@@ -1,5 +1,9 @@
-﻿using BeeBack.Model;
+﻿using BeeBack.Messages;
+using BeeBack.Model;
+using BeeBack.Pages;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
+using Microsoft.Practices.ServiceLocation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +16,9 @@ namespace BeeBack.ViewModel
     {
         public ActivityViewModel()
         {
+            Messenger.Default.Register<UserSelectedMessage>(this, _userselectedmessage);
             _activity = new Activity();
-            _activity.ID = 5;
-            _activity.FkUser = 1;
+            _activity.ID = Guid.NewGuid();
             _activity.Description = "description flkjds mlf jdsqmlkdslkfj smlk jflks jflkdsjf  fds jflksj flk jsflkds jlkf jsmlf jmls jfmlsq jfmlkds jflkds jflkds jfmlkds jfmlkds jf lkdsjfmlqs";
             _activity.Title = "Titre de l'activité";
             User u;
@@ -31,6 +35,13 @@ namespace BeeBack.ViewModel
                 }
                 _activity.Members.Add(u);
             }
+        }
+        private void _userselectedmessage(UserSelectedMessage msg)
+        {
+            NavigationMessage msgnav = new NavigationMessage();
+            ServiceLocator.Current.GetInstance<UserViewModel>().User = msg.SelectedUser;
+            msgnav.DestinationPageType = typeof(UserPage);
+            Messenger.Default.Send<NavigationMessage>(msgnav);
         }
         private Activity _activity;
 

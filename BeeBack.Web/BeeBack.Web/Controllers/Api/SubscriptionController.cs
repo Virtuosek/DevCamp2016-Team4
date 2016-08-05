@@ -14,8 +14,10 @@ namespace BeeBack.Web.Controllers.Api
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // PUT: api/Subscription/5
+        [Route(template:"api/subscription/add/{id}")]
+        [HttpPost]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PostUserActivity(Guid id)
+        public async Task<IHttpActionResult> AddUserActivity(Guid id)
         {
             if (db.Activities.Any(a => a.ID == id))
             {
@@ -32,8 +34,10 @@ namespace BeeBack.Web.Controllers.Api
         }
 
         // DELETE: api/Subscription/5
-        [ResponseType(typeof(UserActivity))]
-        public async Task<IHttpActionResult> DeleteUserActivity(Guid id)
+        [Route(template: "api/subscription/remove/{id}")]
+        [HttpPost]
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> RemoveUserActivity(Guid id)
         {
             var userId = User.Identity.GetUserId();
 
@@ -47,7 +51,7 @@ namespace BeeBack.Web.Controllers.Api
             db.UserActivity.Remove(userActivity);
             await db.SaveChangesAsync();
 
-            return Ok(userActivity);
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         protected override void Dispose(bool disposing)

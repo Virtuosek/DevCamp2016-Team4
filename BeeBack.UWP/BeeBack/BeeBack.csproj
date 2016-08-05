@@ -98,10 +98,14 @@
     </Compile>
     <Compile Include="Converters\IntPresenterConverter.cs" />
     <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="Services\Interfaces\IStorageService.cs" />
+    <Compile Include="Services\StorageService.cs" />
     <Compile Include="Messages\ActivitySelectedMessage.cs" />
     <Compile Include="Messages\NavigationMessage.cs" />
+    <Compile Include="Messages\UserSelectedMessage.cs" />
     <Compile Include="Model\Activity.cs" />
     <Compile Include="Model\DataItem.cs" />
+    <Compile Include="Model\UserInfos.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\Interfaces\IDataService.cs" />
     <Compile Include="Model\User.cs" />
@@ -140,6 +144,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MyActivitiesViewModel.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>

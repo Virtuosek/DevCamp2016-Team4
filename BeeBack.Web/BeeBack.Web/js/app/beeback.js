@@ -7,19 +7,21 @@
                 toastr.options.closeButton = true;
 
                 $(".subscribe").click(function () {
-                    if ($(this).hasClass("subscribe-add")) {
-                        var activityId = $(this).attr("data-activityId");
+                    var button = $(this);
+                    var activityId = $(this).attr("data-activityId");
+                    if ($(button).hasClass("subscribe-add")) {
                         BEEBACK_API.subscriptions.add(activityId, function () {
                             toastr.success("Vous êtes abonné.");
+                            $(button).removeClass("subscribe-add").addClass("subscribe-remove");
                         }, function () {
-                            toastr.warning("Nous n'avons pas pu vous abonner. Life is unfair, get used to it.")
+                            toastr.warning("Nous n'avons pas pu vous abonner. Life is unfair, get used to it.");
                         });
-                    } else if ($(this).hasClass("subscribe-remove")) {
-                        var activityId = $(this).attr("data-activityId");
+                    } else if ($(button).hasClass("subscribe-remove")) {
                         BEEBACK_API.subscriptions.remove(activityId, function () {
-                            toastr.success("Vous êtes abonné.");
+                            toastr.success("Vous n'êtes plus abonné.");
+                            $(button).removeClass("subscribe-remove").addClass("subscribe-add");
                         }, function () {
-                            toastr.warning("Nous n'avons pas pu vous abonner. Life is unfair, get used to it.")
+                            toastr.warning("Nous n'avons pas pu vous désabonner. Life is unfair, get used to it.");
                         });
                     }
                 });

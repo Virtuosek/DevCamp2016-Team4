@@ -21,6 +21,7 @@ namespace BeeBack.ViewModel
 
             SimpleIoc.Default.Register<ICustomNavigationService, CustomNavigationService>();
             SimpleIoc.Default.Register<IDialogService, DialogService>();
+            SimpleIoc.Default.Register<IStorageService, StorageService>();
 
             if (ViewModelBase.IsInDesignModeStatic)
                 SimpleIoc.Default.Register<IDataService, Design.DesignDataService>();
@@ -32,6 +33,7 @@ namespace BeeBack.ViewModel
             SimpleIoc.Default.Register<MyActivitiesViewModel>();
             SimpleIoc.Default.Register<ActivityViewModel>();
             SimpleIoc.Default.Register<SplashScreenViewModel>();
+            SimpleIoc.Default.Register<UserViewModel>();
         }
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
@@ -39,5 +41,6 @@ namespace BeeBack.ViewModel
         public MyActivitiesViewModel MyActivitiesVM => ServiceLocator.Current.GetInstance<MyActivitiesViewModel>();
         public ActivityViewModel ActivityVM => ServiceLocator.Current.GetInstance<ActivityViewModel>();
         public SplashScreenViewModel SplashScreenVM => ServiceLocator.Current.GetInstance<SplashScreenViewModel>();
+        public UserViewModel UserVM => ServiceLocator.Current.GetInstance<UserViewModel>();
     }
 }

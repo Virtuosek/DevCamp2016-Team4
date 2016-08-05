@@ -34,7 +34,8 @@ namespace BeeBack.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/css/bootstrap.css",
-                      "~/css/site.css"));
+                      "~/css/site.css",
+                      "~/css/beeback.css"));
         }
     }
 }

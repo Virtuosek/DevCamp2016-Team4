@@ -1,29 +1,36 @@
 ﻿@model BeeBack.Web.ViewModels.Activities.ActivityViewModel
 
-<h3>Détail de l'activité</h3>
+<div class="activity">
+    <h3>
+        Détail de l'activité
+        <a class="btn btn-embossed btn-info view subscribe subscribe-add pull-right" data-activityId="@Model.Id">
+            <i class="fa fa-heart-o">&nbsp;S'abonner</i>
+            <i class="fa fa-heart">&nbsp;Se désabonner</i>
+        </a>
+    </h3>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
     </dl>
     <hr />
-</div>
+</div></div>
 
 <div>
     <p>
@@ -40,4 +47,3 @@
         </a>
     </p>
 </div>
-
