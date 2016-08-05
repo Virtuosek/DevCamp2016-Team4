@@ -232,7 +232,9 @@
     <Compile Include="Services\FakeActivityService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Activities\ActivitiesIndexViewModel.cs" />
+    <Compile Include="ViewModels\Activities\ActivityCreateEditViewModel.cs" />
     <Compile Include="ViewModels\Activities\ActivityListItemViewModel.cs" />
+    <Compile Include="ViewModels\Activities\ActivityViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\animate.css" />
@@ -401,10 +403,9 @@
     <Content Include="font-awesome\scss\_spinning.scss" />
     <Content Include="font-awesome\scss\_stacked.scss" />
     <Content Include="font-awesome\scss\_variables.scss" />
-    <Content Include="Views\Activities\Create.cshtml" />
+    <Content Include="Views\Activities\CreateEdit.cshtml" />
     <Content Include="Views\Activities\Delete.cshtml" />
     <Content Include="Views\Activities\Details.cshtml" />
-    <Content Include="Views\Activities\Edit.cshtml" />
     <Content Include="Views\Activities\Index.cshtml" />
     <Content Include="Views\Shared\_LoginFormPartial.cshtml" />
   </ItemGroup>
@@ -416,7 +417,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
