@@ -16,12 +16,20 @@ namespace BeeBack.Web.Models
             modelBuilder.Entity<ApplicationUser>()
                 .HasMany(u => u.UserActivities)
                 .WithRequired(a => a.User)
-                .HasForeignKey(a => a.UserID);
+                .HasForeignKey(a => a.UserID)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Activity>()
                 .HasMany(a => a.UserActivities)
                 .WithRequired(a => a.Activity)
-                .HasForeignKey(a => a.ActivityID);
+                .HasForeignKey(a => a.ActivityID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(a => a.Activities)
+                .WithRequired(a => a.User)
+                .HasForeignKey(a => a.UserId)
+                .WillCascadeOnDelete(false);
 
 
             modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
