@@ -1,39 +1,26 @@
-﻿@model IEnumerable<BeeBack.Data.Models.Activity>
+﻿@model BeeBack.Web.ViewModels.Activities.ActivitiesIndexViewModel
 
-@{
-    ViewBag.Title = "Index";
-}
 
-<h2>Index</h2>
+<div class="content-section-b" style="border-top: 0; padding: 0">
+    <div class="container">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
+        <div class="col-md-6 col-md-offset-3 text-center wrap_title">
+            <h2>Liste des activités</h2>
+        </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+        <div class="row">
 
-</table>
+            @foreach (var activity in Model.Activities)
+            {
+                <div class="col-sm-4 wow fadeInDown text-center" style="margin-bottom: 36px">
+                    <img class="rotate" src="~/img/icon/@(activity.Icon).svg" alt="Generic placeholder image">
+                    <h3>@activity.Name</h3>
+                    <p class="lead">@activity.Description</p>
+
+                    <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p>
+                </div><!-- /.col-lg-4 -->
+            }
+
+        </div><!-- /.row -->
+    </div>
+</div>
