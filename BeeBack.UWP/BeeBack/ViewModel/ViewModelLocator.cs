@@ -23,13 +23,9 @@ namespace BeeBack.ViewModel
             SimpleIoc.Default.Register<IDialogService, DialogService>();
 
             if (ViewModelBase.IsInDesignModeStatic)
-            {
                 SimpleIoc.Default.Register<IDataService, Design.DesignDataService>();
-            }
             else
-            {
                 SimpleIoc.Default.Register<IDataService, DataService>();
-            }
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<LoginViewModel>();
@@ -38,9 +34,6 @@ namespace BeeBack.ViewModel
             SimpleIoc.Default.Register<SplashScreenViewModel>();
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
-            "CA1822:MarkMembersAsStatic",
-            Justification = "This non-static member is needed for data binding purposes.")]
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
         public LoginViewModel LoginVM => ServiceLocator.Current.GetInstance<LoginViewModel>();
         public MyActivitiesViewModel MyActivitiesVM => ServiceLocator.Current.GetInstance<MyActivitiesViewModel>();

@@ -9,6 +9,7 @@ namespace BeeBack.Web.ViewModels.Activities
         Guid Id { get; set; }
         string Title { get; set; }
         string Description { get; set; }
+        string UserId { get; set; }
     }
 
     public class ActivityViewModel : IActivityViewModel
@@ -21,27 +22,30 @@ namespace BeeBack.Web.ViewModels.Activities
         [Display(Name = "Description")]
         public string Description { get; set; }
 
+        public string UserId { get; set; }
+
         public Activity ToModel()
         {
             return new Activity
             {
                 ID = Id,
                 Title = Title,
-                Description = Description
+                Description = Description,
+                UserId = UserId
             };
         }
     }
 
     public static class ActivityExtension
     {
-
         public static T ToViewModel<T>(this Activity model) where T : IActivityViewModel, new()
         {
             var viewModel = new T
             {
                 Id = model.ID,
                 Title = model.Title,
-                Description = model.Description
+                Description = model.Description,
+                UserId = model.UserId
             };
 
             return viewModel;

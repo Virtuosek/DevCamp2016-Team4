@@ -92,14 +92,14 @@
                             @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                         </li>
                         @*<li class="menuItem">
-                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
-                            {
-                                <span>@Html.AntiForgeryToken()</span>
+                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                {
+                                    <span>@Html.AntiForgeryToken()</span>
 
 
-                                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-                            }
-                        </li>*@
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                                }
+                            </li>*@
                     }
                     else
                     {
@@ -111,7 +111,17 @@
         </div>
     </nav>
 
+    @if (ViewBag.Landing == null || !ViewBag.Landing)
+    {
+        @:<div class="content-section-b" style="border-top: 0; padding: 0 0 24px 0"><div class="container">
+    }
+
     @RenderBody()
+
+    @if (ViewBag.Landing == null || !ViewBag.Landing)
+    {
+        @:</div></div>
+    }
 
     <footer>
         <div class="container">

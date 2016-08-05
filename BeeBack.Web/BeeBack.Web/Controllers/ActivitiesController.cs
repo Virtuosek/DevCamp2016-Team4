@@ -47,7 +47,10 @@ namespace BeeBack.Web.Controllers
             {
                 return HttpNotFound();
             }
-            return View(activity);
+
+            var viewModel = activity.ToViewModel<ActivityViewModel>();
+
+            return View(viewModel);
         }
 
         // GET: Activities/Create
