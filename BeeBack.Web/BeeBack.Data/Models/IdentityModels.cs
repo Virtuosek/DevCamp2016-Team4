@@ -3,6 +3,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using BeeBack.Data.Models;
+using System.Collections.Generic;
 
 namespace BeeBack.Web.Models
 {
@@ -16,18 +18,7 @@ namespace BeeBack.Web.Models
             // Add custom user claims here
             return userIdentity;
         }
-    }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
-
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
+        public List<Activity> Activities { get; set; }
     }
 }
