@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeeBack.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace BeeBack.Data.Models
 
         public Guid UserID{ get; set; }
         [ForeignKey("UserID")]
-        public User User { get; set; }
+        public ApplicationUser User { get; set; }
 
         public Guid ActivityID { get; set; }
         [ForeignKey("ActivityID")]
