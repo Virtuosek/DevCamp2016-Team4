@@ -427,6 +427,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+    <None Include="Properties\PublishProfiles\beeback - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\beeback - Web Deploy %282%29.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608051344002_Activity.resx">
