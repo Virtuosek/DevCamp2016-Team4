@@ -12,12 +12,10 @@ namespace BeeBack.Data.Models
     {
         public Guid ID { get; set; }
 
-        public Guid UserID{ get; set; }
-        [ForeignKey("UserID")]
+        public string UserID{ get; set; }
         public ApplicationUser User { get; set; }
 
         public Guid ActivityID { get; set; }
-        [ForeignKey("ActivityID")]
         public Activity Activity { get; set; }
     }
 }

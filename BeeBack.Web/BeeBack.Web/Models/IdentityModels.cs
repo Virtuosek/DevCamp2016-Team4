@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using BeeBack.Data.Models;
 
 namespace BeeBack.Web.Models
 {
@@ -18,6 +19,8 @@ namespace BeeBack.Web.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public List<UserActivity> UserActivities { get; set; }
     }
 
 }

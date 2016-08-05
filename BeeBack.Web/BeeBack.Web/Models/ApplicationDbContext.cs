@@ -1,11 +1,6 @@
 ﻿using BeeBack.Data.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Web;
 
 namespace BeeBack.Web.Models
 {
@@ -18,6 +13,20 @@ namespace BeeBack.Web.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(u => u.UserActivities)
+                .WithRequired(a => a.User)
+                .HasForeignKey(a => a.UserID);
+
+            modelBuilder.Entity<Activity>()
+                .HasMany(a => a.UserActivities)
+                .WithRequired(a => a.Activity)
+                .HasForeignKey(a => a.ActivityID);
+
+
+            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
         }
 
         public static ApplicationDbContext Create()
