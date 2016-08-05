@@ -1,4 +1,7 @@
-﻿using GalaSoft.MvvmLight;
+﻿using BeeBack.Messages;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +21,20 @@ namespace BeeBack.Model
         public string MobilePhone { get; set; }
         public List<Activity> Activities { get; set; }
         public List<Activity> OwnedActivities { get; set; }
+        public RelayCommand Selected
+        {
+            get
+            {
+                return new RelayCommand(_selected);
+
+            }
+        }
+        private void _selected()
+        {
+            UserSelectedMessage msg = new UserSelectedMessage();
+            msg.SelectedUser = this;
+            Messenger.Default.Send<UserSelectedMessage>(msg);
+        }
 
         public User()
         {
