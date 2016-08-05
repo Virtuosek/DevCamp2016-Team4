@@ -1,0 +1,18 @@
+﻿body {
+}
+
+/* Activities */
+
+.activity .subscribe .fa {
+    display: none;
+}
+
+.activity .subscribe .subscribe-add .fa-heart-o {
+    display: inline;
+}
+
+.activity .subscribe .subscribe-remove .fa-heart {
+    display: inline;
+}
+
+/* END Activities */

@@ -12,7 +12,7 @@
 
             @foreach (var activity in Model.Activities)
             {
-                <div class="col-sm-4 wow fadeInDown text-center" style="margin-bottom: 36px">
+                <div class="col-sm-4 wow fadeInDown text-center activity" style="margin-bottom: 36px">
                     <img class="rotate" src="~/img/icon/@(activity.Icon).svg" alt="Generic placeholder image">
                     <h3>@activity.Title</h3>
                     <p class="lead">@activity.Description</p>
@@ -24,6 +24,7 @@
                         </a>
                         <a class="btn btn-embossed btn-info view subscribe subscribe-add" data-activityId="@activity.Id" >
                             <i class="fa fa-heart-o"></i>
+                            <i class="fa fa-heart"></i>
                         </a>
                     </p>
                 </div><!-- /.col-lg-4 -->
