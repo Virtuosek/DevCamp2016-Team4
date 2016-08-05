@@ -8,6 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <StackPanel>
+            <TextBlock Text="About" HorizontalAlignment="Center"/>
+            <TextBlock Text="by ReMaKe STudio" HorizontalAlignment="Center"/>
+        </StackPanel>
     </Grid>
 </Page>
