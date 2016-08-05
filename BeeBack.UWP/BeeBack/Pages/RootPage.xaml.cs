@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BeeBack.Messages;
+using BeeBack.Pages;
+using GalaSoft.MvvmLight.Messaging;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +28,16 @@ namespace BeeBack
         public RootPage()
         {
             this.InitializeComponent();
+            Messenger.Default.Register<NavigationMessage>(this, _navigationmessage);
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(LoginPage));
+        }
+        private void _navigationmessage(NavigationMessage msg)
+        {
+            MainFrame.Navigate(msg.DestinationPageType);
         }
     }
 }
