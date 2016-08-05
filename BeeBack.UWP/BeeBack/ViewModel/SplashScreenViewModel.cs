@@ -7,6 +7,7 @@ using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,17 +18,33 @@ namespace BeeBack.ViewModel
     public class SplashScreenViewModel : ViewModelBase
     {
         private readonly ICustomNavigationService _navigationService;
+        private readonly IDataService _dataService;
+        private readonly IDialogService _dialogService;
+
         public ICommand LoadingCommand { get; set; }
 
-        public SplashScreenViewModel(ICustomNavigationService navigationService)
+        public SplashScreenViewModel(ICustomNavigationService navigationService, IDataService dataService, IDialogService dialogService)
         {
             _navigationService = navigationService;
+            _dataService = dataService;
+            _dialogService = dialogService;
+
             LoadingCommand = new RelayCommand(OnLoading);
         }
 
-        private void OnLoading()
+        private async void OnLoading()
         {
-            _navigationService.NavigateTo(false ? typeof(RootPage) : typeof(LoginPage));
+            try
+            {
+                //Todo load login & password from storage
+                var isCredentialOK = await _dataService.CheckCredentials();
+                _navigationService.NavigateTo(isCredentialOK ? typeof(RootPage) : typeof(LoginPage));
+            }
+            catch
+            {
+                _navigationService.NavigateTo(typeof(LoginPage));
+            }
+
         }
     }
 }

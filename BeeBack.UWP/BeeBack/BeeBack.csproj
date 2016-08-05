@@ -102,8 +102,8 @@
     <Compile Include="Messages\NavigationMessage.cs" />
     <Compile Include="Model\Activity.cs" />
     <Compile Include="Model\DataItem.cs" />
-    <Compile Include="Model\DataService.cs" />
-    <Compile Include="Model\IDataService.cs" />
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\Interfaces\IDataService.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
