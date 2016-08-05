@@ -8,6 +8,9 @@
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d" DataContext="{Binding SplashScreenVM, Mode=OneWay, Source={StaticResource Locator}}">
+    <Page.Resources>
+        <ResourceDictionary Source="/Dictionary1.xaml"/>
+    </Page.Resources>
 
     <i:Interaction.Behaviors>
         <core:EventTriggerBehavior EventName="Loaded">
@@ -21,7 +24,11 @@
         </Grid.Background>
 
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-            <ProgressRing IsActive="True" IsEnabled="True" Foreground="White" Width="50" Height="50"></ProgressRing>
+            <ProgressRing IsActive="True" 
+                          IsEnabled="True" 
+                          Width="50" 
+                          Foreground="{StaticResource BBTextForegroundColor}"
+                          Height="50"/>
         </Grid>
     </Grid>
 </Page>

@@ -23,12 +23,13 @@ namespace BeeBack.Web.Controllers
         // GET: Activities
         public async Task<ActionResult> Index()
         {
-            var activities = _activityService.GetActivityListItemViewModels();
+            var activities = await _activityService.GetActivityListItemViewModels();
 
             var viewModel = new ActivitiesIndexViewModel
             {
                 Activities = activities
             };
+
             return View(viewModel);
         }
 
@@ -50,7 +51,9 @@ namespace BeeBack.Web.Controllers
         // GET: Activities/Create
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new ActivityCreateEditViewModel();
+
+            return View("CreateEdit", viewModel);
         }
 
         // POST: Activities/Create
@@ -58,17 +61,17 @@ namespace BeeBack.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Title,Description")] Activity activity)
+        public async Task<ActionResult> Create(ActivityCreateEditViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                activity.ID = Guid.NewGuid();
-                _db.Activities.Add(activity);
+                viewModel.Id = Guid.NewGuid();
+                _db.Activities.Add(viewModel);
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(activity);
+            return View("CreateEdit", viewModel);
         }
 
         // GET: Activities/Edit/5
@@ -83,7 +86,7 @@ namespace BeeBack.Web.Controllers
             {
                 return HttpNotFound();
             }
-            return View(activity);
+            return View("CreateEdit", activity);
         }
 
         // POST: Activities/Edit/5
@@ -99,7 +102,7 @@ namespace BeeBack.Web.Controllers
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(activity);
+            return View("CreateEdit", activity);
         }
 
         // GET: Activities/Delete/5
