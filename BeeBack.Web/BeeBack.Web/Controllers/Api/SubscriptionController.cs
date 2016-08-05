@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity;
 
 namespace BeeBack.Web.Controllers.Api
 {
-    public class SubscriptionController : ApiController
+    public class SubscriptionController : BaseApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
