@@ -3,30 +3,29 @@ using BeeBack.Pages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
+using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace BeeBack.ViewModel
 {
     public class LoginViewModel : ViewModelBase
     {
-        public LoginViewModel()
-        {
-            DoLogin = new RelayCommand(DoLoginExecute);//, CanDoLoginExecute);
-
-        }
-        
+        private string _password;
         private string _username;
+        private readonly INavigationService _navigationService;
+
+        public ICommand DoLogin { get; set; }
 
         public string Username
         {
             get { return _username; }
             set { _username = value; RaisePropertyChanged("Username"); }
         }
-        private string _password;
 
         public string Password
         {
@@ -34,20 +33,17 @@ namespace BeeBack.ViewModel
             set { _password = value; RaisePropertyChanged("Password"); }
         }
 
-        public RelayCommand DoLogin { get; set; }
+        public LoginViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+
+            DoLogin = new RelayCommand(DoLoginExecute);
+        }
+
         private void DoLoginExecute()
         {
-            // Check login
-            NavigationMessage msg = new NavigationMessage();
-            msg.DestinationPageType = typeof(MyActivitiesPage);
-            Messenger.Default.Send<NavigationMessage>(msg);
-        }
-        private bool CanDoLoginExecute()
-        {
-            bool EmptyUserName = string.IsNullOrEmpty(Username);
-            bool EmptyPassword = string.IsNullOrEmpty(Password);
-            bool rst= (!EmptyUserName && !EmptyPassword);
-            return rst;            
+            _navigationService.NavigateTo(ViewModelLocator.RootPage);
+
         }
     }
 }

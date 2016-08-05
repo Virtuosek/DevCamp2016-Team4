@@ -28,12 +28,12 @@ namespace BeeBack
         public RootPage()
         {
             this.InitializeComponent();
-            Messenger.Default.Register<NavigationMessage>(this, _navigationmessage);
+            //Messenger.Default.Register<NavigationMessage>(this, _navigationmessage);
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(typeof(LoginPage));
+            //MainFrame.Navigate(typeof(LoginPage));
         }
         private void _navigationmessage(NavigationMessage msg)
         {

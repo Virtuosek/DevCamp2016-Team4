@@ -6,6 +6,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
+using BeeBack.Pages;
 
 namespace BeeBack
 {
@@ -24,8 +25,6 @@ namespace BeeBack
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
-
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -51,7 +50,7 @@ namespace BeeBack
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(typeof(RootPage), e.Arguments);
+                rootFrame.Navigate(typeof(SplashScreenPage), e.Arguments);
             }
             // Ensure the current window is active
             Window.Current.Activate();
