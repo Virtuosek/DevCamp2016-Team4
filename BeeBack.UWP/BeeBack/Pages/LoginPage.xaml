@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="BeeBack.Pages.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BeeBack.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Login" 
+                       Grid.ColumnSpan="2" 
+                       HorizontalAlignment="Center" 
+                       FontSize="24"/>
+            <TextBlock Text="E-Mail" 
+                       Grid.Row="1" 
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Bottom"
+                       Margin="8"/>
+            <TextBox Grid.Row="1" 
+                     Grid.Column="1" 
+                     InputScope="EmailSmtpAddress"
+                     Margin="8"/>
+            <TextBlock Text="Password" 
+                       Grid.Row="2" 
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Bottom"
+                       Margin="8"/>
+            <PasswordBox Grid.Row="2" 
+                         Grid.Column="1"
+                         Margin="8"
+                         PlaceholderText="your password here"/>
+            <Button Grid.Row="3"
+                    Content="Login" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Right" 
+                    Margin="8"
+                    VerticalAlignment="Top"/>
+        </Grid>
+    </Grid>
+</Page>
