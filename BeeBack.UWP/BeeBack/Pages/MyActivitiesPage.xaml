@@ -9,31 +9,36 @@
     x:Class="BeeBack.Pages.MyActivitiesPage"
     mc:Ignorable="d">
     <Page.Resources>
-        <Converters:IntPresenterConverter x:Key="IntPresenterConverter"/>
-        <DataTemplate x:Key="ActivitiesDataTemplate">
-            <Grid Width="200"
-        		Height="200" 
-        		Background="#FF18578B"
-                  >
-                <Interactivity:Interaction.Behaviors>
-                    <Core:EventTriggerBehavior EventName="Tapped">
-                        <Core:InvokeCommandAction Command="{Binding Selected, Mode=OneWay}"/>
-                    </Core:EventTriggerBehavior>
-                </Interactivity:Interaction.Behaviors>
-                <StackPanel Margin="4">
-                    <TextBlock Text="{Binding Title}"
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Dictionary1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Converters:IntPresenterConverter x:Key="IntPresenterConverter"/>
+            <DataTemplate x:Key="ActivitiesDataTemplate">
+                <Grid Width="200"
+                      Height="200" 
+                      Background="{StaticResource BBActivityBackgroundColor}">
+                    <Interactivity:Interaction.Behaviors>
+                        <Core:EventTriggerBehavior EventName="Tapped">
+                            <Core:InvokeCommandAction Command="{Binding Selected, Mode=OneWay}"/>
+                        </Core:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
+                    <StackPanel Margin="4">
+                        <TextBlock Text="{Binding Title}"
         				TextWrapping="WrapWholeWords"
-        				Foreground="White"
+        				Foreground="{StaticResource BBTextForegroundColor}"
         				FontSize="16"
         				FontWeight="ExtraBold"/>
-                    <TextBlock Text="{Binding Description}"
+                        <TextBlock Text="{Binding Description}"
         				TextWrapping="WrapWholeWords"
-        				Foreground="White"
+        				Foreground="{StaticResource BBTextForegroundColor}"
         				FontWeight="Light"/>
 
-                </StackPanel>
-            </Grid>
-        </DataTemplate>
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+
+        </ResourceDictionary>
     </Page.Resources>
 
     <Page.DataContext>
@@ -53,7 +58,7 @@
 			ItemTemplate="{StaticResource ActivitiesDataTemplate}"/>
         <StackPanel Orientation="Horizontal"
 			Grid.Row="2">
-            <Button Content="Add activity"/>
+            <Button Content="Add activity" Style="{StaticResource BBButtonStyle}"/>
 
         </StackPanel>
     </Grid>
