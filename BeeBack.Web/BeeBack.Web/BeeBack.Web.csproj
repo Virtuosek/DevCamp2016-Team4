@@ -247,6 +247,7 @@
     <Compile Include="ViewModels\Activities\ActivityViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\beeback.css" />
     <Content Include="css\toastr.css" />
     <Content Include="css\toastr.min.css" />
     <Content Include="css\animate.css" />
