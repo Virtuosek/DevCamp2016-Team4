@@ -1,4 +1,5 @@
 ﻿using BeeBack.Model;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BeeBack.Services.Interfaces
@@ -8,5 +9,8 @@ namespace BeeBack.Services.Interfaces
         void Initialize(string username, string password);
         Task<DataItem> GetData();
         Task<bool> CheckCredentials();
+        Task<List<Activity>> GetUserActivities();
+        Task<List<Activity>> GetSubscribedActivities();
+        Task<List<Activity>> GetAllPublicActivities();
     }
 }

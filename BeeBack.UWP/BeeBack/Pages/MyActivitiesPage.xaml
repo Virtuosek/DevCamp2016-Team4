@@ -28,10 +28,10 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding MyActivitiesList.Count, ConverterParameter=My Activities, Converter={StaticResource IntPresenterConverter}, Mode=OneWay}" FontSize="48"/>
+        <TextBlock Text="{Binding AllActivities.Count, ConverterParameter=My Activities, Converter={StaticResource IntPresenterConverter}, Mode=OneWay}" FontSize="48"/>
         <GridView Grid.Row="1" 
 			Margin="8"
-			ItemsSource="{Binding MyActivitiesList}" 
+			ItemsSource="{Binding AllActivities}" 
 			ItemTemplate="{StaticResource ActivitiesDataTemplate}"/>
         <StackPanel Orientation="Horizontal"
 			Grid.Row="2">
