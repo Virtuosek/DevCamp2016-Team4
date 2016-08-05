@@ -21,6 +21,7 @@ namespace BeeBack.ViewModel
 
             SimpleIoc.Default.Register<ICustomNavigationService, CustomNavigationService>();
             SimpleIoc.Default.Register<IDialogService, DialogService>();
+            SimpleIoc.Default.Register<IStorageService, StorageService>();
 
             if (ViewModelBase.IsInDesignModeStatic)
                 SimpleIoc.Default.Register<IDataService, Design.DesignDataService>();

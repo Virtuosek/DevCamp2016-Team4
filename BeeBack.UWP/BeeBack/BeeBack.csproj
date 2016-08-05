@@ -98,10 +98,13 @@
     </Compile>
     <Compile Include="Converters\IntPresenterConverter.cs" />
     <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="Services\Interfaces\IStorageService.cs" />
+    <Compile Include="Services\StorageService.cs" />
     <Compile Include="Messages\ActivitySelectedMessage.cs" />
     <Compile Include="Messages\NavigationMessage.cs" />
     <Compile Include="Model\Activity.cs" />
     <Compile Include="Model\DataItem.cs" />
+    <Compile Include="Model\UserInfos.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\Interfaces\IDataService.cs" />
     <Compile Include="Model\User.cs" />
