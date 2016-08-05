@@ -1,13 +1,55 @@
 ﻿<Page
-    x:Class="BeeBack.Pages.ActivityPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BeeBack.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Converters="using:LeSoir.Converters"
+    x:Class="BeeBack.Pages.ActivityPage"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="One Activity" FontSize="48"/>
+    <Page.Resources>
+        <Converters:IntPresenterConverter x:Key="IntPresenterConverter"/>
+        <DataTemplate x:Key="UsersDataTemplate">
+            <Grid Width="150"
+                  Height="75" Background="#FF660076">
+                <StackPanel>
+                    <TextBlock Text="{Binding Name}" Foreground="White"/>
+                    <TextBlock Text="{Binding FirstName}" Foreground="White"/>
+                    <TextBlock Text="{Binding MobilePhone}" Foreground="White"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+            <ItemsStackPanel Orientation="Horizontal" />
+        </ItemsPanelTemplate>
+    </Page.Resources>
+    <Page.DataContext>
+        <Binding Mode="OneWay" Path="ActivityVM" Source="{StaticResource Locator}"/>
+    </Page.DataContext>
+
+    <Grid Background="Transparent" DataContext="{Binding Activity}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding Title}" FontSize="48"/>
+        <Grid HorizontalAlignment="Right">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Géré par"/>
+            <ContentPresenter Grid.Row="1" HorizontalAlignment="Right" Content="{Binding Owner}" ContentTemplate="{StaticResource UsersDataTemplate}"/>
+        </Grid>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="{Binding Members.Count, ConverterParameter=Abonnés, Converter={StaticResource IntPresenterConverter}, Mode=OneWay}"/>
+            <ListView Height="80" ItemsSource="{Binding Members}" ItemTemplate="{StaticResource UsersDataTemplate}" ItemsPanel="{StaticResource ItemsPanelTemplate1}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <TextBlock Text="{Binding Title}"/>
+            <TextBlock Text="{Binding Description}"/>
+        </StackPanel>
     </Grid>
 </Page>
