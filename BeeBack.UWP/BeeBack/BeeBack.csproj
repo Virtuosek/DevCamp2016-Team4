@@ -98,9 +98,6 @@
     </Compile>
     <Compile Include="Converters\IntPresenterConverter.cs" />
     <Compile Include="Design\DesignDataService.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Messages\ActivitySelectedMessage.cs" />
     <Compile Include="Messages\NavigationMessage.cs" />
     <Compile Include="Model\Activity.cs" />
@@ -113,6 +110,9 @@
     </Compile>
     <Compile Include="Pages\ActivityPage.xaml.cs">
       <DependentUpon>ActivityPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SplashScreenPage.xaml.cs">
+      <DependentUpon>SplashScreenPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -133,7 +133,10 @@
     <Compile Include="SecondPage.xaml.cs">
       <DependentUpon>SecondPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\CustomNavigationService.cs" />
+    <Compile Include="Services\Interfaces\ICustomNavigationService.cs" />
     <Compile Include="ViewModel\ActivityViewModel.cs" />
+    <Compile Include="ViewModel\SplashScreenViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MyActivitiesViewModel.cs" />
@@ -146,6 +149,7 @@
     <None Include="Win10_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\intro5.jpg" />
     <Content Include="Assets\Logo\logo.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -161,9 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Dictionary1.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Pages\AboutPage.xaml">
       <SubType>Designer</SubType>
@@ -172,6 +177,10 @@
     <Page Include="Pages\ActivityPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SplashScreenPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
@@ -203,6 +212,7 @@
       <Name>BehaviorsXamlSDKManaged</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

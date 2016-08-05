@@ -3,21 +3,23 @@ using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 using BeeBack.Model;
+using BeeBack.Pages;
+using BeeBack.Services.Interfaces;
+using BeeBack.Services;
 
 namespace BeeBack.ViewModel
 {
     public class ViewModelLocator
     {
         public const string SecondPageKey = "SecondPage";
+        public const string LoginPage = "LoginPage";
+        public const string RootPage = "RootPage";
 
         static ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            var nav = new NavigationService();
-            nav.Configure(SecondPageKey, typeof(SecondPage));
-            SimpleIoc.Default.Register<INavigationService>(() => nav);
-
+            SimpleIoc.Default.Register<ICustomNavigationService, CustomNavigationService>();
             SimpleIoc.Default.Register<IDialogService, DialogService>();
 
             if (ViewModelBase.IsInDesignModeStatic)
@@ -33,6 +35,7 @@ namespace BeeBack.ViewModel
             SimpleIoc.Default.Register<LoginViewModel>();
             SimpleIoc.Default.Register<MyActivitiesViewModel>();
             SimpleIoc.Default.Register<ActivityViewModel>();
+            SimpleIoc.Default.Register<SplashScreenViewModel>();
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
@@ -42,5 +45,6 @@ namespace BeeBack.ViewModel
         public LoginViewModel LoginVM => ServiceLocator.Current.GetInstance<LoginViewModel>();
         public MyActivitiesViewModel MyActivitiesVM => ServiceLocator.Current.GetInstance<MyActivitiesViewModel>();
         public ActivityViewModel ActivityVM => ServiceLocator.Current.GetInstance<ActivityViewModel>();
+        public SplashScreenViewModel SplashScreenVM => ServiceLocator.Current.GetInstance<SplashScreenViewModel>();
     }
 }

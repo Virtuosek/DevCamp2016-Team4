@@ -14,11 +14,11 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Image Grid.RowSpan="3" Source="ms-appx:///Assets/Logo/logo.png" Opacity="0.35"/>
-        <StackPanel Orientation="Horizontal">
+        <!--<Image Grid.RowSpan="3" Source="ms-appx:///Assets/intro5.jpg" />-->
+        <StackPanel Orientation="Horizontal" >
             <Image Source="ms-appx:///Assets/Logo/logo.png" Width="80" HorizontalAlignment="Left" Margin="8" Tapped="Image_Tapped"/>
             <TextBlock Text="Blablabla" Margin="8"/>
         </StackPanel>
-        <Frame x:Name="MainFrame" Grid.Row="1"/>
+        <Frame x:Name="MainFrame" Grid.Row="1" Background="red"/>
     </Grid>
 </Page>

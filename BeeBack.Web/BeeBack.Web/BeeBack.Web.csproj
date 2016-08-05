@@ -210,6 +210,7 @@
     <Compile Include="Controllers\ActivitiesController.cs" />
     <Compile Include="Controllers\Api\ActivitiesController.cs" />
     <Compile Include="Controllers\Api\BaseApiController.cs" />
+    <Compile Include="Controllers\Api\LoginController.cs" />
     <Compile Include="Controllers\Api\SubscriptionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -220,6 +221,14 @@
     <Compile Include="Migrations\201608051344002_Activity.cs" />
     <Compile Include="Migrations\201608051344002_Activity.Designer.cs">
       <DependentUpon>201608051344002_Activity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608051606230_ActivitiesOwned.cs" />
+    <Compile Include="Migrations\201608051606230_ActivitiesOwned.Designer.cs">
+      <DependentUpon>201608051606230_ActivitiesOwned.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608051614138_ActivityOwnerReference.cs" />
+    <Compile Include="Migrations\201608051614138_ActivityOwnerReference.Designer.cs">
+      <DependentUpon>201608051614138_ActivityOwnerReference.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -425,6 +434,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608051344002_Activity.resx">
       <DependentUpon>201608051344002_Activity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608051606230_ActivitiesOwned.resx">
+      <DependentUpon>201608051606230_ActivitiesOwned.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608051614138_ActivityOwnerReference.resx">
+      <DependentUpon>201608051614138_ActivityOwnerReference.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
