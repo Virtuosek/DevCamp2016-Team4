@@ -238,6 +238,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\UserActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ActivityService.cs" />
     <Compile Include="Services\FakeActivityService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Activities\ActivitiesIndexViewModel.cs" />

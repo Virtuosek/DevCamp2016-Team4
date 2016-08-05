@@ -16,6 +16,20 @@ namespace BeeBack.Web.Services
             return Activities;
         }
 
+        public async Task<List<Activity>> GetUserActivities(string userId)
+        {
+            await Task.Delay(0);
+
+            return Activities.Take(4).ToList();
+        }
+
+        public async Task<List<Activity>> GetSubscribedActivities(string userId)
+        {
+            await Task.Delay(0);
+
+            return Activities.Take(2).ToList();
+        }
+
         public async Task<Activity> GetActivity(Guid id)
         {
             await Task.Delay(0);
