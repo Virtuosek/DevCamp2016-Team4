@@ -7,6 +7,7 @@ using GalaSoft.MvvmLight.Threading;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 using BeeBack.Model;
+using BeeBack.Services.Interfaces;
 
 namespace BeeBack.ViewModel
 {

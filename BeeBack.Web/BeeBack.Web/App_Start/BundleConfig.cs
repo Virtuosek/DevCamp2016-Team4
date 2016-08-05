@@ -11,6 +11,15 @@ namespace BeeBack.Web
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/js/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/toastr").Include(
+                        "~/js/toastr.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                        "~/js/app/beeback.js",
+                        "~/js/app/beeback_pattern.js",
+                        "~/js/app/beeback_api.js",
+                        "~/js/app/beeback.activities.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/js/jquery.validate*"));
 

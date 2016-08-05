@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using BeeBack.Model;
+using BeeBack.Services.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -6,7 +8,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BeeBack.Model
+namespace BeeBack.Services
 {
     public class DataService : IDataService
     {
@@ -18,44 +20,17 @@ namespace BeeBack.Model
         public static readonly string UrlSubscriptions = "api/subscriptions";
         public static readonly string UrlLogin = "api/login";
 
-        #region initialization
-
-        public static void Initialize(string username, string password)
+        public void Initialize(string username, string password)
         {
             _username = username;
             _password = password;
 
             if (string.IsNullOrWhiteSpace(_password))
-            {
                 throw new UnauthorizedAccessException("Password is empty.");
-            }
+
             if (string.IsNullOrWhiteSpace(_username))
-            {
                 throw new UnauthorizedAccessException("Username is empty.");
-            }
         }
-
-        #endregion
-
-        #region private methods
-
-        private HttpClient InitRequest()
-        {
-            HttpClient client = new HttpClient();
-
-            if (string.IsNullOrWhiteSpace(_password) || string.IsNullOrWhiteSpace(_username))
-            {
-                throw new UnauthorizedAccessException("Credentials are missing. Initialize the service first.");
-            }
-
-            var byteArray = Encoding.ASCII.GetBytes($"{_username}:{_password}");
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
-
-            return client;
-        }
-        #endregion
-
-        #region API Calls
 
         public async Task<bool> CheckCredentials()
         {
@@ -105,10 +80,6 @@ namespace BeeBack.Model
             }
         }
 
-        #endregion
-
-
-
         public Task<DataItem> GetData()
         {
             // Use this to connect to the actual data service
@@ -116,6 +87,21 @@ namespace BeeBack.Model
             // Simulate by returning a DataItem
             var item = new DataItem("Welcome to MVVM Light");
             return Task.FromResult(item);
+        }
+
+        private HttpClient InitRequest()
+        {
+            HttpClient client = new HttpClient();
+
+            if (string.IsNullOrWhiteSpace(_password) || string.IsNullOrWhiteSpace(_username))
+            {
+                throw new UnauthorizedAccessException("Credentials are missing. Initialize the service first.");
+            }
+
+            var byteArray = Encoding.ASCII.GetBytes($"{_username}:{_password}");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+
+            return client;
         }
     }
 }

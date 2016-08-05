@@ -13,13 +13,16 @@
             <h3>@activity.Title</h3>
             <p class="lead">@activity.Description</p>
 
-            <p>
-                <a class="btn btn-embossed btn-primary view" role="button"
-                   href="@Url.Action("Details", new { activity.Id })">
-                    Voir les détails
-                </a>
-            </p>
-        </div><!-- /.col-lg-4 -->
-    }
+                    <p>
+                        <a class="btn btn-embossed btn-primary view"
+                           href="@Url.Action("Details", new {activity.Id})">
+                            Voir les détails
+                        </a>
+                        <a class="btn btn-embossed btn-info view subscribe subscribe-add" data-activityId="@activity.Id" >
+                            <i class="fa fa-heart-o"></i>
+                        </a>
+                    </p>
+                </div><!-- /.col-lg-4 -->
+            }
 
 </div><!-- /.row -->
