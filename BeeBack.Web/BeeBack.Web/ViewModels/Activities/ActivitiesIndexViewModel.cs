@@ -4,8 +4,6 @@ namespace BeeBack.Web.ViewModels.Activities
 {
     public class ActivitiesIndexViewModel
     {
-        public List<ActivityListItemViewModel> Activities { get; set; }
-
-
+        public IEnumerable<ActivityListItemViewModel> Activities { get; set; }
     }
 }

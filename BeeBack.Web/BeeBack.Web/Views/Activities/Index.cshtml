@@ -17,7 +17,12 @@
                     <h3>@activity.Title</h3>
                     <p class="lead">@activity.Description</p>
 
-                    <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p>
+                    <p>
+                        <a class="btn btn-embossed btn-primary view" role="button" 
+                            href="@Url.Action("Details", new { activity.Id })">
+                            Voir les détails
+                        </a>
+                    </p>
                 </div><!-- /.col-lg-4 -->
             }
 

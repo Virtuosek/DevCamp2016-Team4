@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
@@ -23,11 +24,11 @@ namespace BeeBack.Web.Controllers
         // GET: Activities
         public async Task<ActionResult> Index()
         {
-            var activities = await _activityService.GetActivityListItemViewModels();
+            var activities = await _activityService.GetActivities();
 
             var viewModel = new ActivitiesIndexViewModel
             {
-                Activities = activities
+                Activities = activities.Select(model => model.ToViewModel<ActivityListItemViewModel>())
             };
 
             return View(viewModel);
@@ -40,7 +41,9 @@ namespace BeeBack.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Activity activity = await _db.Activities.FindAsync(id);
+
+            var activity = await _activityService.GetActivity(id.Value);
+
             if (activity == null)
             {
                 return HttpNotFound();
@@ -66,7 +69,10 @@ namespace BeeBack.Web.Controllers
             if (ModelState.IsValid)
             {
                 viewModel.Id = Guid.NewGuid();
-                _db.Activities.Add(viewModel);
+
+                var model = viewModel.ToModel();
+
+                _db.Activities.Add(model);
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -81,12 +87,17 @@ namespace BeeBack.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Activity activity = await _db.Activities.FindAsync(id);
+
+            var activity = await _db.Activities.FindAsync(id);
+
             if (activity == null)
             {
                 return HttpNotFound();
             }
-            return View("CreateEdit", activity);
+
+            var viewModel = activity.ToViewModel<ActivityCreateEditViewModel>();
+
+            return View("CreateEdit", viewModel);
         }
 
         // POST: Activities/Edit/5
@@ -94,15 +105,18 @@ namespace BeeBack.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Title,Description")] Activity activity)
+        public async Task<ActionResult> Edit(ActivityCreateEditViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                _db.Entry(activity).State = EntityState.Modified;
+                var model = viewModel.ToModel();
+
+                _db.Entry(model).State = EntityState.Modified;
                 await _db.SaveChangesAsync();
+
                 return RedirectToAction("Index");
             }
-            return View("CreateEdit", activity);
+            return View("CreateEdit", viewModel);
         }
 
         // GET: Activities/Delete/5
@@ -112,12 +126,17 @@ namespace BeeBack.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Activity activity = await _db.Activities.FindAsync(id);
+
+            var activity = await _db.Activities.FindAsync(id);
+
             if (activity == null)
             {
                 return HttpNotFound();
             }
-            return View(activity);
+
+            var viewModel = activity.ToViewModel<ActivityViewModel>();
+
+            return View(viewModel);
         }
 
         // POST: Activities/Delete/5
