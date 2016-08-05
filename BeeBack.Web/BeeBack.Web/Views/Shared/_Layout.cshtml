@@ -1,5 +1,6 @@
 ﻿@using BeeBack.Web.Models
- <!-- BeeBack Theme - Andrea Galanti /-->
+@using Microsoft.AspNet.Identity
+<!-- BeeBack Theme - Andrea Galanti /-->
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
@@ -83,7 +84,25 @@
                     <li class="menuItem"><a href="#screen">Screenshot</a></li>
                     <li class="menuItem"><a href="#credits">Credits</a></li>
                     <li class="menuItem"><a href="#contact">Contact</a></li>
-                    <li class="menuItem"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li class="menuItem">
+                            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                        </li>
+                        @*<li class="menuItem">
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                <span>@Html.AntiForgeryToken()</span>
+
+
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                            }
+                        </li>*@
+                    }
+                    else
+                    {
+                        <li class="menuItem"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                    }
                 </ul>
             </div>
 
@@ -176,7 +195,7 @@
                     <h4 class="modal-title" id="login-modal-label">Login</h4>
                 </div>
                 <div class="modal-body">
-                    @Html.Partial("_HomeLayout", new LoginViewModel())
+                    @Html.Partial("_LoginFormPartial", new LoginViewModel())
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Login</button>
