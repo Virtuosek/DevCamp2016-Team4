@@ -184,9 +184,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Auth\BasicAuth\Filters\BasicAuthenticationAttribute.cs" />
+    <Compile Include="Auth\BasicAuth\Filters\HttpAuthenticationChallengeContextExtensions.cs" />
+    <Compile Include="Auth\BasicAuth\Filters\IdentityBasicAuthenticationAttribute.cs" />
+    <Compile Include="Auth\BasicAuth\Results\AddChallengeOnUnauthorizedResult.cs" />
+    <Compile Include="Auth\BasicAuth\Results\AuthenticationFailureResult.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivitiesController.cs" />
     <Compile Include="Controllers\Api\ActivitiesController.cs" />
+    <Compile Include="Controllers\Api\BaseApiController.cs" />
     <Compile Include="Controllers\Api\SubscriptionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />

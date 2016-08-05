@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace BeeBack.Web.Controllers.Api
 {
-    public class ActivitiesController : ApiController
+    public class ActivitiesController : BaseApiController
     {
         public async Task<List<Activity>> GetActivities()
         {
