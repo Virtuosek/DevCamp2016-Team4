@@ -100,6 +100,7 @@
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Messages\ActivitySelectedMessage.cs" />
     <Compile Include="Messages\NavigationMessage.cs" />
+    <Compile Include="Messages\UserSelectedMessage.cs" />
     <Compile Include="Model\Activity.cs" />
     <Compile Include="Model\DataItem.cs" />
     <Compile Include="Services\DataService.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MyActivitiesViewModel.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>

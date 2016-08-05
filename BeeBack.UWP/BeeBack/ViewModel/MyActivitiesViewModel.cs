@@ -50,6 +50,7 @@ namespace BeeBack.ViewModel
                     {
                         a.Owner = u;
                     }
+                    u.Activities.Add(a);
                     a.Members.Add(u);
                 }
                 MyActivitiesList.Add(a);

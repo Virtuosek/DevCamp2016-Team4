@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Converters="using:LeSoir.Converters"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     x:Class="BeeBack.Pages.ActivityPage"
     mc:Ignorable="d">
 
@@ -16,7 +17,12 @@
             <Converters:IntPresenterConverter x:Key="IntPresenterConverter"/>
             <DataTemplate x:Key="UsersDataTemplate">
                 <Grid Width="150"
-                  Height="75" Background="{StaticResource BBUserBackgroundColor}">
+            		Height="75" Background="{StaticResource BBUserBackgroundColor}">
+                    <Interactivity:Interaction.Behaviors>
+                        <Core:EventTriggerBehavior EventName="Tapped">
+                            <Core:InvokeCommandAction Command="{Binding Selected, Mode=OneWay}"/>
+                        </Core:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
                     <StackPanel>
                         <TextBlock Text="{Binding Name}" Foreground="{StaticResource BBTextForegroundColor}"/>
                         <TextBlock Text="{Binding FirstName}" Foreground="{StaticResource BBTextForegroundColor}"/>
@@ -26,8 +32,8 @@
             </DataTemplate>
             <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
                 <ItemsStackPanel Orientation="Horizontal" 
-                                 ScrollViewer.HorizontalScrollBarVisibility="Visible" 
-                                 ScrollViewer.VerticalScrollBarVisibility="Disabled" />
+            		ScrollViewer.HorizontalScrollBarVisibility="Visible" 
+            		ScrollViewer.VerticalScrollBarVisibility="Disabled" />
             </ItemsPanelTemplate>
         </ResourceDictionary>
 
@@ -59,10 +65,12 @@
         </Grid>
         <StackPanel Grid.Row="1">
             <TextBlock Text="{Binding Members.Count, ConverterParameter=Abonnés, Converter={StaticResource IntPresenterConverter}, Mode=OneWay}"/>
-            <ListView Height="80" 
-                      ItemsSource="{Binding Members}" 
-                      ItemTemplate="{StaticResource UsersDataTemplate}" 
-                      ItemsPanel="{StaticResource ItemsPanelTemplate1}"/>
+            <ScrollViewer VerticalScrollMode="Disabled" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                <ListView Height="80" 
+					ItemsSource="{Binding Members}" 
+					ItemTemplate="{StaticResource UsersDataTemplate}" 
+					ItemsPanel="{StaticResource ItemsPanelTemplate1}"/>
+            </ScrollViewer>
         </StackPanel>
         <StackPanel Grid.Row="2">
             <TextBlock Text="{Binding Title}"/>
