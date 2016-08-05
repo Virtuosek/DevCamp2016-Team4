@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using BeeBack.Web.Interfaces;
 using BeeBack.Web.ViewModels.Activities;
 
@@ -6,49 +8,51 @@ namespace BeeBack.Web.Services
 {
     public class FakeActivityService : IActivityService
     {
-        public List<ActivityListItemViewModel> GetActivityListItemViewModels()
+        public async Task<List<ActivityListItemViewModel>> GetActivityListItemViewModels()
         {
+            await Task.Delay(0);
+
             return new List<ActivityListItemViewModel>
             {
                 new ActivityListItemViewModel
                 {
-                    Id = 1,
-                    Name = "Tennis",
+                    Id = Guid.NewGuid(),
+                    Title = "Tennis",
                     Icon = "football",
                     Description = "Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum."
                 },
                 new ActivityListItemViewModel
                 {
-                    Id = 2,
-                    Name = "Basket",
+                    Id = Guid.NewGuid(),
+                    Title = "Basket",
                     Icon = "football",
                     Description = "Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum."
                 },
                 new ActivityListItemViewModel
                 {
-                    Id = 3,
-                    Name = "Piano",
+                    Id = Guid.NewGuid(),
+                    Title = "Piano",
                     Icon = "mic",
                     Description = "Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum."
                 },
                 new ActivityListItemViewModel
                 {
-                    Id = 4,
-                    Name = "Scout",
+                    Id = Guid.NewGuid(),
+                    Title = "Scout",
                     Icon = "compas",
                     Description = "Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum."
                 },
                 new ActivityListItemViewModel
                 {
-                    Id = 6,
-                    Name = "Cours de flute",
+                    Id = Guid.NewGuid(),
+                    Title = "Cours de flute",
                     Icon = "mic",
                     Description = "Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum."
                 },
                 new ActivityListItemViewModel
                 {
-                    Id = 5,
-                    Name = "Natation",
+                    Id = Guid.NewGuid(),
+                    Title = "Natation",
                     Icon = "football",
                     Description = "Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum."
                 }
