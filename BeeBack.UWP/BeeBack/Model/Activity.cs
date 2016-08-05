@@ -11,6 +11,7 @@ namespace BeeBack.Model
     {
         public int ID { get; set; }
         public int FkUser { get; set; }
+        public User Owner { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public List<User> Members { get; set; }
@@ -18,6 +19,7 @@ namespace BeeBack.Model
         public Activity()
         {
             Members = new List<User>();
+            Owner = new User();
         }
     }
 }
