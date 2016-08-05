@@ -16,6 +16,7 @@ namespace BeeBack.Model
         public static readonly string UrlBase = "http://beeback.azurewebsites.net/";
         public static readonly string UrlActivities = "api/activities";
         public static readonly string UrlSubscriptions = "api/subscriptions";
+        public static readonly string UrlLogin = "api/login";
 
         #region initialization
 
@@ -55,6 +56,15 @@ namespace BeeBack.Model
         #endregion
 
         #region API Calls
+
+        public async Task<bool> CheckCredentials()
+        {
+            using (var request = InitRequest())
+            {
+                var content = await request.GetStringAsync(UrlBase + UrlLogin);
+                return JsonConvert.DeserializeObject<bool>(content);
+            }
+        }
 
         /// <summary>
         /// Get the list of activities to which the current user is subscribed
