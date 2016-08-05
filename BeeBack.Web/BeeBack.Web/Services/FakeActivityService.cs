@@ -23,6 +23,23 @@ namespace BeeBack.Web.Services
             return Activities.FirstOrDefault(x => x.ID == id);
         }
 
+        public async Task AddActivity(Activity activity)
+        {
+            await Task.Delay(0);
+
+            Activities.Add(activity);
+        }
+
+        public Task EditActivity(Activity activity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteActivity(Activity activity)
+        {
+            throw new NotImplementedException();
+        }
+
         private static readonly List<Activity> Activities = new List<Activity>
             {
                 new Activity
@@ -62,5 +79,10 @@ namespace BeeBack.Web.Services
                     Description = "Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum."
                 }
             };
+
+        public void Dispose()
+        {
+            // Bah rien en fait.. OSEF !
+        }
     }
 }

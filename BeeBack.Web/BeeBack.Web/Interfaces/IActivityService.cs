@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BeeBack.Data.Models;
-using BeeBack.Web.ViewModels.Activities;
 
 namespace BeeBack.Web.Interfaces
 {
-    public interface IActivityService
+    public interface IActivityService : IDisposable
     {
         Task<IEnumerable<Activity>> GetActivities();
-
         Task<Activity> GetActivity(Guid id);
+        Task AddActivity(Activity activity);
+        Task EditActivity(Activity activity);
+        Task DeleteActivity(Activity activity);
     }
 }

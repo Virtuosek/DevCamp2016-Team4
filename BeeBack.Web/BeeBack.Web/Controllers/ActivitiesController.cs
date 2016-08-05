@@ -6,7 +6,6 @@ using System.Net;
 using System.Web.Mvc;
 using BeeBack.Data.Models;
 using BeeBack.Web.Interfaces;
-using BeeBack.Web.Models;
 using BeeBack.Web.ViewModels.Activities;
 
 namespace BeeBack.Web.Controllers
@@ -14,7 +13,7 @@ namespace BeeBack.Web.Controllers
     public class ActivitiesController : Controller
     {
         private readonly IActivityService _activityService;
-        private readonly ApplicationDbContext _db = new ApplicationDbContext();
+        //private readonly ApplicationDbContext _db = new ApplicationDbContext();
         
         public ActivitiesController(IActivityService activityService)
         {
@@ -72,8 +71,8 @@ namespace BeeBack.Web.Controllers
 
                 var model = viewModel.ToModel();
 
-                _db.Activities.Add(model);
-                await _db.SaveChangesAsync();
+                await _activityService.AddActivity(model);
+
                 return RedirectToAction("Index");
             }
 
@@ -88,7 +87,7 @@ namespace BeeBack.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var activity = await _db.Activities.FindAsync(id);
+            var activity = await _activityService.GetActivity(id.Value);
 
             if (activity == null)
             {
@@ -111,8 +110,7 @@ namespace BeeBack.Web.Controllers
             {
                 var model = viewModel.ToModel();
 
-                _db.Entry(model).State = EntityState.Modified;
-                await _db.SaveChangesAsync();
+                await _activityService.EditActivity(model);
 
                 return RedirectToAction("Index");
             }
@@ -127,7 +125,7 @@ namespace BeeBack.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var activity = await _db.Activities.FindAsync(id);
+            var activity = await _activityService.GetActivity(id.Value);
 
             if (activity == null)
             {
@@ -144,9 +142,10 @@ namespace BeeBack.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            Activity activity = await _db.Activities.FindAsync(id);
-            _db.Activities.Remove(activity);
-            await _db.SaveChangesAsync();
+            var activity = await _activityService.GetActivity(id);
+
+            await _activityService.DeleteActivity(activity);
+
             return RedirectToAction("Index");
         }
 
@@ -154,8 +153,9 @@ namespace BeeBack.Web.Controllers
         {
             if (disposing)
             {
-                _db.Dispose();
+                _activityService.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }
