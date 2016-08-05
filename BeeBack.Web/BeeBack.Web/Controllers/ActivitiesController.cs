@@ -1,25 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using BeeBack.Data.Models;
+using BeeBack.Web.Interfaces;
 using BeeBack.Web.Models;
+using BeeBack.Web.ViewModels.Activities;
 
 namespace BeeBack.Web.Controllers
 {
     public class ActivitiesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IActivityService _activityService;
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
+        
+        public ActivitiesController(IActivityService activityService)
+        {
+            _activityService = activityService;
+        }
 
         // GET: Activities
         public async Task<ActionResult> Index()
         {
-            return View(await db.Activities.ToListAsync());
+            var activities = _activityService.GetActivityListItemViewModels();
+
+            var viewModel = new ActivitiesIndexViewModel
+            {
+                Activities = activities
+            };
+            return View(viewModel);
         }
 
         // GET: Activities/Details/5
@@ -29,7 +39,7 @@ namespace BeeBack.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Activity activity = await db.Activities.FindAsync(id);
+            Activity activity = await _db.Activities.FindAsync(id);
             if (activity == null)
             {
                 return HttpNotFound();
@@ -53,8 +63,8 @@ namespace BeeBack.Web.Controllers
             if (ModelState.IsValid)
             {
                 activity.ID = Guid.NewGuid();
-                db.Activities.Add(activity);
-                await db.SaveChangesAsync();
+                _db.Activities.Add(activity);
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -68,7 +78,7 @@ namespace BeeBack.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Activity activity = await db.Activities.FindAsync(id);
+            Activity activity = await _db.Activities.FindAsync(id);
             if (activity == null)
             {
                 return HttpNotFound();
@@ -85,8 +95,8 @@ namespace BeeBack.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(activity).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                _db.Entry(activity).State = EntityState.Modified;
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(activity);
@@ -99,7 +109,7 @@ namespace BeeBack.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Activity activity = await db.Activities.FindAsync(id);
+            Activity activity = await _db.Activities.FindAsync(id);
             if (activity == null)
             {
                 return HttpNotFound();
@@ -112,9 +122,9 @@ namespace BeeBack.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            Activity activity = await db.Activities.FindAsync(id);
-            db.Activities.Remove(activity);
-            await db.SaveChangesAsync();
+            Activity activity = await _db.Activities.FindAsync(id);
+            _db.Activities.Remove(activity);
+            await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
@@ -122,7 +132,7 @@ namespace BeeBack.Web.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
