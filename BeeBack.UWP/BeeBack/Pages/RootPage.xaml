@@ -7,8 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Loaded="Page_Loaded">
+    <Page.Resources>
+        <ResourceDictionary Source="/Dictionary1.xaml"/>
+    </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{StaticResource BBButtonBackgroundColor}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -17,8 +20,8 @@
         <!--<Image Grid.RowSpan="3" Source="ms-appx:///Assets/intro5.jpg" />-->
         <StackPanel Orientation="Horizontal" >
             <Image Source="ms-appx:///Assets/Logo/logo.png" Width="80" HorizontalAlignment="Left" Margin="8" Tapped="Image_Tapped"/>
-            <TextBlock Text="Blablabla" Margin="8"/>
+            <TextBlock Text="Bee Back" Margin="8" FontSize="48" Foreground="{StaticResource BBTextForegroundColor}"/>
         </StackPanel>
-        <Frame x:Name="MainFrame" Grid.Row="1" Background="red"/>
+        <Frame x:Name="MainFrame" Grid.Row="1" Background="White"/>
     </Grid>
 </Page>

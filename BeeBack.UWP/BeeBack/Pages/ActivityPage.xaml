@@ -9,20 +9,28 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <Converters:IntPresenterConverter x:Key="IntPresenterConverter"/>
-        <DataTemplate x:Key="UsersDataTemplate">
-            <Grid Width="150"
-                  Height="75" Background="#FF660076">
-                <StackPanel>
-                    <TextBlock Text="{Binding Name}" Foreground="White"/>
-                    <TextBlock Text="{Binding FirstName}" Foreground="White"/>
-                    <TextBlock Text="{Binding MobilePhone}" Foreground="White"/>
-                </StackPanel>
-            </Grid>
-        </DataTemplate>
-        <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
-            <ItemsStackPanel Orientation="Horizontal" />
-        </ItemsPanelTemplate>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Dictionary1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Converters:IntPresenterConverter x:Key="IntPresenterConverter"/>
+            <DataTemplate x:Key="UsersDataTemplate">
+                <Grid Width="150"
+                  Height="75" Background="{StaticResource BBUserBackgroundColor}">
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" Foreground="{StaticResource BBTextForegroundColor}"/>
+                        <TextBlock Text="{Binding FirstName}" Foreground="{StaticResource BBTextForegroundColor}"/>
+                        <TextBlock Text="{Binding MobilePhone}" Foreground="{StaticResource BBTextForegroundColor}"/>
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+            <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+                <ItemsStackPanel Orientation="Horizontal" 
+                                 ScrollViewer.HorizontalScrollBarVisibility="Visible" 
+                                 ScrollViewer.VerticalScrollBarVisibility="Disabled" />
+            </ItemsPanelTemplate>
+        </ResourceDictionary>
+
     </Page.Resources>
     <Page.DataContext>
         <Binding Mode="OneWay" Path="ActivityVM" Source="{StaticResource Locator}"/>
@@ -34,8 +42,14 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Title}" FontSize="48"/>
-        <Grid HorizontalAlignment="Right">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <TextBlock Text="{Binding Title}" FontSize="48" TextWrapping="WrapWholeWords"/>
+        <Grid HorizontalAlignment="Right" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
@@ -45,7 +59,10 @@
         </Grid>
         <StackPanel Grid.Row="1">
             <TextBlock Text="{Binding Members.Count, ConverterParameter=Abonnés, Converter={StaticResource IntPresenterConverter}, Mode=OneWay}"/>
-            <ListView Height="80" ItemsSource="{Binding Members}" ItemTemplate="{StaticResource UsersDataTemplate}" ItemsPanel="{StaticResource ItemsPanelTemplate1}"/>
+            <ListView Height="80" 
+                      ItemsSource="{Binding Members}" 
+                      ItemTemplate="{StaticResource UsersDataTemplate}" 
+                      ItemsPanel="{StaticResource ItemsPanelTemplate1}"/>
         </StackPanel>
         <StackPanel Grid.Row="2">
             <TextBlock Text="{Binding Title}"/>

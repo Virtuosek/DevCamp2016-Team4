@@ -34,6 +34,7 @@
     <link href="~/css/owl.theme.css" rel="stylesheet">
     <link href="~/css/style.css" rel="stylesheet">
     <link href="~/css/animate.css" rel="stylesheet">
+    <link href="~/css/toastr.css" rel="stylesheet"/>
 
     <!-- Magnific Popup core CSS file -->
     <link rel="stylesheet" href="~/css/magnific-popup.css">
@@ -53,7 +54,8 @@
 
 </head>
 
-<body id="home">
+<body id="home" data-action="@Request.RequestContext.RouteData.Values["action"]"
+                data-controller="@Request.RequestContext.RouteData.Values["controller"]">
 
     <!-- Preloader -->
     <div id="preloader">
@@ -149,6 +151,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/toastr")
+    @Scripts.Render("~/bundles/app")
 
     <script src="~/js/owl.carousel.js"></script>
     <script src="~/js/script.js"></script>

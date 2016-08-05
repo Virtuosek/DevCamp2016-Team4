@@ -4,6 +4,8 @@
     xmlns:local="using:BeeBack">
     <SolidColorBrush x:Key="BBButtonBackgroundColor" Color="#FF1ABC9C"/>
     <SolidColorBrush x:Key="BBTextForegroundColor" Color="White"/>
+    <SolidColorBrush x:Key="BBUserBackgroundColor" Color="#FF660076"/>
+    <SolidColorBrush x:Key="BBActivityBackgroundColor" Color="#FF18578B"/>
     <Style x:Key="BBButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource BBButtonBackgroundColor}"/>
         <Setter Property="Foreground" Value="White"/>
