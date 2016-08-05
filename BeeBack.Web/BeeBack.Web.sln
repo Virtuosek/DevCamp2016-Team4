@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeeBack.Web", "BeeBack.Web\BeeBack.Web.csproj", "{B0257325-FE0F-4962-BBEB-C46F33E55E6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeeBack.Data", "BeeBack.Data\BeeBack.Data.csproj", "{D780BA5D-5A81-4737-BE6E-A97A93E2B559}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeeBack.Services", "BeeBack.Services\BeeBack.Services.csproj", "{A8121832-0DAA-4F38-8DA3-C650D2E3354F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{B0257325-FE0F-4962-BBEB-C46F33E55E6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0257325-FE0F-4962-BBEB-C46F33E55E6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0257325-FE0F-4962-BBEB-C46F33E55E6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D780BA5D-5A81-4737-BE6E-A97A93E2B559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D780BA5D-5A81-4737-BE6E-A97A93E2B559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D780BA5D-5A81-4737-BE6E-A97A93E2B559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D780BA5D-5A81-4737-BE6E-A97A93E2B559}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8121832-0DAA-4F38-8DA3-C650D2E3354F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8121832-0DAA-4F38-8DA3-C650D2E3354F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8121832-0DAA-4F38-8DA3-C650D2E3354F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8121832-0DAA-4F38-8DA3-C650D2E3354F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
