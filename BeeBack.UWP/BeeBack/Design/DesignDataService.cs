@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BeeBack.Model;
 using BeeBack.Services.Interfaces;
@@ -22,6 +23,21 @@ namespace BeeBack.Design
 
 
         public void Initialize(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Activity>> GetUserActivities()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Activity>> GetSubscribedActivities()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Activity>> GetAllPublicActivities()
         {
             throw new NotImplementedException();
         }

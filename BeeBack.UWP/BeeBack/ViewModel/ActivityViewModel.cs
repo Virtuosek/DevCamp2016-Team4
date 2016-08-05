@@ -18,8 +18,7 @@ namespace BeeBack.ViewModel
         {
             Messenger.Default.Register<UserSelectedMessage>(this, _userselectedmessage);
             _activity = new Activity();
-            _activity.ID = 5;
-            _activity.FkUser = 1;
+            _activity.ID = Guid.NewGuid();
             _activity.Description = "description flkjds mlf jdsqmlkdslkfj smlk jflks jflkdsjf  fds jflksj flk jsflkds jlkf jsmlf jmls jfmlsq jfmlkds jflkds jflkds jfmlkds jfmlkds jf lkdsjfmlqs";
             _activity.Title = "Titre de l'activité";
             User u;
