@@ -1,5 +1,6 @@
 ﻿using BeeBack.Messages;
 using BeeBack.Pages;
+using BeeBack.Services.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
@@ -15,10 +16,10 @@ namespace BeeBack.ViewModel
 {
     public class SplashScreenViewModel : ViewModelBase
     {
-        private readonly INavigationService _navigationService;
+        private readonly ICustomNavigationService _navigationService;
         public ICommand LoadingCommand { get; set; }
 
-        public SplashScreenViewModel(INavigationService navigationService)
+        public SplashScreenViewModel(ICustomNavigationService navigationService)
         {
             _navigationService = navigationService;
             LoadingCommand = new RelayCommand(OnLoading);
@@ -26,7 +27,7 @@ namespace BeeBack.ViewModel
 
         private void OnLoading()
         {
-            _navigationService.NavigateTo(true ? ViewModelLocator.RootPage : ViewModelLocator.LoginPage);
+            _navigationService.NavigateTo(false ? typeof(RootPage) : typeof(LoginPage));
         }
     }
 }

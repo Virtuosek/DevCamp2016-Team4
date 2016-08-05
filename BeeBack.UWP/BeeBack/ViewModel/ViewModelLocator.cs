@@ -4,6 +4,8 @@ using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 using BeeBack.Model;
 using BeeBack.Pages;
+using BeeBack.Services.Interfaces;
+using BeeBack.Services;
 
 namespace BeeBack.ViewModel
 {
@@ -17,13 +19,7 @@ namespace BeeBack.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            var nav = new NavigationService();
-            nav.Configure(SecondPageKey, typeof(SecondPage));
-            nav.Configure(LoginPage, typeof(LoginPage));
-            nav.Configure(RootPage, typeof(RootPage));
-
-            SimpleIoc.Default.Register<INavigationService>(() => nav);
-
+            SimpleIoc.Default.Register<ICustomNavigationService, CustomNavigationService>();
             SimpleIoc.Default.Register<IDialogService, DialogService>();
 
             if (ViewModelBase.IsInDesignModeStatic)

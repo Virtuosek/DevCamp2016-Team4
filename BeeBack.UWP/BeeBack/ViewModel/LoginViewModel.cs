@@ -1,5 +1,6 @@
 ﻿using BeeBack.Messages;
 using BeeBack.Pages;
+using BeeBack.Services.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
@@ -17,7 +18,7 @@ namespace BeeBack.ViewModel
     {
         private string _password;
         private string _username;
-        private readonly INavigationService _navigationService;
+        private readonly ICustomNavigationService _navigationService;
 
         public ICommand DoLogin { get; set; }
 
@@ -33,7 +34,7 @@ namespace BeeBack.ViewModel
             set { _password = value; RaisePropertyChanged("Password"); }
         }
 
-        public LoginViewModel(INavigationService navigationService)
+        public LoginViewModel(ICustomNavigationService navigationService)
         {
             _navigationService = navigationService;
 
@@ -42,7 +43,7 @@ namespace BeeBack.ViewModel
 
         private void DoLoginExecute()
         {
-            _navigationService.NavigateTo(ViewModelLocator.RootPage);
+            _navigationService.NavigateTo(typeof(RootPage));
 
         }
     }
