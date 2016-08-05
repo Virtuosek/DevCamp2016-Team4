@@ -25,7 +25,9 @@
                 </Grid>
             </DataTemplate>
             <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
-                <ItemsStackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled" />
+                <ItemsStackPanel Orientation="Horizontal" 
+                                 ScrollViewer.HorizontalScrollBarVisibility="Visible" 
+                                 ScrollViewer.VerticalScrollBarVisibility="Disabled" />
             </ItemsPanelTemplate>
         </ResourceDictionary>
 
@@ -40,8 +42,14 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Title}" FontSize="48"/>
-        <Grid HorizontalAlignment="Right">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <TextBlock Text="{Binding Title}" FontSize="48" TextWrapping="WrapWholeWords"/>
+        <Grid HorizontalAlignment="Right" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
@@ -51,7 +59,10 @@
         </Grid>
         <StackPanel Grid.Row="1">
             <TextBlock Text="{Binding Members.Count, ConverterParameter=Abonnés, Converter={StaticResource IntPresenterConverter}, Mode=OneWay}"/>
-            <ListView Height="80" ItemsSource="{Binding Members}" ItemTemplate="{StaticResource UsersDataTemplate}" ItemsPanel="{StaticResource ItemsPanelTemplate1}"/>
+            <ListView Height="80" 
+                      ItemsSource="{Binding Members}" 
+                      ItemTemplate="{StaticResource UsersDataTemplate}" 
+                      ItemsPanel="{StaticResource ItemsPanelTemplate1}"/>
         </StackPanel>
         <StackPanel Grid.Row="2">
             <TextBlock Text="{Binding Title}"/>
