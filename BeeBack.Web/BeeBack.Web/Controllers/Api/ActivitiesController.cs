@@ -11,6 +11,10 @@ namespace BeeBack.Web.Controllers.Api
 {
     public class ActivitiesController : BaseApiController
     {
+        /// <summary>
+        /// Return all public activities
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Activity>> GetActivities()
         {
             using (ApplicationDbContext context = new ApplicationDbContext())
@@ -19,6 +23,10 @@ namespace BeeBack.Web.Controllers.Api
             }
         }
 
+        /// <summary>
+        /// Returns activities created by the authenticated user
+        /// </summary>
+        /// <returns></returns>
         [Route(template: "api/activities/owned")]
         public async Task<List<Activity>> GetUserActivities()
         {
@@ -31,6 +39,10 @@ namespace BeeBack.Web.Controllers.Api
             }
         }
 
+        /// <summary>
+        /// Returns activities subscribed by the authenticated user
+        /// </summary>
+        /// <returns></returns>
         [Route(template: "api/activities/subscribed")]
         public async Task<List<Activity>> GetSubscribedActivities()
         {
