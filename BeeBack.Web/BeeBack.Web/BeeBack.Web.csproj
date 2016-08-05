@@ -387,6 +387,7 @@
     <Content Include="Views\Activities\Index.cshtml" />
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
     <None Include="Views\Shared\_Layout.bak" />
+    <Content Include="Views\Shared\_LoginFormPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
