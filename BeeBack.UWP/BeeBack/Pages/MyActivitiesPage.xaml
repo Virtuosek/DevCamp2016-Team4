@@ -38,11 +38,17 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <TextBlock Text="{Binding MyActivitiesList.Count, ConverterParameter=My Activities, Converter={StaticResource IntPresenterConverter}, Mode=OneWay}" FontSize="48"/>
         <GridView Grid.Row="1" 
 			Margin="8"
 			ItemsSource="{Binding MyActivitiesList}" 
 			ItemTemplate="{StaticResource ActivitiesDataTemplate}"/>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="2">
+            <Button Content="Add activity"/>
+            
+        </StackPanel>
     </Grid>
 </Page>
