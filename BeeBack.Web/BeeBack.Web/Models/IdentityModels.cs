@@ -20,7 +20,15 @@ namespace BeeBack.Web.Models
             return userIdentity;
         }
 
+        /// <summary>
+        /// Activities to which this user has subscribed
+        /// </summary>
         public List<UserActivity> UserActivities { get; set; }
+
+        /// <summary>
+        /// Activities created by the user
+        /// </summary>
+        public List<Activity> Activities { get; set; }
     }
 
 }
