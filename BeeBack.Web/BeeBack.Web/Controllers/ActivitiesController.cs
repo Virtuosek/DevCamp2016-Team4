@@ -1,25 +1,25 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
-using BeeBack.Data.Models;
 using BeeBack.Web.Interfaces;
 using BeeBack.Web.ViewModels.Activities;
+using Microsoft.AspNet.Identity;
 
 namespace BeeBack.Web.Controllers
 {
+    [Authorize]
     public class ActivitiesController : Controller
     {
         private readonly IActivityService _activityService;
-        //private readonly ApplicationDbContext _db = new ApplicationDbContext();
         
         public ActivitiesController(IActivityService activityService)
         {
             _activityService = activityService;
         }
 
+        [AllowAnonymous]
         // GET: Activities
         public async Task<ActionResult> Index()
         {
@@ -70,6 +70,7 @@ namespace BeeBack.Web.Controllers
                 viewModel.Id = Guid.NewGuid();
 
                 var model = viewModel.ToModel();
+                model.UserId = User.Identity.GetUserId();
 
                 await _activityService.AddActivity(model);
 

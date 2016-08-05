@@ -5,22 +5,29 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
+using BeeBack.Web.Interfaces;
 using Microsoft.AspNet.Identity;
 
 namespace BeeBack.Web.Controllers.Api
 {
     public class ActivitiesController : BaseApiController
     {
+        private readonly IActivityService _activityService;
+
+        public ActivitiesController(IActivityService activityService)
+        {
+            _activityService = activityService;
+        }
+
         /// <summary>
         /// Return all public activities
         /// </summary>
         /// <returns></returns>
         public async Task<List<Activity>> GetActivities()
         {
-            using (ApplicationDbContext context = new ApplicationDbContext())
-            {
-                return await context.Activities.ToListAsync();
-            }
+            var activities = (await _activityService.GetActivities()).ToList();
+
+            return activities;
         }
 
         /// <summary>
@@ -30,13 +37,9 @@ namespace BeeBack.Web.Controllers.Api
         [Route(template: "api/activities/owned")]
         public async Task<List<Activity>> GetUserActivities()
         {
-            using (ApplicationDbContext context = new ApplicationDbContext())
-            {
-                var userId = User.Identity.GetUserId();
-                return await context.Activities
-                    .Where(a => a.UserId == userId)
-                    .ToListAsync();
-            }
+            var activities = await _activityService.GetUserActivities(User.Identity.GetUserId());
+
+            return activities;
         }
 
         /// <summary>

@@ -63,7 +63,8 @@ namespace BeeBack.Web
         // ReSharper disable once SuggestBaseTypeForParameter
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IActivityService>().To<FakeActivityService>();
+            //kernel.Bind<IActivityService>().To<FakeActivityService>();
+            kernel.Bind<IActivityService>().To<ActivityService>();
         }        
     }
 }
