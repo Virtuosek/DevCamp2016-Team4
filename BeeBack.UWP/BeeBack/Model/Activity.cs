@@ -13,5 +13,11 @@ namespace BeeBack.Model
         public int FkUser { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public List<User> Members { get; set; }
+
+        public Activity()
+        {
+            Members = new List<User>();
+        }
     }
 }

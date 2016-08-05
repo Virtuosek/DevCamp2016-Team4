@@ -16,5 +16,13 @@ namespace BeeBack.Model
         public string EMailAddress { get; set; }
         public string Password { get; set; }
         public string MobilePhone { get; set; }
+        public List<Activity> Activities { get; set; }
+        public List<Activity> OwnedActivities { get; set; }
+
+        public User()
+        {
+            Activities = new List<Activity>();
+            OwnedActivities = new List<Activity>();
+        }
     }
 }
