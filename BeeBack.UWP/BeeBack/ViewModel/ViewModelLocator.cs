@@ -32,6 +32,7 @@ namespace BeeBack.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<LoginViewModel>();
             SimpleIoc.Default.Register<MyActivitiesViewModel>();
+            SimpleIoc.Default.Register<ActivityViewModel>();
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
@@ -40,5 +41,6 @@ namespace BeeBack.ViewModel
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
         public LoginViewModel LoginVM => ServiceLocator.Current.GetInstance<LoginViewModel>();
         public MyActivitiesViewModel MyActivitiesVM => ServiceLocator.Current.GetInstance<MyActivitiesViewModel>();
+        public ActivityViewModel ActivityVM => ServiceLocator.Current.GetInstance<ActivityViewModel>();
     }
 }

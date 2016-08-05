@@ -101,6 +101,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Messages\ActivitySelectedMessage.cs" />
     <Compile Include="Messages\NavigationMessage.cs" />
     <Compile Include="Model\Activity.cs" />
     <Compile Include="Model\DataItem.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="SecondPage.xaml.cs">
       <DependentUpon>SecondPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ActivityViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MyActivitiesViewModel.cs" />
