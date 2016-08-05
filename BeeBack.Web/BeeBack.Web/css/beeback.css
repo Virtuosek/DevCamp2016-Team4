@@ -7,11 +7,11 @@
     display: none;
 }
 
-.activity .subscribe .subscribe-add .fa-heart-o {
+.activity .subscribe.subscribe-add .fa-heart-o {
     display: inline;
 }
 
-.activity .subscribe .subscribe-remove .fa-heart {
+.activity .subscribe.subscribe-remove .fa-heart {
     display: inline;
 }
 

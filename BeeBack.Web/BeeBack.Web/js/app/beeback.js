@@ -18,10 +18,10 @@
                         });
                     } else if ($(button).hasClass("subscribe-remove")) {
                         BEEBACK_API.subscriptions.remove(activityId, function () {
-                            toastr.success("Vous êtes abonné.");
+                            toastr.success("Vous n'êtes plus abonné.");
                             $(button).removeClass("subscribe-remove").addClass("subscribe-add");
                         }, function () {
-                            toastr.warning("Nous n'avons pas pu vous abonner. Life is unfair, get used to it.");
+                            toastr.warning("Nous n'avons pas pu vous désabonner. Life is unfair, get used to it.");
                         });
                     }
                 });
