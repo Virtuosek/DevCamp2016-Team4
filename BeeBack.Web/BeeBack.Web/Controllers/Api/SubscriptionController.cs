@@ -14,7 +14,7 @@ namespace BeeBack.Web.Controllers.Api
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // PUT: api/Subscription/5
-        [Route(template:"api/subscription/add/{id}")]
+        [Route(template: "api/subscription/add/{id}")]
         [HttpPost]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> AddUserActivity(Guid id)
@@ -24,7 +24,8 @@ namespace BeeBack.Web.Controllers.Api
                 var userActivity = new UserActivity()
                 {
                     ActivityID = id,
-                    UserID = User.Identity.GetUserId()
+                    UserID = User.Identity.GetUserId(),
+                    ID = Guid.NewGuid()
                 };
 
                 db.UserActivity.Add(userActivity);

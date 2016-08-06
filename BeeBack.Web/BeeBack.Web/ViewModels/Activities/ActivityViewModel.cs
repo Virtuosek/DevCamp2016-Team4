@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using BeeBack.Data.Models;
+using BeeBack.Web.Models;
 
 namespace BeeBack.Web.ViewModels.Activities
 {

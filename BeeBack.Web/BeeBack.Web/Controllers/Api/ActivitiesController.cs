@@ -1,5 +1,4 @@
 ﻿using System;
-using BeeBack.Data.Models;
 using BeeBack.Web.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -67,13 +66,22 @@ namespace BeeBack.Web.Controllers.Api
             }
         }
 
-        //public async Task<bool> Trigger(Guid id)
-        //{
-        //    using (ApplicationDbContext context = new ApplicationDbContext())
-        //    {
-        //        var activity = context.UserActivity.Find(id);
-
-        //    }
-        //}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route(template: "api/activities/trigger/{id}")]
+        public bool Trigger(Guid id)
+        {
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
+                var activity = context.Activities.Find(id);
+                var smsService = new SmsActivityNotificationService();
+                smsService.NotifySubscribedUsers(activity);
+                return true;
+            }
+        }
     }
 }

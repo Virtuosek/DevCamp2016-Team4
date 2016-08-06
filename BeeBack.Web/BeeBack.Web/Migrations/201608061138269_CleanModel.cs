@@ -3,7 +3,7 @@ namespace BeeBack.Web.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Activity : DbMigration
+    public partial class CleanModel : DbMigration
     {
         public override void Up()
         {
@@ -14,28 +14,26 @@ namespace BeeBack.Web.Migrations
                         ID = c.Guid(nullable: false),
                         Title = c.String(),
                         Description = c.String(),
-                    })
-                .PrimaryKey(t => t.ID);
-            
-            CreateTable(
-                "dbo.UserActivities",
-                c => new
-                    {
-                        ID = c.Guid(nullable: false),
-                        UserID = c.String(nullable: false, maxLength: 128),
-                        ActivityID = c.Guid(nullable: false),
+                        PictureUrl = c.String(),
+                        Date = c.DateTime(nullable: false),
+                        Location_City = c.String(),
+                        Location_Street = c.String(),
+                        Location_ZipCode = c.String(),
+                        Location_Latitude = c.Single(nullable: false),
+                        Location_Longitude = c.Single(nullable: false),
+                        UserId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.ApplicationUsers", t => t.UserID, cascadeDelete: true)
-                .ForeignKey("dbo.Activities", t => t.ActivityID, cascadeDelete: true)
-                .Index(t => t.UserID)
-                .Index(t => t.ActivityID);
+                .ForeignKey("dbo.ApplicationUsers", t => t.UserId)
+                .Index(t => t.UserId);
             
             CreateTable(
                 "dbo.ApplicationUsers",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        Firstname = c.String(),
+                        Lastname = c.String(),
                         Email = c.String(),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -93,6 +91,20 @@ namespace BeeBack.Web.Migrations
                 .Index(t => t.IdentityRole_Id);
             
             CreateTable(
+                "dbo.UserActivities",
+                c => new
+                    {
+                        ID = c.Guid(nullable: false),
+                        UserID = c.String(nullable: false, maxLength: 128),
+                        ActivityID = c.Guid(nullable: false),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.ApplicationUsers", t => t.UserID)
+                .ForeignKey("dbo.Activities", t => t.ActivityID)
+                .Index(t => t.UserID)
+                .Index(t => t.ActivityID);
+            
+            CreateTable(
                 "dbo.IdentityRoles",
                 c => new
                     {
@@ -111,18 +123,20 @@ namespace BeeBack.Web.Migrations
             DropForeignKey("dbo.IdentityUserRoles", "ApplicationUser_Id", "dbo.ApplicationUsers");
             DropForeignKey("dbo.IdentityUserLogins", "ApplicationUser_Id", "dbo.ApplicationUsers");
             DropForeignKey("dbo.IdentityUserClaims", "ApplicationUser_Id", "dbo.ApplicationUsers");
+            DropForeignKey("dbo.Activities", "UserId", "dbo.ApplicationUsers");
+            DropIndex("dbo.UserActivities", new[] { "ActivityID" });
+            DropIndex("dbo.UserActivities", new[] { "UserID" });
             DropIndex("dbo.IdentityUserRoles", new[] { "IdentityRole_Id" });
             DropIndex("dbo.IdentityUserRoles", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserLogins", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaims", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.UserActivities", new[] { "ActivityID" });
-            DropIndex("dbo.UserActivities", new[] { "UserID" });
+            DropIndex("dbo.Activities", new[] { "UserId" });
             DropTable("dbo.IdentityRoles");
+            DropTable("dbo.UserActivities");
             DropTable("dbo.IdentityUserRoles");
             DropTable("dbo.IdentityUserLogins");
             DropTable("dbo.IdentityUserClaims");
             DropTable("dbo.ApplicationUsers");
-            DropTable("dbo.UserActivities");
             DropTable("dbo.Activities");
         }
     }
