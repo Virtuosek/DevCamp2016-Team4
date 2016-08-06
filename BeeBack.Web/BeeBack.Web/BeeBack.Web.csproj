@@ -233,6 +233,10 @@
     <Compile Include="Migrations\201608061138269_CleanModel.Designer.cs">
       <DependentUpon>201608061138269_CleanModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608061939389_add picture url.cs" />
+    <Compile Include="Migrations\201608061939389_add picture url.Designer.cs">
+      <DependentUpon>201608061939389_add picture url.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -455,6 +459,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608061138269_CleanModel.resx">
       <DependentUpon>201608061138269_CleanModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608061939389_add picture url.resx">
+      <DependentUpon>201608061939389_add picture url.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
