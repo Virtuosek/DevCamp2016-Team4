@@ -98,6 +98,9 @@
     </Compile>
     <Compile Include="Converters\IntPresenterConverter.cs" />
     <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="Pages\ActivityEditPage.xaml.cs">
+      <DependentUpon>ActivityEditPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\Interfaces\IStorageService.cs" />
     <Compile Include="Services\StorageService.cs" />
     <Compile Include="Messages\ActivitySelectedMessage.cs" />
@@ -139,6 +142,7 @@
     </Compile>
     <Compile Include="Services\CustomNavigationService.cs" />
     <Compile Include="Services\Interfaces\ICustomNavigationService.cs" />
+    <Compile Include="ViewModel\ActivityEditViewModel.cs" />
     <Compile Include="ViewModel\ActivityViewModel.cs" />
     <Compile Include="ViewModel\SplashScreenViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
@@ -176,6 +180,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Pages\AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ActivityEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
