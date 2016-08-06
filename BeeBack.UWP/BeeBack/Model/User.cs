@@ -12,6 +12,18 @@ namespace BeeBack.Model
         public string Firstname { get; set; }
         public string PictureUrl { get; set; }
         public DateTime BirthDate { get; set; }
+        public int Age
+        {
+            get
+            {
+                DateTime today = DateTime.Today;
+                int age = today.Year - BirthDate.Year;
+
+                if (BirthDate > today.AddYears(-age))
+                    age--;
+                return age;
+            }
+        }
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
         public string Password { get; set; }
