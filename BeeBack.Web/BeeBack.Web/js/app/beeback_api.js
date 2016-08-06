@@ -5,6 +5,10 @@
                 type: "POST",
                 url: "/api/subscription/add/" + activityId,
                 dataType: "json",
+                crossDomain: false,
+                xhrFields: {
+                    withCredentials: true
+                },
                 contentType: "application/json; charset=utf-8",
                 success: success,
                 error: error
@@ -15,6 +19,10 @@
                 type: "POST",
                 url: "/api/subscription/remove/" + activityId,
                 dataType: "json",
+                crossDomain: false,
+                xhrFields: {
+                    withCredentials: true
+                },
                 contentType: "application/json; charset=utf-8",
                 success: success,
                 error: error

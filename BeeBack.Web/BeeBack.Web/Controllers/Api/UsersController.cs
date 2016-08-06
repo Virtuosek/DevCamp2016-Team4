@@ -19,6 +19,7 @@ namespace BeeBack.Web.Controllers.Api
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/users/me
+        [Route(template:"/api/users/me")]
         public ApplicationUser GetMe()
         {
             var userId = User.Identity.GetUserId();
