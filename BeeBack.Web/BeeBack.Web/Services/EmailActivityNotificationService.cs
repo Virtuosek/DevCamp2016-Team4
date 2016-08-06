@@ -4,8 +4,8 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
-using BeeBack.Data.Models;
 using BeeBack.Web.Interfaces;
+using BeeBack.Web.Models;
 
 namespace BeeBack.Web.Services
 {

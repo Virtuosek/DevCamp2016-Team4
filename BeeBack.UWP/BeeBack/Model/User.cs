@@ -18,7 +18,15 @@ namespace BeeBack.Model
         //"Activities":null,
         //,"PasswordHash":"AHeOYy6dkT2fFgJ+8gQ6D3i/HcAqYZgXT56cC6NI87LBLMeYeQ1k0GYiQSJBtSJfeQ==","SecurityStamp":"b2a71f39-4b01-4f7c-873d-91f36e20cc29",
         //"TwoFactorEnabled":false,"LockoutEndDateUtc":null,"LockoutEnabled":true,"AccessFailedCount":0,
-        public string UserName { get; set; }
+        private string _username;
+
+        public string UserName
+        {
+            get { return _username; }
+            set { _username = value;
+                RaisePropertyChanged("UserName"); }
+        }
+
         public string Lastname { get; set; }
         public string Name { get { return Lastname; } }
         public string Firstname { get; set; }

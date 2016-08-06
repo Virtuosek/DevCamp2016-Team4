@@ -89,7 +89,7 @@ namespace BeeBack.Services
                 //return JsonConvert.DeserializeObject<List<Activity>>(content);
             }
         }
-        public async Task<User> GetUser(string userID)
+        public async Task<User> GetUser(Guid userID)
         {
             using (var request = InitRequest())
             {

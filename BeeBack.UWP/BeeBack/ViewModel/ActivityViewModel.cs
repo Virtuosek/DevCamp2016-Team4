@@ -20,10 +20,20 @@ namespace BeeBack.ViewModel
     {
         public ActivityViewModel(IDataService dataService)
         {
-            _dataService = dataService;            
-            Messenger.Default.Register<UserSelectedMessage>(this, _userselectedmessage);
-
+            _dataService = dataService;
             _activity = new Activity();
+            if (IsInDesignModeStatic)
+            {
+                CreateDummyActivity();
+            }
+            else
+            {
+                Messenger.Default.Register<UserSelectedMessage>(this, _userselectedmessage);
+            }
+        }
+
+        private void CreateDummyActivity()
+        {
             _activity.ID = Guid.NewGuid();
             _activity.Description = "description flkjds mlf jdsqmlkdslkfj smlk jflks jflkdsjf  fds jflksj flk jsflkds jlkf jsmlf jmls jfmlsq jfmlkds jflkds jflkds jfmlkds jfmlkds jf lkdsjfmlqs";
             _activity.Title = "Titre de l'activité";
@@ -42,11 +52,10 @@ namespace BeeBack.ViewModel
                 _activity.Members.Add(u);
             }
         }
+
         private async void _loaded()
         {
-            await CheckMembers();
-            RaisePropertyChanged(() => Activity);
-            RaisePropertyChanged(() => Activity.Owner.UserName);
+            await CheckMembers();           
         }
         public RelayCommand Loaded
         {
@@ -68,7 +77,16 @@ namespace BeeBack.ViewModel
         {
             if (Activity.Owner.EMailAddress == null)
             {
-                Activity.Owner = await _dataService.GetUser(Activity.UserId);
+                Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
+                for (int i=0; i<Activity.Members.Count; i++)
+                {
+                    try
+                    {
+                        Activity.Members[i] = await _dataService.GetUser(Activity.Members[i].ID);
+                    }
+                    catch
+                    { }
+                }
             }
         }
         public Activity Activity

@@ -1,5 +1,7 @@
 ﻿using System;
-using BeeBack.Data.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.UI.WebControls;
 
 namespace BeeBack.Web.Models
 {

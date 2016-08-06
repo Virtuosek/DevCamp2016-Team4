@@ -1,3 +1,8 @@
+using System.Web;
+using BeeBack.Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+
 namespace BeeBack.Web.Migrations
 {
     using System;
@@ -26,6 +31,29 @@ namespace BeeBack.Web.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            var user = new ApplicationUser
+            {
+                UserName = "mv@live.be",
+                Email = "mv@live.be",
+                PhoneNumber = "+++++++",
+                Firstname = "Matthieu",
+                Lastname = "Vandenhende"
+            };
+
+            var user2 = new ApplicationUser()
+            {
+                UserName = "renaud@sparkle.tech",
+                Email = "renaud@sparkle.tech",
+                PhoneNumber = "++++++",
+                Firstname = "Renaud",
+                Lastname = "Dumont"
+            };
+
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            var result = userManager.Create(user, "test123");
+            var result2 = userManager.Create(user2, "test123");
         }
     }
 }
