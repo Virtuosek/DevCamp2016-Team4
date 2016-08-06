@@ -77,12 +77,7 @@ namespace BeeBack.ViewModel
         {
             if (Activity.Owner.EMailAddress == null)
             {
-                User u = await _dataService.GetUser(Guid.Parse(Activity.UserId));
-                DispatcherHelper.CheckBeginInvokeOnUI(() =>
-                {
-                    Activity.Owner = u;
-                    RaisePropertyChanged(() => Activity);
-                });
+                Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
                 for (int i=0; i<Activity.Members.Count; i++)
                 {
                     try
