@@ -16,6 +16,65 @@
         <Setter Property="Padding" Value="20,4"/>
         <Setter Property="Margin" Value="0,30,0,0"/>
     </Style>
+    <ControlTemplate x:Key="RoundButtonControlTemplate" TargetType="Button">
+        <Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="0:0:0.2">
+                            <VisualTransition.GeneratedEasingFunction>
+                                <BackEase EasingMode="EaseIn"/>
+                            </VisualTransition.GeneratedEasingFunction>
+                        </VisualTransition>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Target="contentPresenter.(FrameworkElement.Margin)">
+                                <Setter.Value>
+                                    <Thickness>0,0,0,-2</Thickness>
+                                </Setter.Value>
+                            </Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <VisualState.Setters>
+                            <Setter Target="ellipse.(FrameworkElement.Margin)">
+                                <Setter.Value>
+                                    <Thickness>2,2,-2,-2</Thickness>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Target="contentPresenter.(FrameworkElement.Margin)">
+                                <Setter.Value>
+                                    <Thickness>2,2,-2,-2</Thickness>
+                                </Setter.Value>
+                            </Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled"/>
+                    <VisualState x:Name="PointerOver">
+                        <VisualState.Setters>
+                            <Setter Target="ellipse.(FrameworkElement.Margin)">
+                                <Setter.Value>
+                                    <Thickness>-2</Thickness>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Target="shadow.(FrameworkElement.Margin)">
+                                <Setter.Value>
+                                    <Thickness>0,0,-4,-4</Thickness>
+                                </Setter.Value>
+                            </Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Ellipse Fill="Gray"
+    			x:Name="shadow"
+    			Margin="2,2,-2,-2"/>
+            <Ellipse x:Name="ellipse" 
+    			Fill="{TemplateBinding Background}"/>
+            <ContentPresenter x:Name="contentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+    </ControlTemplate>
 
     <DataTemplate x:Key="ActivitiesDataTemplate">
         <Grid Background="#FFECF0F1" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="12" BorderBrush="#FFABABAB" BorderThickness="1" MaxWidth="150" Margin="0,0,12,0" >
@@ -25,7 +84,7 @@
                     <Core:InvokeCommandAction Command="{Binding Selected, Mode=OneWay}"/>
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
-            
+
             <StackPanel>
                 <Ellipse Width="100" Height="100">
                     <Ellipse.Fill>
@@ -36,7 +95,7 @@
                         </ImageBrush>
                     </Ellipse.Fill>
                 </Ellipse>
-                
+
                 <TextBlock Text="{Binding Title}"
         				TextWrapping="WrapWholeWords"
         				FontSize="14"

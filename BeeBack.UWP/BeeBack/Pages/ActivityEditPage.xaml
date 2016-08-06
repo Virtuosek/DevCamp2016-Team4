@@ -7,7 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
-        <ResourceDictionary Source="/Dictionary1.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Dictionary1.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
     </Page.Resources>
     <Page.DataContext>
         <Binding Mode="OneWay" Path="ActivityEditVM" Source="{StaticResource Locator}"/>
@@ -45,19 +51,23 @@
                      Text="{Binding Activity.Description, Mode=TwoWay}" 
                      AcceptsReturn="True"
                      />
-                <Button VerticalAlignment="Top"
-                        Grid.Row="2"
-                        Style="{StaticResource BBButtonStyle}"
-                        FontFamily="Segoe MDL2 Assets"
-                        Content="&#xE7A7;" Margin="10" Command="{Binding New, Mode=OneWay}"/>
-                <Button VerticalAlignment="Top"
+            <Button VerticalAlignment="Top"
+                    Grid.Row="2"
+                    Style="{StaticResource BBButtonStyle}"
+                    FontFamily="Segoe MDL2 Assets"
+                    Width="35" Height="35"
+                    Content="&#xE7A7;" Margin="10" Command="{Binding New, Mode=OneWay}" 
+                    Template="{StaticResource RoundButtonControlTemplate}" />
+            <Button VerticalAlignment="Top"
                         Grid.Row="2"
                         Grid.Column="1"
+                    Width="35" Height="35"
                         HorizontalAlignment="Right"
                         Style="{StaticResource BBButtonStyle}"
                         Margin="10"
                         FontFamily="Segoe MDL2 Assets"
-                        Content="&#xE8FB;" Command="{Binding Activity.Save, Mode=OneWay}"/>
+                        Content="&#xE8FB;" Command="{Binding Activity.Save, Mode=OneWay}" 
+                    Template="{StaticResource RoundButtonControlTemplate}"/>
         </Grid>
     </Grid>
 </Page>

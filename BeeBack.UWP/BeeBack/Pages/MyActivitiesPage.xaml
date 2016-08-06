@@ -125,8 +125,11 @@
             </PivotItem>
         </Pivot>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="+"
+            <Button Content="&#xE710;"
+                    FontFamily="Segoe MDL2 Assets"
                     Margin="8"
+                    Width="35" Height="35"
+                    Template="{StaticResource RoundButtonControlTemplate}" 
                     Style="{StaticResource BBButtonStyle}" 
                     Command="{Binding AddActivity, Mode=OneWay}"/>
         </StackPanel>
