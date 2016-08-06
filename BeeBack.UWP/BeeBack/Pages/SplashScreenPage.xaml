@@ -24,11 +24,18 @@
         </Grid.Background>
 
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel>
             <ProgressRing IsActive="True" 
                           IsEnabled="True" 
                           Width="50" 
                           Foreground="{StaticResource BBTextForegroundColor}"
                           Height="50"/>
+            <TextBlock Text="Connection in progress"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Margin="30"
+                       Foreground="{StaticResource BBTextForegroundColor}"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

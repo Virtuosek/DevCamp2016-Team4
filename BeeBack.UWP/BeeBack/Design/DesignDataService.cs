@@ -41,5 +41,20 @@ namespace BeeBack.Design
         {
             throw new NotImplementedException();
         }
+
+        public Task<List<User>> GetAllUsers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<User> GetCurrentUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<User> GetUser(Guid UserID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

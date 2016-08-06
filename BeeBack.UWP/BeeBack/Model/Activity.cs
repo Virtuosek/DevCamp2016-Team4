@@ -15,7 +15,8 @@ namespace BeeBack.Model
         public Guid ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
+        
 
         public User Owner { get; set; }
         public List<User> Members { get; set; }
@@ -50,11 +51,11 @@ namespace BeeBack.Model
             msg.SelectedActivity = this;
             Messenger.Default.Send<ActivitySelectedMessage>(msg);
         }
-
         public Activity()
         {
             Members = new List<User>();
             Owner = new User();
         }
+
     }
 }
