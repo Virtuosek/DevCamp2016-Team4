@@ -1,8 +1,10 @@
 ﻿using BeeBack.Messages;
 using BeeBack.Model;
 using BeeBack.Pages;
+using BeeBack.Services.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
+using GalaSoft.MvvmLight.Threading;
 using Microsoft.Practices.ServiceLocation;
 using System;
 using System.Collections.Generic;
@@ -14,8 +16,9 @@ namespace BeeBack.ViewModel
 {
     public class ActivityViewModel : ViewModelBase
     {
-        public ActivityViewModel()
+        public ActivityViewModel(IDataService dataService)
         {
+            _dataService = dataService;            
             Messenger.Default.Register<UserSelectedMessage>(this, _userselectedmessage);
             _activity = new Activity();
             _activity.ID = Guid.NewGuid();
@@ -44,11 +47,25 @@ namespace BeeBack.ViewModel
             Messenger.Default.Send<NavigationMessage>(msgnav);
         }
         private Activity _activity;
-
+        private IDataService _dataService;
+        private async Task CheckMembers()
+        {
+            if (Activity.Owner.EMailAddress == null)
+            {
+                Activity.Owner = await _dataService.GetUser(Activity.UserId);
+            }
+        }
         public Activity Activity
         {
             get { return _activity; }
-            set { _activity = value; RaisePropertyChanged("Activity"); }
+            set {
+                _activity = value;
+                DispatcherHelper.CheckBeginInvokeOnUI(async () =>
+                {
+                    await CheckMembers();
+                });
+                RaisePropertyChanged("Activity");
+            }
         }
 
     }
