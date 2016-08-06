@@ -17,7 +17,7 @@
             <core:InvokeCommandAction Command="{Binding LoadingCommand}" />
         </core:EventTriggerBehavior>
     </i:Interaction.Behaviors>
-    
+
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="ms-appx:///Assets/intro5.jpg" Stretch="UniformToFill"></ImageBrush>
@@ -25,15 +25,14 @@
 
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel>
-            <ProgressRing IsActive="True" 
+                <ProgressRing IsActive="True" 
                           IsEnabled="True" 
-                          Width="50" 
+                          Width="50"  Foreground="White"
                           Height="50"/>
-            <TextBlock Text="Connection in progress"
+                <TextBlock Text="Connection in progress"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Margin="30"
-                       Foreground="{StaticResource BBTextForegroundColor}"/>
+                       Margin="30" Foreground="White" />
             </StackPanel>
         </Grid>
     </Grid>
