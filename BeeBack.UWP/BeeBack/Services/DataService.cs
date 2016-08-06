@@ -18,7 +18,8 @@ namespace BeeBack.Services
 
         public static readonly string UrlBase = "http://beeback.azurewebsites.net/";
         public static readonly string UrlActivities = "api/activities";
-        public static readonly string UrlSubscriptions = "api/subscriptions";
+        public static readonly string UrlSubscriptions = "api/activities/subscribed";
+        public static readonly string UrlOwnedActivities = "api/activities/owned";
         public static readonly string UrlUser = "api/users";
         public static readonly string UrlLogin = "api/login";
 
@@ -67,7 +68,7 @@ namespace BeeBack.Services
         {
             using (var request = InitRequest())
             {
-                return await CachedFile.TryLoad<List<Activity>>(UrlBase + UrlActivities, new TimeSpan(0), false, false, request);
+                return await CachedFile.TryLoad<List<Activity>>(UrlBase + UrlOwnedActivities, new TimeSpan(0), false, false, request);
 
                 //var content = await request.GetStringAsync(UrlBase + UrlActivities);
                 //return JsonConvert.DeserializeObject<List<Activity>>(content);

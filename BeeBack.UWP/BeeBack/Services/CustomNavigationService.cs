@@ -1,5 +1,7 @@
-﻿using BeeBack.Pages;
+﻿using BeeBack.Messages;
+using BeeBack.Pages;
 using BeeBack.Services.Interfaces;
+using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
@@ -31,6 +33,16 @@ namespace BeeBack.Services
             {
                 Debug.WriteLine($"Page is not registered : {ex.Message}");
             }
+        }
+
+        public void Navigate(Type type)
+        {
+            NavigationMessage message = new NavigationMessage
+            {
+                DestinationPageType = type
+            };
+
+            Messenger.Default.Send(message);
         }
 
         private void RegisterKey()

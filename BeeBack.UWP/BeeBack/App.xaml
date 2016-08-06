@@ -4,6 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:ignore="http://www.galasoft.ch/ignore"
+             xmlns:converters="using:BeeBack.Converters"
              mc:Ignorable="d ignore"
              xmlns:vm="using:BeeBack.ViewModel"
              RequestedTheme="Light">
@@ -13,7 +14,9 @@
         <vm:ViewModelLocator x:Key="Locator"
                              d:IsDataSource="True" />
 
-        
+        <converters:InverseVisibilityConverter x:Key="InverseVisibilityConverter" />
+
+
     </Application.Resources>
     
 </Application>

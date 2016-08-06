@@ -19,8 +19,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        
-        <StackPanel Orientation="Horizontal" Background="#FF4A90BE" >
+
+        <StackPanel Orientation="Horizontal" Background="{StaticResource Blue}" >
             <Image Source="ms-appx:///Assets/Logo/logo.png" Width="40" HorizontalAlignment="Left" Margin="8" Tapped="Image_Tapped"/>
             <TextBlock Text="BeeBack" Margin="8" FontSize="24" Foreground="White" />
         </StackPanel>

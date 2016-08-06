@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using System.Net.Http;
 using Windows.Storage.FileProperties;
+using System.Diagnostics;
 
 namespace LeSoir.Common
 {
@@ -48,7 +49,7 @@ namespace LeSoir.Common
             }
             catch
             {
-                rst = new DateTime(2000,1,1);
+                rst = new DateTime(2000, 1, 1);
             }
             return rst;
         }
@@ -69,50 +70,36 @@ namespace LeSoir.Common
             { }
             return rst;
         }
-        public static async Task<T> TryLoad<T>(string WebServiceAddress, TimeSpan CacheMaxAge, bool UseRoaming = false,
-            bool ForceLoad = false, HttpClient cli = null)
+        public static async Task<T> TryLoad<T>(string WebServiceAddress, TimeSpan CacheMaxAge, bool UseRoaming = false, bool ForceLoad = false, HttpClient cli = null)
         {
             T result = default(T);
             bool bLoad = true;
-            if (!ForceLoad)
-            {
-                bLoad = await MustLoad(WebServiceAddress, CacheMaxAge, UseRoaming);
-            }
-            if (bLoad)
-            {
-                if (cli == null)
-                {
-                    cli = new HttpClient();
-                }
 
-                try
+            try
+            {
+                if (!ForceLoad)
+                    bLoad = await MustLoad(WebServiceAddress, CacheMaxAge, UseRoaming);
+
+                if (bLoad)
                 {
+                    if (cli == null)
+                        cli = new HttpClient();
+
                     string str = await cli.GetStringAsync(WebServiceAddress);
                     result = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(str);
                     await SaveClass<T>(GetFileName(WebServiceAddress), result);
                 }
-                catch
-                {
-                    try
-                    {
-                        result = await LoadClass<T>(GetFileName(WebServiceAddress));
-                    }
-                    catch
-                    {
-                    }
-                }
-            }
-            else
-            {
-                try
-                {
+                else
                     result = await LoadClass<T>(GetFileName(WebServiceAddress));
-                }
-                catch
-                {
-                }
+
+                return result;
             }
-            return result;
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return result;
+            }
+
         }
         public static async Task SaveClass<T>(string filename, T anobject, bool UseRoaming = false)
         {
@@ -125,7 +112,7 @@ namespace LeSoir.Common
             {
                 roamingFolder = ApplicationData.Current.LocalFolder;
             }
-            StorageFile sampleFile = 
+            StorageFile sampleFile =
                 await roamingFolder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
             string donnees = Newtonsoft.Json.JsonConvert.SerializeObject(anobject);
             await FileIO.WriteTextAsync(sampleFile, donnees);
