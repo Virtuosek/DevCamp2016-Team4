@@ -126,7 +126,9 @@
         </Pivot>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button Content="+"
-                    Style="{StaticResource BBButtonStyle}" Command="{Binding AddActivity, Mode=OneWay}"/>
+                    Margin="8"
+                    Style="{StaticResource BBButtonStyle}" 
+                    Command="{Binding AddActivity, Mode=OneWay}"/>
         </StackPanel>
     </Grid>
 </Page>

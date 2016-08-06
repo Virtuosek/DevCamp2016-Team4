@@ -13,46 +13,51 @@
         <Binding Mode="OneWay" Path="ActivityEditVM" Source="{StaticResource Locator}"/>
     </Page.DataContext>
 
-    <Grid Background="Black">
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="New activity" FontSize="48" Foreground="{StaticResource BBTextForegroundColor}"/>
-        <Grid Grid.Row="1">
+        <!--<TextBlock Text="" FontSize="48" Foreground="Black"/>-->
+        <Grid Grid.Row="1" Margin="8">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Title" 
+            <TextBlock Text="Titre" 
                        FontSize="18" 
-                       Foreground="{StaticResource BBTextForegroundColor}"/>
+                       Foreground="Black"/>
             <TextBox Grid.Column="1" Margin="8" Text="{Binding Activity.Title, Mode=TwoWay}"/>
             <TextBlock Text="Description" 
                        Grid.Row="1" 
                        FontSize="18" 
-                       Foreground="{StaticResource BBTextForegroundColor}"/>
+                       Foreground="Black"/>
             <TextBox Grid.Row="1" 
+                     VerticalAlignment="Top"
                      Grid.Column="1"
                      Margin="8"
-                     Height="200" Text="{Binding Activity.Description, Mode=TwoWay}"
+                     Height="200" 
+                     Text="{Binding Activity.Description, Mode=TwoWay}" 
+                     AcceptsReturn="True"
                      />
-            <StackPanel Grid.Row="2"
-                        Grid.Column="1" 
+                <Button VerticalAlignment="Top"
+                        Grid.Row="2"
+                        Style="{StaticResource BBButtonStyle}"
+                        FontFamily="Segoe MDL2 Assets"
+                        Content="&#xE7A7;" Margin="10" Command="{Binding New, Mode=OneWay}"/>
+                <Button VerticalAlignment="Top"
+                        Grid.Row="2"
+                        Grid.Column="1"
                         HorizontalAlignment="Right"
-                        Orientation="Horizontal">
-                <Button VerticalAlignment="Top"
                         Style="{StaticResource BBButtonStyle}"
-                        Content="Reset" Margin="0,30,30,0" Command="{Binding New, Mode=OneWay}"/>
-                <Button VerticalAlignment="Top"
-                        Style="{StaticResource BBButtonStyle}"
-                        Content="Save" Command="{Binding Activity.Save, Mode=OneWay}"/>
-            </StackPanel>
+                        Margin="10"
+                        FontFamily="Segoe MDL2 Assets"
+                        Content="&#xE8FB;" Command="{Binding Activity.Save, Mode=OneWay}"/>
         </Grid>
     </Grid>
 </Page>
