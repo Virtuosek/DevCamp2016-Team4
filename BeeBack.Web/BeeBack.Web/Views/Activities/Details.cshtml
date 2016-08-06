@@ -1,6 +1,6 @@
 ﻿@model BeeBack.Web.ViewModels.Activities.ActivityViewModel
 
-<div class="activity">
+<div class="activity" data-activityId="@Model.Id">
     <h3>
         Détail de l'activité
         <a class="btn btn-embossed btn-info view subscribe subscribe-add pull-right" data-activityId="@Model.Id">
@@ -10,7 +10,7 @@
     </h3>
 
     <div>
-        <hr />ClaimsIdentity
+        <hr />
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.Title)
@@ -42,8 +42,12 @@
             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Modifier l'activité
         </a>
 
-        <a class="btn btn-xs btn-embossed btn-danger view" role="button" href="@Url.Action("Edit", new {id = Model.Id})">
+        <a class="btn btn-xs btn-embossed btn-danger view" role="button" href="@Url.Action("Delete", new {id = Model.Id})">
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Supprimer l'activité
+        </a>
+
+        <a class="btn btn-xs btn-embossed btn-warning view activity-trigger" role="button" href="#">
+            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span> {Déclencher}
         </a>
     </p>
 </div>

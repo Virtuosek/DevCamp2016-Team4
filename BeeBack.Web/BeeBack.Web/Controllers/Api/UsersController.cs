@@ -19,24 +19,24 @@ namespace BeeBack.Web.Controllers.Api
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/users/me
-        [Route(template:"/api/users/me")]
+        [Route(template:"api/users/me")]
         public ApplicationUser GetMe()
         {
             var userId = User.Identity.GetUserId();
-            return db.ApplicationUsers.Find(userId);
+            return db.Users.Find(userId);
         }
 
         // GET: api/Users
         public IQueryable<ApplicationUser> GetApplicationUsers()
         {
-            return db.ApplicationUsers;
+            return db.Users;
         }
 
         // GET: api/Users/5
         [ResponseType(typeof(ApplicationUser))]
         public async Task<IHttpActionResult> GetApplicationUser(string id)
         {
-            ApplicationUser applicationUser = await db.ApplicationUsers.FindAsync(id);
+            ApplicationUser applicationUser = db.Users.FirstOrDefault(u => u.Id == id);
             if (applicationUser == null)
             {
                 return NotFound();
@@ -89,7 +89,7 @@ namespace BeeBack.Web.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            db.ApplicationUsers.Add(applicationUser);
+            db.Users.Add(applicationUser);
 
             try
             {
@@ -114,13 +114,13 @@ namespace BeeBack.Web.Controllers.Api
         [ResponseType(typeof(ApplicationUser))]
         public async Task<IHttpActionResult> DeleteApplicationUser(string id)
         {
-            ApplicationUser applicationUser = await db.ApplicationUsers.FindAsync(id);
+            ApplicationUser applicationUser = db.Users.FirstOrDefault(u => u.Id == id);
             if (applicationUser == null)
             {
                 return NotFound();
             }
 
-            db.ApplicationUsers.Remove(applicationUser);
+            db.Users.Remove(applicationUser);
             await db.SaveChangesAsync();
 
             return Ok(applicationUser);
@@ -137,7 +137,7 @@ namespace BeeBack.Web.Controllers.Api
 
         private bool ApplicationUserExists(string id)
         {
-            return db.ApplicationUsers.Count(e => e.Id == id) > 0;
+            return db.Users.Count(e => e.Id == id) > 0;
         }
     }
 }
