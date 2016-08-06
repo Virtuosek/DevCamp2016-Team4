@@ -17,8 +17,16 @@ namespace BeeBack.Model
         public string Description { get; set; }
         public string PictureUrl { get; set; }
         public string UserId { get; set; }
+        private User _owner;
 
-        public User Owner { get; set; }
+        public User Owner
+        {
+            get { return _owner; }
+            set { _owner = value;
+                RaisePropertyChanged("Owner"); }
+        }
+
+        
         public List<User> Members { get; set; }
         public RelayCommand Save
         {

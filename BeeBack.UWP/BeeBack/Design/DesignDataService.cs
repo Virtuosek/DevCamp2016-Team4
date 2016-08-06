@@ -81,7 +81,7 @@ namespace BeeBack.Design
             throw new NotImplementedException();
         }
 
-        public Task<User> GetUser(string UserID)
+        public Task<User> GetUser(Guid UserID)
         {
             throw new NotImplementedException();
         }
