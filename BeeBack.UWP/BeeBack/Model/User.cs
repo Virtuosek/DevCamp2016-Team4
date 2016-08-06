@@ -23,8 +23,11 @@ namespace BeeBack.Model
         public string UserName
         {
             get { return _username; }
-            set { _username = value;
-                RaisePropertyChanged("UserName"); }
+            set
+            {
+                Set(() => UserName, ref _username, value);
+            }
+                
         }
 
         public string Lastname { get; set; }
