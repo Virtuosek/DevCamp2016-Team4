@@ -13,10 +13,10 @@ namespace BeeBack.ViewModel
         public UserViewModel()
         {
             _user = new User();
-            _user.EMailAddress = "tot@totofds.be";
-            _user.Name = "Smith";
-            _user.FirstName = "John";
-            _user.MobilePhone = "+32475123456";
+            _user.Email = "tot@totofds.be";
+            _user.Lastname = "Smith";
+            _user.Firstname = "John";
+            //_user.MobilePhone = "+32475123456";
             Activity a;
             for (int i = 0; i<10; i++)
             {

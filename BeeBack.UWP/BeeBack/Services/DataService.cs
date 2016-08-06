@@ -88,11 +88,11 @@ namespace BeeBack.Services
                 //return JsonConvert.DeserializeObject<List<Activity>>(content);
             }
         }
-        public async Task<User> GetUser(Guid UserID)
+        public async Task<User> GetUser(string userID)
         {
             using (var request = InitRequest())
             {
-                return await CachedFile.TryLoad<User>($"{UrlBase}{UrlUser}/{UserID}", new TimeSpan(0), false, false, request);
+                return await CachedFile.TryLoad<User>($"{UrlBase}{UrlUser}/{userID}", new TimeSpan(0,5,0), false, false, request);
             }
         }
         public async Task<List<User>> GetAllUsers()

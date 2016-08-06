@@ -12,7 +12,7 @@
         <ResourceDictionary Source="/Dictionary1.xaml"/>
     </Page.Resources>
 
-    <Grid Background="{StaticResource BBButtonBackgroundColor}">
+    <Grid >
       
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -20,11 +20,11 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
-        <StackPanel Orientation="Horizontal" >
+        <StackPanel Orientation="Horizontal" Background="#FF4A90BE" >
             <Image Source="ms-appx:///Assets/Logo/logo.png" Width="40" HorizontalAlignment="Left" Margin="8" Tapped="Image_Tapped"/>
-            <TextBlock Text="BeeBack" Margin="8" FontSize="24" Foreground="{StaticResource BBTextForegroundColor}"/>
+            <TextBlock Text="BeeBack" Margin="8" FontSize="24" Foreground="White" />
         </StackPanel>
         
-        <Frame x:Name="MainFrame" Grid.Row="1" Background="White"/>
+        <Frame x:Name="MainFrame" Grid.Row="1" Background="#FFEAEAEA"/>
     </Grid>
 </Page>
