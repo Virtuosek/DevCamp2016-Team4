@@ -8,13 +8,20 @@
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     x:Class="BeeBack.Pages.ActivityPage"
     mc:Ignorable="d">
+
     <Interactivity:Interaction.Behaviors>
         <Core:EventTriggerBehavior EventName="Loaded">
             <Core:InvokeCommandAction Command="{Binding Loaded, Mode=OneWay}"/>
         </Core:EventTriggerBehavior>
     </Interactivity:Interaction.Behaviors>
-
     <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Dictionary1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <!--<Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Dictionary1.xaml"/>
@@ -42,11 +49,51 @@
             </ItemsPanelTemplate>
         </ResourceDictionary>
 
-    </Page.Resources>
+    </Page.Resources>-->
     <Page.DataContext>
         <Binding Mode="OneWay" Path="ActivityVM" Source="{StaticResource Locator}"/>
     </Page.DataContext>
-    <Grid Background="Transparent" DataContext="{Binding Activity}">
+
+    <ScrollViewer>
+        <StackPanel>
+            <Grid Padding="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="{Binding Activity.Title}" FontSize="34" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Foreground="{StaticResource Blue}"/>
+
+                <Grid Grid.Column="1" Tapped="{Binding UserSelectedCommand}">
+                    <Border BorderBrush="#FFBFBFBF" BorderThickness="1" Background="#FFE7E7E7">
+                        <StackPanel Margin="5">
+                            <TextBlock Text="Créé par :"  TextAlignment="Center"/>
+
+                            <Ellipse Width="80" Height="80" >
+                                <Ellipse.Fill>
+                                    <ImageBrush >
+                                        <ImageBrush.ImageSource>
+                                            <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" UriSource="{Binding Activity.Owner.PictureUrl}" />
+                                        </ImageBrush.ImageSource>
+                                    </ImageBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <TextBlock Text="{Binding Activity.Owner.FullName}" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+            </Grid>
+
+            <TextBlock Text="{Binding Activity.Description}"/>
+
+
+        </StackPanel>
+    </ScrollViewer>
+
+
+    <!--<Grid Background="Transparent" DataContext="{Binding Activity}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -96,5 +143,5 @@
             <TextBlock Text="{Binding Title}"/>
             <TextBlock Text="{Binding Description}"/>
         </StackPanel>
-    </Grid>
+    </Grid>-->
 </Page>

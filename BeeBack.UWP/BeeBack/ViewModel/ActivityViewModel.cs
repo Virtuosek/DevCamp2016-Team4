@@ -44,10 +44,9 @@ namespace BeeBack.ViewModel
             for (int j = 0; j < 10; j++)
             {
                 u = new User();
-                //u.EMailAddress = "tot@totofds.be";
                 u.Lastname = $"{j}Smith";
                 u.Firstname = "John";
-                //u.MobilePhone = "+32475123456";
+                u.PictureUrl = "John";
                 if (j == 0)
                 {
                     _activity.Owner = u;
@@ -59,7 +58,6 @@ namespace BeeBack.ViewModel
         private async void _loaded()
         {
             await CheckMembers();
-            Debug.WriteLine(Activity);
         }
         public RelayCommand Loaded
         {
@@ -78,7 +76,7 @@ namespace BeeBack.ViewModel
       
         private async Task CheckMembers()
         {
-            if (Activity.Owner.EMailAddress == null)
+            if (string.IsNullOrEmpty(Activity.Owner.Email))
             {
                 Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
                 for (int i = 0; i < Activity.Members.Count; i++)
@@ -98,7 +96,6 @@ namespace BeeBack.ViewModel
             set
             {
                 _activity = value;
-
                 RaisePropertyChanged(() => Activity);
             }
         }
