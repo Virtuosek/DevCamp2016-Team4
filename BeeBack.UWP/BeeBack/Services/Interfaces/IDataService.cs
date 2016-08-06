@@ -1,4 +1,5 @@
 ﻿using BeeBack.Model;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,5 +13,9 @@ namespace BeeBack.Services.Interfaces
         Task<List<Activity>> GetUserActivities();
         Task<List<Activity>> GetSubscribedActivities();
         Task<List<Activity>> GetAllPublicActivities();
+        Task<List<User>> GetAllUsers();
+        Task<User> GetCurrentUser();
+        Task<User> GetUser(Guid UserID);
+
     }
 }

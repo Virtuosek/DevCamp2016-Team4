@@ -20,6 +20,24 @@ namespace BeeBack.Model
 
         public User Owner { get; set; }
         public List<User> Members { get; set; }
+        public RelayCommand Save
+        {
+            get
+            {
+                return new RelayCommand(_save);
+            }
+        }
+        private void _save()
+        {
+            if (this.ID==null )
+            {
+                // Append
+            }
+            else
+            {
+                // update
+            }
+        }
         public RelayCommand Selected
         {
             get
@@ -33,11 +51,11 @@ namespace BeeBack.Model
             msg.SelectedActivity = this;
             Messenger.Default.Send<ActivitySelectedMessage>(msg);
         }
-
         public Activity()
         {
             Members = new List<User>();
             Owner = new User();
         }
+
     }
 }

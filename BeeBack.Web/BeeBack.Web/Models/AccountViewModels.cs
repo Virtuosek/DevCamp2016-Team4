@@ -70,14 +70,29 @@ namespace BeeBack.Web.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Text)]
+        [Display(Name = "Prénom")]
+        public string Firstname { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Nom")]
+        public string Lastname { get; set; }
+
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "GSM")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "Le {0} doit faire au minimum {2} caractères de long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mot de passe")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirmation du mot de passe")]
+        [Compare("Password", ErrorMessage = "Le mot de passe et sa confirmation ne correspondent pas")]
         public string ConfirmPassword { get; set; }
     }
 

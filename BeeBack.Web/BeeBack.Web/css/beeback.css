@@ -16,3 +16,8 @@
 }
 
 /* END Activities */
+
+
+.item .img-responsive {
+    cursor: default;
+}

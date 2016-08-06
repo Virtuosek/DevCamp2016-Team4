@@ -29,6 +29,9 @@ namespace BeeBack.Web.Models
         /// Activities created by the user
         /// </summary>
         public List<Activity> Activities { get; set; }
+
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
     }
 
 }
