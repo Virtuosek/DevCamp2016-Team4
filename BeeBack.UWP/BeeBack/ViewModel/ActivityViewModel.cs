@@ -9,6 +9,7 @@ using GalaSoft.MvvmLight.Threading;
 using Microsoft.Practices.ServiceLocation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace BeeBack.ViewModel
 {
     public class ActivityViewModel : ViewModelBase
     {
+        private IDataService _dataService;
+        private Activity _activity;
         public ActivityViewModel(IDataService dataService)
         {
             _dataService = dataService;
@@ -55,7 +58,8 @@ namespace BeeBack.ViewModel
 
         private async void _loaded()
         {
-            await CheckMembers();           
+            await CheckMembers();
+            Debug.WriteLine(Activity);
         }
         public RelayCommand Loaded
         {
@@ -71,14 +75,13 @@ namespace BeeBack.ViewModel
             msgnav.DestinationPageType = typeof(UserPage);
             Messenger.Default.Send<NavigationMessage>(msgnav);
         }
-        private Activity _activity;
-        private IDataService _dataService;
+      
         private async Task CheckMembers()
         {
             if (Activity.Owner.EMailAddress == null)
             {
                 Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
-                for (int i=0; i<Activity.Members.Count; i++)
+                for (int i = 0; i < Activity.Members.Count; i++)
                 {
                     try
                     {
@@ -92,9 +95,11 @@ namespace BeeBack.ViewModel
         public Activity Activity
         {
             get { return _activity; }
-            set {
+            set
+            {
                 _activity = value;
-                RaisePropertyChanged("Activity");
+
+                RaisePropertyChanged(() => Activity);
             }
         }
 
