@@ -9,6 +9,9 @@
     <Page.Resources>
         <ResourceDictionary Source="/Dictionary1.xaml"/>
     </Page.Resources>
+    <Page.DataContext>
+        <Binding Mode="OneWay" Path="ActivityEditVM" Source="{StaticResource Locator}"/>
+    </Page.DataContext>
 
     <Grid Background="Black">
         <Grid.RowDefinitions>
@@ -29,7 +32,7 @@
             <TextBlock Text="Title" 
                        FontSize="18" 
                        Foreground="{StaticResource BBTextForegroundColor}"/>
-            <TextBox Grid.Column="1" Margin="8"/>
+            <TextBox Grid.Column="1" Margin="8" Text="{Binding Activity.Title, Mode=TwoWay}"/>
             <TextBlock Text="Description" 
                        Grid.Row="1" 
                        FontSize="18" 
@@ -37,7 +40,7 @@
             <TextBox Grid.Row="1" 
                      Grid.Column="1"
                      Margin="8"
-                     Height="200"
+                     Height="200" Text="{Binding Activity.Description, Mode=TwoWay}"
                      />
             <StackPanel Grid.Row="2"
                         Grid.Column="1" 
@@ -45,10 +48,10 @@
                         Orientation="Horizontal">
                 <Button VerticalAlignment="Top"
                         Style="{StaticResource BBButtonStyle}"
-                        Content="Reset" Margin="0,30,30,0"/>
+                        Content="Reset" Margin="0,30,30,0" Command="{Binding New, Mode=OneWay}"/>
                 <Button VerticalAlignment="Top"
                         Style="{StaticResource BBButtonStyle}"
-                        Content="Save"/>
+                        Content="Save" Command="{Binding Activity.Save, Mode=OneWay}"/>
             </StackPanel>
         </Grid>
     </Grid>

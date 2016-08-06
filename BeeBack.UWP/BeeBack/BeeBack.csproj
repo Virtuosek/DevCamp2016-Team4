@@ -101,6 +101,7 @@
     <Compile Include="Pages\ActivityEditPage.xaml.cs">
       <DependentUpon>ActivityEditPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\CachedFile.cs" />
     <Compile Include="Services\Interfaces\IStorageService.cs" />
     <Compile Include="Services\StorageService.cs" />
     <Compile Include="Messages\ActivitySelectedMessage.cs" />

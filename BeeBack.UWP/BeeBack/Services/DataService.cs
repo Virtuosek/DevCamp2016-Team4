@@ -1,5 +1,6 @@
 ﻿using BeeBack.Model;
 using BeeBack.Services.Interfaces;
+using LeSoir.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -36,8 +37,9 @@ namespace BeeBack.Services
         {
             using (var request = InitRequest())
             {
-                var content = await request.GetStringAsync(UrlBase + UrlLogin);
-                return JsonConvert.DeserializeObject<bool>(content);
+                return await CachedFile.TryLoad<bool>(UrlBase + UrlLogin, new TimeSpan(0), false, false, request);
+                //var content = await request.GetStringAsync(UrlBase + UrlLogin);
+                //return JsonConvert.DeserializeObject<bool>(content);
             }
         }
 
@@ -49,8 +51,10 @@ namespace BeeBack.Services
         {
             using (var request = InitRequest())
             {
-                var content = await request.GetStringAsync(UrlBase + UrlSubscriptions);
-                return JsonConvert.DeserializeObject<List<Activity>>(content);
+                return await CachedFile.TryLoad<List<Activity>>(UrlBase + UrlSubscriptions, new TimeSpan(0), false, false, request);
+
+                //var content = await request.GetStringAsync(UrlBase + UrlSubscriptions);
+                //return JsonConvert.DeserializeObject<List<Activity>>(content);
             }
         }
 
@@ -62,8 +66,10 @@ namespace BeeBack.Services
         {
             using (var request = InitRequest())
             {
-                var content = await request.GetStringAsync(UrlBase + UrlActivities);
-                return JsonConvert.DeserializeObject<List<Activity>>(content);
+                return await CachedFile.TryLoad<List<Activity>>(UrlBase + UrlActivities, new TimeSpan(0), false, false, request);
+
+                //var content = await request.GetStringAsync(UrlBase + UrlActivities);
+                //return JsonConvert.DeserializeObject<List<Activity>>(content);
             }
         }
 
@@ -75,8 +81,10 @@ namespace BeeBack.Services
         {
             using (var request = InitRequest())
             {
-                var content = await request.GetStringAsync(UrlBase + UrlActivities);
-                return JsonConvert.DeserializeObject<List<Activity>>(content);
+                return await CachedFile.TryLoad<List<Activity>>(UrlBase + UrlActivities, new TimeSpan(0), false, false, request);
+
+                //var content = await request.GetStringAsync(UrlBase + UrlActivities);
+                //return JsonConvert.DeserializeObject<List<Activity>>(content);
             }
         }
 
