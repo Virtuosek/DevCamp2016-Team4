@@ -212,6 +212,7 @@
     <Compile Include="Controllers\Api\BaseApiController.cs" />
     <Compile Include="Controllers\Api\LoginController.cs" />
     <Compile Include="Controllers\Api\SubscriptionController.cs" />
+    <Compile Include="Controllers\Api\UsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -234,11 +235,16 @@
     <Compile Include="Migrations\201608060646131_PictureUri Activity.Designer.cs">
       <DependentUpon>201608060646131_PictureUri Activity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608060733440_DateaAndLocation.cs" />
+    <Compile Include="Migrations\201608060733440_DateaAndLocation.Designer.cs">
+      <DependentUpon>201608060733440_DateaAndLocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\UserActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -461,6 +467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608060646131_PictureUri Activity.resx">
       <DependentUpon>201608060646131_PictureUri Activity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608060733440_DateaAndLocation.resx">
+      <DependentUpon>201608060733440_DateaAndLocation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

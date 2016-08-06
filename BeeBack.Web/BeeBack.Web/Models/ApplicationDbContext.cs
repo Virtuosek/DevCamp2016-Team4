@@ -44,5 +44,7 @@ namespace BeeBack.Web.Models
 
         public DbSet<Activity> Activities { get; set; }
         public DbSet<UserActivity> UserActivity { get; set; }
+
+        public System.Data.Entity.DbSet<BeeBack.Web.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
