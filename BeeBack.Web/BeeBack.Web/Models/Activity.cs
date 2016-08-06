@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BeeBack.Web.Models;
+using System.ComponentModel.DataAnnotations;
 
-namespace BeeBack.Data.Models
+namespace BeeBack.Web.Models
 {
     public class Activity
     {
+        public Activity()
+        {
+            Location = new Location();
+            Date = DateTime.Now;
+        }
+
         public Guid ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

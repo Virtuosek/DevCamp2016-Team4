@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BeeBack.Data.Models;
+using BeeBack.Web.Models;
 
 namespace BeeBack.Web.Interfaces
 {

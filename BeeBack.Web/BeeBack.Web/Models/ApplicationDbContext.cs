@@ -1,4 +1,4 @@
-﻿using BeeBack.Data.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
@@ -31,6 +31,8 @@ namespace BeeBack.Web.Models
                 .HasForeignKey(a => a.UserId)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<UserActivity>()
+                .HasKey(a => a.ID);
 
             modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);

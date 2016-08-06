@@ -7,13 +7,13 @@ namespace BeeBack.Web.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class DateaAndLocation : IMigrationMetadata
+    public sealed partial class CleanModel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DateaAndLocation));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CleanModel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201608060733440_DateaAndLocation"; }
+            get { return "201608061138269_CleanModel"; }
         }
         
         string IMigrationMetadata.Source

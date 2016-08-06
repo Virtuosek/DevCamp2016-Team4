@@ -56,8 +56,8 @@
 
 </head>
 
-<body id="home" data-action="@Request.RequestContext.RouteData.Values["action"]"
-      data-controller="@Request.RequestContext.RouteData.Values["controller"]">
+<body id="home" data-action="@Request.RequestContext.RouteData.Values["action"].ToString().ToLower()"
+      data-controller="@Request.RequestContext.RouteData.Values["controller"].ToString().ToLower()">
 
     <!-- Preloader -->
     <div id="preloader">
