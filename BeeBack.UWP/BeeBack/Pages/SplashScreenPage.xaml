@@ -27,7 +27,6 @@
             <ProgressRing IsActive="True" 
                           IsEnabled="True" 
                           Width="50" 
-                          Foreground="{StaticResource BBTextForegroundColor}"
                           Height="50"/>
         </Grid>
     </Grid>

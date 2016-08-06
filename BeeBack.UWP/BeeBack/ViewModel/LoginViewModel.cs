@@ -37,8 +37,8 @@ namespace BeeBack.ViewModel
         }
 
         public LoginViewModel(ICustomNavigationService navigationService,
-            IDataService dataService, 
-            IDialogService dialogService, 
+            IDataService dataService,
+            IDialogService dialogService,
             IStorageService storageService)
         {
             _navigationService = navigationService;
@@ -63,12 +63,17 @@ namespace BeeBack.ViewModel
                     _navigationService.NavigateTo(typeof(RootPage));
                 }
                 else
-                    await _dialogService.ShowMessage("wrong username or password", "error");
+                    await _dialogService.ShowMessage("Votre mot de passe ou votre nom d'utilisateur est incorrect", "Erreur de connexion");
 
             }
             catch (UnauthorizedAccessException ex)
             {
-                await _dialogService.ShowMessage("wrong username or password", "error");
+                await _dialogService.ShowMessage("Votre mot de passe ou votre nom d'utilisateur est incorrect", "Erreur de connexion");
+                Debug.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                await _dialogService.ShowMessage("Une erreur est survenue lors de la connexion aux serveurs", "Erreur de connexion");
                 Debug.WriteLine(ex.Message);
             }
         }

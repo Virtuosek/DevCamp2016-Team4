@@ -4,35 +4,36 @@
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" 
     xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:local="using:BeeBack">
-    <SolidColorBrush x:Key="BBButtonBackgroundColor" Color="#FF1ABC9C"/>
-    <SolidColorBrush x:Key="BBTextForegroundColor" Color="White"/>
-    <SolidColorBrush x:Key="BBUserBackgroundColor" Color="#FF660076"/>
-    <SolidColorBrush x:Key="BBActivityBackgroundColor" Color="#FF18578B"/>
-    <Style x:Key="BBButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource BBButtonBackgroundColor}"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Padding" Value="20,4"/>
-        <Setter Property="Margin" Value="0,30,0,0"/>
-    </Style>
+    
     <DataTemplate x:Key="ActivitiesDataTemplate">
-        <Grid Width="200"
-                      Height="200" 
-                      Background="{StaticResource BBActivityBackgroundColor}">
+        <Grid Background="#FFECF0F1" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="12" BorderBrush="#FFABABAB" BorderThickness="1" MaxWidth="150" Margin="0,0,12,0" >
+
             <Interactivity:Interaction.Behaviors>
                 <Core:EventTriggerBehavior EventName="Tapped">
                     <Core:InvokeCommandAction Command="{Binding Selected, Mode=OneWay}"/>
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
-            <StackPanel Margin="4">
+            
+            <StackPanel>
+                <Ellipse Width="100" Height="100">
+                    <Ellipse.Fill>
+                        <ImageBrush >
+                            <ImageBrush.ImageSource>
+                                <BitmapImage DecodePixelHeight="100" DecodePixelWidth="100" UriSource="{Binding PictureUrl}" />
+                            </ImageBrush.ImageSource>
+                        </ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                
                 <TextBlock Text="{Binding Title}"
         				TextWrapping="WrapWholeWords"
-        				Foreground="{StaticResource BBTextForegroundColor}"
-        				FontSize="16"
-        				FontWeight="ExtraBold"/>
-                <TextBlock Text="{Binding Description}"
+        				FontSize="14"
+        				FontWeight="ExtraBold" Margin="0,10,0,0" TextTrimming="CharacterEllipsis" TextAlignment="Center"/>
+                
+                <!--<TextBlock Text="{Binding Description}"
         				TextWrapping="WrapWholeWords"
         				Foreground="{StaticResource BBTextForegroundColor}"
-        				FontWeight="Light"/>
+        				FontWeight="Light"/>-->
 
             </StackPanel>
         </Grid>

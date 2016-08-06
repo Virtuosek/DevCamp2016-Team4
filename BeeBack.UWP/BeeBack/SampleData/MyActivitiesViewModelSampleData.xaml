@@ -1,0 +1,564 @@
+﻿<ViewModel:MyActivitiesViewModel xmlns:ViewModel="using:BeeBack.ViewModel" xmlns:Model="using:BeeBack.Model" xmlns:System="using:System" xmlns:Command="using:GalaSoft.MvvmLight.Command" IsInDesignMode="True" IsInDesignModeStatic="False">
+	<ViewModel:MyActivitiesViewModel.AllActivities>
+        <Model:Activity Description="Vestibulum class curabitur nam" Title="Aenean maecenas praesent" UserId="Phasellus mauris cras consequat" PictureUrl="http://www.sportquick.com/administration/images/illustrations/JudoBouras.jpeg">
+			<Model:Activity.ID>
+				<System:Guid/>
+			</Model:Activity.ID>
+			<Model:Activity.Members>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Nunc odio cubilia sagittis ornare" FirstName="Nec non pulvinar" ID="22" MobilePhone="Sociosqu malesuada per penatibus netus" Name="Pharetra vestibulum neque placerat" Password="Senectus adipiscing">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Parturient suscipit porttitor vestibulum" FirstName="Primis rutrum porta" ID="38" MobilePhone="Tincidunt sociis orci taciti tellus" Name="Sed dapibus egestas nulla platea" Password="Vestibulum euismod sapien semper torquent">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Adipiscing tristique vehicula quam" FirstName="Sem tempor tempus" ID="51" MobilePhone="Feugiat urna maecenas ultricies" Name="Purus ultrices pede" Password="Quis sit volutpat">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Bibendum curabitur velit gravida parturient" FirstName="Tortor turpis accumsan" ID="42" MobilePhone="Eleifend vitae consequat" Name="Risus praesent venenatis vulputate" Password="Vel dictumst iaculis phasellus">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Lacinia facilisi parturient" FirstName="Sed adipiscing" ID="17" MobilePhone="Adipiscing duis laoreet faucibus natoque" Name="Nam varius vestibulum vestibulum class" Password="Vestibulum vestibulum cras dis">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Members>
+			<Model:Activity.Owner>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Donec duis aliquam dis congue" FirstName="Parturient vestibulum auctor" ID="46" MobilePhone="Integer etiam leo mus cursus" Name="Adipiscing curae sed nullam aptent" Password="Est hac">
+					<Model:User.Activities>
+						<Model:Activity Description="Vestibulum lectus" Title="Nec dictum accumsan" UserId="Libero convallis bibendum ligula adipiscing"/>
+						<Model:Activity Description="Dignissim vestibulum litora" Title="Nunc parturient vestibulum fusce dictumst" UserId="Lorem eleifend"/>
+						<Model:Activity Description="Nulla adipiscing faucibus" Title="Morbi facilisi quisque" UserId="Proin elementum amet augue habitant"/>
+						<Model:Activity Description="Inceptos non per" Title="Facilisis luctus fermentum fringilla vivamus" UserId="Parturient ante arcu"/>
+						<Model:Activity Description="Sem aliquam diam eget" Title="Sed magnis" UserId="Dolor fames"/>
+					</Model:User.Activities>
+					<Model:User.OwnedActivities>
+						<Model:Activity Description="Felis sit" Title="Aliquet vestibulum habitasse" UserId="Ipsum vestibulum"/>
+						<Model:Activity Description="Nam mattis sed" Title="Justo vel hendrerit elit" UserId="Enim lacus"/>
+						<Model:Activity Description="Mauris erat est" Title="Blandit dis" UserId="Adipiscing lorem"/>
+						<Model:Activity Description="Interdum hac nibh massa" Title="Magna commodo eros" UserId="Mollis leo montes parturient himenaeos"/>
+						<Model:Activity Description="Imperdiet nostra conubia" Title="Lobortis vestibulum nisi" UserId="Metus mus morbi nascetur nisl"/>
+					</Model:User.OwnedActivities>
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Owner>
+			<Model:Activity.Selected>
+				<Command:RelayCommand/>
+			</Model:Activity.Selected>
+		</Model:Activity>
+        <Model:Activity Description="Donec potenti nunc aenean parturient" Title="Convallis curae posuere" UserId="Habitant pretium inceptos amet vestibulum" PictureUrl="http://www.sportquick.com/administration/images/illustrations/JudoBouras.jpeg">
+			<Model:Activity.ID>
+				<System:Guid/>
+			</Model:Activity.ID>
+			<Model:Activity.Members>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Vulputate fames adipiscing" FirstName="Odio dolor per venenatis mattis" ID="87" MobilePhone="Volutpat mollis maecenas montes" Name="Ultricies non" Password="Felis curabitur mauris">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Sed pede" FirstName="Ornare ipsum orci platea" ID="24" MobilePhone="Sem sit quis" Name="Nostra phasellus" Password="Quam praesent">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Accumsan convallis sed" FirstName="Justo nam" ID="55" MobilePhone="Cras lorem duis magna eleifend" Name="Vel parturient consequat" Password="Bibendum lacus dictumst urna vestibulum">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Arcu diam" FirstName="Vestibulum dignissim ante faucibus habitant" ID="40" MobilePhone="Adipiscing rutrum parturient" Name="Facilisi nunc amet dis" Password="Elementum est primis inceptos eget">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Lobortis enim" FirstName="Massa interdum sapien" ID="45" MobilePhone="Vestibulum fringilla hac neque" Name="Elit dapibus facilisis vestibulum" Password="Metus morbi fermentum">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Members>
+			<Model:Activity.Owner>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Auctor dignissim" FirstName="Nullam lobortis aptent nascetur" ID="28" MobilePhone="Adipiscing fusce lorem facilisis est" Name="Ante etiam interdum mauris" Password="Vestibulum elementum">
+					<Model:User.Activities>
+						<Model:Activity Description="Arcu leo" Title="Rhoncus hac" UserId="Sodales viverra"/>
+						<Model:Activity Description="Fermentum parturient" Title="Congue mus morbi" UserId="Nec nulla non per"/>
+						<Model:Activity Description="Fringilla vestibulum" Title="Pharetra sed" UserId="Cursus aliquam placerat"/>
+						<Model:Activity Description="Proin integer quisque vivamus" Title="Habitasse diam vestibulum" UserId="Pulvinar hendrerit sem eget aliquam"/>
+						<Model:Activity Description="Himenaeos elit dictum" Title="Sit aliquet adipiscing parturient sagittis" UserId="Vel imperdiet"/>
+					</Model:User.Activities>
+					<Model:User.OwnedActivities>
+						<Model:Activity Description="Senectus vestibulum nam vestibulum commodo" Title="Lectus blandit enim" UserId="Libero ligula conubia"/>
+						<Model:Activity Description="Adipiscing sed eros parturient penatibus" Title="Malesuada erat" UserId="Litora sociosqu"/>
+						<Model:Activity Description="Vestibulum suscipit est" Title="Dis vestibulum" UserId="Luctus torquent"/>
+						<Model:Activity Description="Leo nisi mus" Title="Hac nibh" UserId="Ultrices nec porttitor augue"/>
+						<Model:Activity Description="Vehicula magnis tristique" Title="Nisl tincidunt" UserId="Nunc cubilia"/>
+					</Model:User.OwnedActivities>
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Owner>
+			<Model:Activity.Selected>
+				<Command:RelayCommand/>
+			</Model:Activity.Selected>
+		</Model:Activity>
+		<Model:Activity Description="Vestibulum vestibulum leo mus" Title="Adipiscing parturient" UserId="Semper adipiscing nascetur parturient habitasse">
+			<Model:Activity.ID>
+				<System:Guid/>
+			</Model:Activity.ID>
+			<Model:Activity.Members>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Lectus leo libero" FirstName="Amet aliquam" ID="97" MobilePhone="Ligula integer curabitur" Name="Eleifend dictum vulputate" Password="Facilisi ipsum ante">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Magnis mus" FirstName="Parturient luctus" ID="16" MobilePhone="Consequat habitant convallis" Name="Adipiscing arcu litora quisque" Password="Diam faucibus phasellus">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Adipiscing aliquam lobortis elit" FirstName="Eget vivamus vestibulum non per" ID="23" MobilePhone="Elementum enim" Name="Dignissim vestibulum inceptos interdum nec" Password="Mattis mauris">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Mollis vestibulum vestibulum aliquet" FirstName="Facilisis nascetur eros parturient" ID="20" MobilePhone="Lacus fermentum fringilla nisi" Name="Justo erat" Password="Nibh sed">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Nisl metus conubia montes" FirstName="Magna massa sem" ID="68" MobilePhone="Senectus nostra ornare adipiscing sit" Name="Blandit pharetra placerat commodo lorem" Password="Pulvinar morbi sagittis habitasse hendrerit">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Members>
+			<Model:Activity.Owner>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Eros nibh" FirstName="Pharetra erat hendrerit porta" ID="92" MobilePhone="Imperdiet purus egestas nec" Name="Netus nulla sociis" Password="Himenaeos nisi">
+					<Model:User.Activities>
+						<Model:Activity Description="Tellus risus" Title="Non taciti" UserId="Nisl per sed sem"/>
+						<Model:Activity Description="Vestibulum vel nam" Title="Malesuada velit sit euismod" UserId="Penatibus vitae tempor vestibulum"/>
+						<Model:Activity Description="Adipiscing pulvinar sagittis porttitor" Title="Nunc tempus placerat feugiat sed" UserId="Gravida senectus dis iaculis class"/>
+						<Model:Activity Description="Hac lacinia curae sociosqu tincidunt" Title="Est parturient" UserId="Odio donec suscipit"/>
+						<Model:Activity Description="Fusce lorem leo mus" Title="Etiam orci" UserId="Vestibulum vestibulum tortor turpis"/>
+					</Model:User.Activities>
+					<Model:User.OwnedActivities>
+						<Model:Activity Description="Tristique nulla aenean" Title="Morbi laoreet varius" UserId="Mauris proin pede"/>
+						<Model:Activity Description="Nullam quam ultricies" Title="Natoque nec augue" UserId="Non per quis sed torquent"/>
+						<Model:Activity Description="Cras parturient ultrices dolor vehicula" Title="Sem adipiscing urna sit" UserId="Volutpat posuere maecenas potenti vel"/>
+						<Model:Activity Description="Venenatis nunc rhoncus sed" Title="Nam aptent pretium duis fames" UserId="Praesent sodales dis"/>
+						<Model:Activity Description="Vestibulum hac bibendum vestibulum" Title="Accumsan est viverra" UserId="Dictumst auctor congue felis cursus"/>
+					</Model:User.OwnedActivities>
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Owner>
+			<Model:Activity.Selected>
+				<Command:RelayCommand/>
+			</Model:Activity.Selected>
+		</Model:Activity>
+		<Model:Activity Description="Odio orci vel" Title="Sociosqu himenaeos nunc" UserId="Suscipit parturient imperdiet nam">
+			<Model:Activity.ID>
+				<System:Guid/>
+			</Model:Activity.ID>
+			<Model:Activity.Members>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Vestibulum nulla vestibulum" FirstName="Lobortis leo" ID="61" MobilePhone="Placerat mauris proin nisl" Name="Inceptos commodo interdum penatibus" Password="Aenean nascetur adipiscing mus pharetra">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Dolor tincidunt" FirstName="Vestibulum dapibus augue porttitor" ID="96" MobilePhone="Euismod adipiscing" Name="Conubia parturient nec cubilia" Password="Nullam pulvinar vestibulum tristique egestas">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Non auctor fames" FirstName="Sagittis aptent senectus sociosqu" ID="15" MobilePhone="Congue felis cursus dictum" Name="Parturient ultricies vestibulum" Password="Vestibulum adipiscing nunc">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Venenatis torquent sem" FirstName="Per suscipit sed gravida" ID="78" MobilePhone="Ligula vulputate ultrices iaculis ipsum" Name="Odio feugiat orci" Password="Parturient pede lectus vestibulum libero">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Mattis vel lorem" FirstName="Luctus quis magnis vestibulum sit" ID="75" MobilePhone="Mauris curabitur urna volutpat magna" Name="Litora quam justo lacus lacinia" Password="Laoreet vehicula nam">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Members>
+			<Model:Activity.Owner>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Penatibus dapibus porttitor" FirstName="Vehicula pede malesuada sed vestibulum" ID="43" MobilePhone="Vestibulum primis quis euismod rutrum" Name="Torquent platea cubilia ultrices" Password="Neque dis quam egestas">
+					<Model:User.Activities>
+						<Model:Activity Description="Feugiat est tincidunt sapien" Title="Netus nulla" UserId="Hac urna porta purus"/>
+						<Model:Activity Description="Tristique adipiscing leo maecenas" Title="Cras gravida iaculis volutpat risus" UserId="Ultricies semper lacinia"/>
+						<Model:Activity Description="Nec praesent" Title="Duis sociis venenatis laoreet mus" UserId="Non velit accumsan"/>
+						<Model:Activity Description="Bibendum vestibulum vulputate curabitur phasellus" Title="Nunc natoque vitae amet parturient" UserId="Posuere potenti taciti"/>
+						<Model:Activity Description="Tellus vestibulum convallis per curae" Title="Class consequat" UserId="Pretium dignissim sed elementum"/>
+					</Model:User.Activities>
+					<Model:User.OwnedActivities>
+						<Model:Activity Description="Etiam sem tempor eget adipiscing" Title="Ante arcu diam donec" UserId="Tempus fusce parturient lorem sit"/>
+						<Model:Activity Description="Rhoncus nam" Title="Facilisis elit enim fermentum vel" UserId="Sodales vestibulum"/>
+						<Model:Activity Description="Sed dis" Title="Viverra dictumst eleifend erat fringilla" UserId="Eros tortor aliquam integer"/>
+						<Model:Activity Description="Turpis hendrerit morbi varius" Title="Est habitasse quisque vivamus" UserId="Aliquam vestibulum adipiscing himenaeos hac"/>
+						<Model:Activity Description="Nibh facilisi faucibus aliquet" Title="Imperdiet parturient malesuada" UserId="Habitant blandit nisi"/>
+					</Model:User.OwnedActivities>
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Owner>
+			<Model:Activity.Selected>
+				<Command:RelayCommand/>
+			</Model:Activity.Selected>
+		</Model:Activity>
+		<Model:Activity Description="Natoque phasellus parturient sed" Title="Adipiscing maecenas" UserId="Mollis montes">
+			<Model:Activity.ID>
+				<System:Guid/>
+			</Model:Activity.ID>
+			<Model:Activity.Members>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Etiam sed fusce vestibulum nisl" FirstName="Vestibulum sagittis nam nisi" ID="79" MobilePhone="Aenean curabitur nunc" Name="Pulvinar donec vel venenatis varius" Password="Senectus vulputate">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Feugiat gravida nulla" FirstName="Sociosqu mauris lorem morbi dis" ID="80" MobilePhone="Est pede" Name="Odio orci" Password="Nullam iaculis phasellus adipiscing">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Elementum suscipit" FirstName="Auctor lacinia dignissim laoreet hac" ID="22" MobilePhone="Parturient augue quam posuere" Name="Consequat convallis proin aptent" Password="Natoque torquent ultrices leo congue">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Mus fermentum fringilla habitasse" FirstName="Cursus dolor dictum" ID="57" MobilePhone="Non quis" Name="Vestibulum facilisis vehicula" Password="Fames felis vestibulum nec adipiscing">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Praesent pretium" FirstName="Justo potenti" ID="45" MobilePhone="Libero accumsan ligula duis vestibulum" Name="Ipsum volutpat maecenas lectus urna" Password="Parturient vestibulum cras per rhoncus">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Members>
+			<Model:Activity.Owner>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Dis vestibulum vestibulum cras" FirstName="Praesent accumsan" ID="92" MobilePhone="Est dignissim bibendum" Name="Nostra ornare" Password="Consequat posuere massa convallis">
+					<Model:User.Activities>
+						<Model:Activity Description="Adipiscing facilisis duis" Title="Dictumst elementum" UserId="Platea hac parturient potenti fermentum"/>
+						<Model:Activity Description="Viverra metus" Title="Vestibulum pretium rhoncus eleifend sodales" UserId="Facilisi vestibulum aliquam"/>
+						<Model:Activity Description="Morbi nunc" Title="Faucibus habitant" UserId="Integer inceptos fringilla quisque"/>
+						<Model:Activity Description="Adipiscing amet leo mus parturient" Title="Neque habitasse" UserId="Vestibulum nec ante netus non"/>
+						<Model:Activity Description="Hendrerit diam primis rutrum" Title="Nulla vivamus arcu" UserId="Aliquam eget vestibulum adipiscing"/>
+					</Model:User.Activities>
+					<Model:User.OwnedActivities>
+						<Model:Activity Description="Sapien interdum" Title="Per elit porta parturient vestibulum" UserId="Purus aliquet blandit semper commodo"/>
+						<Model:Activity Description="Conubia cubilia himenaeos pharetra" Title="Lobortis vestibulum nascetur" UserId="Dapibus enim sociis adipiscing"/>
+						<Model:Activity Description="Sed nibh risus velit" Title="Erat eros egestas taciti" UserId="Vitae class imperdiet malesuada sem"/>
+						<Model:Activity Description="Parturient tellus" Title="Penatibus sit" UserId="Curae vestibulum porttitor tempor"/>
+						<Model:Activity Description="Tempus parturient tortor tincidunt" Title="Vestibulum adipiscing" UserId="Tristique placerat euismod turpis ultricies"/>
+					</Model:User.OwnedActivities>
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Owner>
+			<Model:Activity.Selected>
+				<Command:RelayCommand/>
+			</Model:Activity.Selected>
+		</Model:Activity>
+		<Model:Activity Description="Sit litora vel bibendum" Title="Sed hendrerit sem" UserId="Lacus luctus">
+			<Model:Activity.ID>
+				<System:Guid/>
+			</Model:Activity.ID>
+			<Model:Activity.Members>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Leo mus tempus adipiscing" FirstName="Euismod dignissim vestibulum" ID="53" MobilePhone="Nec fusce feugiat" Name="Pede quam vestibulum tempor" Password="Tortor donec etiam">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Elementum varius per" FirstName="Gravida turpis quis" ID="68" MobilePhone="Placerat iaculis morbi" Name="Parturient vestibulum lorem lobortis non" Password="Nascetur pharetra">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Lacinia nulla" FirstName="Sed sem" ID="64" MobilePhone="Fringilla sit" Name="Facilisis fermentum" Password="Pulvinar sagittis urna vestibulum">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Cras habitasse" FirstName="Adipiscing senectus" ID="32" MobilePhone="Sociosqu mauris dolor hendrerit nullam" Name="Laoreet proin" Password="Duis aenean nunc augue vel">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Nam aptent natoque sed" FirstName="Suscipit ipsum" ID="36" MobilePhone="Auctor ante" Name="Himenaeos fames felis" Password="Amet dis torquent justo posuere">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Members>
+			<Model:Activity.Owner>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Imperdiet aliquam sed malesuada" FirstName="Nunc viverra eleifend magnis amet" ID="68" MobilePhone="Ante integer penatibus" Name="Lorem sodales dictumst himenaeos nam" Password="Facilisi mattis">
+					<Model:User.Activities>
+						<Model:Activity Description="Tincidunt adipiscing" Title="Arcu porttitor quisque vivamus" UserId="Parturient mauris"/>
+						<Model:Activity Description="Massa metus" Title="Magna aliquam" UserId="Mollis dis"/>
+						<Model:Activity Description="Hac eget" Title="Est morbi vestibulum diam" UserId="Tristique leo ultricies elit enim"/>
+						<Model:Activity Description="Adipiscing neque" Title="Montes nostra vestibulum" UserId="Aliquet erat blandit parturient mus"/>
+						<Model:Activity Description="Vestibulum eros venenatis" Title="Faucibus habitant nec vestibulum" UserId="Netus non nibh adipiscing ornare"/>
+					</Model:User.Activities>
+					<Model:User.OwnedActivities>
+						<Model:Activity Description="Commodo vulputate nulla nisi" Title="Platea per" UserId="Porta parturient nisl sed purus"/>
+						<Model:Activity Description="Conubia vestibulum" Title="Risus velit" UserId="Primis vestibulum sem"/>
+						<Model:Activity Description="Rutrum vel sapien interdum curabitur" Title="Sit inceptos" UserId="Vitae nam adipiscing"/>
+						<Model:Activity Description="Est parturient vestibulum" Title="Sed phasellus consequat dis nunc" UserId="Semper cubilia class vestibulum odio"/>
+						<Model:Activity Description="Curae convallis egestas sociis orci" Title="Adipiscing parturient dapibus" UserId="Taciti tellus hac"/>
+					</Model:User.OwnedActivities>
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Owner>
+			<Model:Activity.Selected>
+				<Command:RelayCommand/>
+			</Model:Activity.Selected>
+		</Model:Activity>
+		<Model:Activity Description="Dictum lectus libero" Title="Ultrices congue potenti cursus" UserId="Parturient pretium arcu diam">
+			<Model:Activity.ID>
+				<System:Guid/>
+			</Model:Activity.ID>
+			<Model:Activity.Members>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Iaculis tortor turpis porta lobortis" FirstName="Parturient dignissim nulla" ID="49" MobilePhone="Vestibulum est vestibulum ante facilisis" Name="Netus amet gravida" Password="Varius lacinia dis elementum nascetur">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Hac risus leo fringilla placerat" FirstName="Mauris fermentum pharetra" ID="39" MobilePhone="Mus nullam posuere parturient habitasse" Name="Aenean purus" Password="Velit laoreet vitae natoque adipiscing">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Parturient pulvinar" FirstName="Vestibulum adipiscing" ID="34" MobilePhone="Sociosqu suscipit vestibulum vestibulum nec" Name="Aptent arcu hendrerit class vestibulum" Password="Curae sagittis senectus">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Diam pretium adipiscing ultrices cursus" FirstName="Auctor potenti torquent congue himenaeos" ID="42" MobilePhone="Libero eget ligula" Name="Non per donec etiam" Password="Dictum parturient lectus">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Vestibulum rhoncus" FirstName="Enim litora fusce luctus" ID="61" MobilePhone="Lorem magnis maecenas" Name="Elit vestibulum imperdiet" Password="Malesuada vehicula volutpat adipiscing parturient">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Members>
+			<Model:Activity.Owner>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Vestibulum vestibulum" FirstName="Lacus volutpat eget rhoncus elit" ID="84" MobilePhone="Litora imperdiet" Name="Ligula vehicula" Password="Sodales enim maecenas">
+					<Model:User.Activities>
+						<Model:Activity Description="Praesent aliquam erat integer" Title="Luctus viverra est" UserId="Malesuada adipiscing hac parturient"/>
+						<Model:Activity Description="Vestibulum magna" Title="Accumsan lorem" UserId="Vestibulum magnis"/>
+						<Model:Activity Description="Tincidunt quisque adipiscing nisi mus" Title="Eros nibh penatibus leo porttitor" UserId="Bibendum vivamus"/>
+						<Model:Activity Description="Dictumst non parturient mauris" Title="Aliquam mattis tristique nec" UserId="Nisl vestibulum"/>
+						<Model:Activity Description="Facilisi faucibus massa habitant mollis" Title="Per eleifend" UserId="Nunc odio"/>
+					</Model:User.Activities>
+					<Model:User.OwnedActivities>
+						<Model:Activity Description="Sem blandit inceptos ultricies" Title="Aliquet sed orci" UserId="Commodo venenatis"/>
+						<Model:Activity Description="Pede ornare conubia" Title="Montes vulputate nostra sit vestibulum" UserId="Quam cubilia interdum adipiscing platea"/>
+						<Model:Activity Description="Urna cras vel rutrum" Title="Primis quis" UserId="Duis sapien curabitur semper parturient"/>
+						<Model:Activity Description="Metus tellus phasellus" Title="Vestibulum nam dapibus sociis taciti" UserId="Egestas nunc vestibulum morbi"/>
+						<Model:Activity Description="Tempus neque convallis euismod" Title="Tempor sed consequat" UserId="Adipiscing feugiat"/>
+					</Model:User.OwnedActivities>
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Owner>
+			<Model:Activity.Selected>
+				<Command:RelayCommand/>
+			</Model:Activity.Selected>
+		</Model:Activity>
+		<Model:Activity Description="Sodales erat" Title="Mattis sed" UserId="Penatibus sem porttitor mauris vestibulum">
+			<Model:Activity.ID>
+				<System:Guid/>
+			</Model:Activity.ID>
+			<Model:Activity.Members>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Nunc amet vestibulum" FirstName="Sagittis vel senectus tempus" ID="74" MobilePhone="Feugiat ante adipiscing hendrerit nulla" Name="Pulvinar habitasse" Password="Euismod tortor">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Diam nam turpis" FirstName="Vestibulum purus risus arcu" ID="27" MobilePhone="Eget dis est gravida elit" Name="Parturient porta" Password="Sed himenaeos velit sociosqu">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Aenean erat adipiscing vitae" FirstName="Varius lacinia vestibulum" ID="98" MobilePhone="Aptent parturient" Name="Iaculis enim" Password="Mauris hac nullam">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Torquent laoreet" FirstName="Auctor congue cursus" ID="16" MobilePhone="Volutpat maecenas praesent imperdiet dictum" Name="Leo class suscipit" Password="Ultrices vehicula">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Ligula donec litora" FirstName="Libero bibendum adipiscing" ID="96" MobilePhone="Malesuada mus nec dictumst" Name="Accumsan lectus curae vestibulum vestibulum" Password="Eros luctus parturient">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Members>
+			<Model:Activity.Owner>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Viverra tristique nibh" FirstName="Eros praesent morbi nulla accumsan" ID="81" MobilePhone="Sed bibendum" Name="Sit tincidunt" Password="Proin vel vestibulum nam">
+					<Model:User.Activities>
+						<Model:Activity Description="Aliquam venenatis adipiscing" Title="Ultricies dis" UserId="Dictumst nisi est"/>
+						<Model:Activity Description="Eleifend nisl" Title="Augue parturient dolor" UserId="Mollis vulputate"/>
+						<Model:Activity Description="Montes fames" Title="Hac curabitur" UserId="Integer facilisi phasellus quisque felis"/>
+						<Model:Activity Description="Nunc odio" Title="Leo nostra mus" UserId="Vivamus aliquam vestibulum ornare"/>
+						<Model:Activity Description="Non ipsum" Title="Aliquet vestibulum nec orci blandit" UserId="Faucibus pede"/>
+					</Model:User.Activities>
+					<Model:User.OwnedActivities>
+						<Model:Activity Description="Primis rutrum lorem" Title="Platea justo per sed lacus" UserId="Magna commodo consequat"/>
+						<Model:Activity Description="Convallis sociis" Title="Sapien adipiscing parturient semper quam" UserId="Conubia vestibulum dignissim"/>
+						<Model:Activity Description="Inceptos taciti interdum elementum" Title="Habitant massa metus quis" UserId="Urna morbi"/>
+						<Model:Activity Description="Neque parturient sem lobortis" Title="Vestibulum adipiscing cubilia tellus cras" UserId="Nascetur vestibulum netus sit"/>
+						<Model:Activity Description="Parturient facilisis egestas placerat" Title="Duis vestibulum dapibus adipiscing pharetra" UserId="Fermentum tempor fringilla vestibulum"/>
+					</Model:User.OwnedActivities>
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Owner>
+			<Model:Activity.Selected>
+				<Command:RelayCommand/>
+			</Model:Activity.Selected>
+		</Model:Activity>
+		<Model:Activity Description="Mattis eleifend facilisi nisi natoque" Title="Penatibus nibh magnis" UserId="Vestibulum mauris porttitor">
+			<Model:Activity.ID>
+				<System:Guid/>
+			</Model:Activity.ID>
+			<Model:Activity.Members>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Suscipit elit" FirstName="Eget sociosqu tempus fermentum" ID="99" MobilePhone="Fringilla tortor enim vehicula" Name="Tempor facilisis" Password="Aliquam adipiscing torquent ultrices">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Est hac" FirstName="Erat dis velit eros" ID="54" MobilePhone="Hendrerit curae praesent turpis varius" Name="Volutpat maecenas" Password="Vitae nibh class habitasse">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Etiam accumsan bibendum fusce lorem" FirstName="Nisl parturient vestibulum nunc" ID="50" MobilePhone="Himenaeos blandit mauris" Name="Nisi donec" Password="Morbi aliquet aenean leo">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Odio augue orci" FirstName="Commodo proin malesuada" ID="32" MobilePhone="Fames felis ipsum" Name="Dictumst nulla imperdiet" Password="Conubia penatibus nullam dolor">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Aptent dapibus vestibulum ultricies" FirstName="Cubilia tristique" ID="20" MobilePhone="Quam nec" Name="Eleifend pede mus porttitor tincidunt" Password="Venenatis facilisi vulputate">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Members>
+			<Model:Activity.Owner>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Adipiscing faucibus montes" FirstName="Fusce mollis posuere" ID="27" MobilePhone="Ornare lorem morbi nisl" Name="Vestibulum etiam tincidunt" Password="Nostra potenti">
+					<Model:User.Activities>
+						<Model:Activity Description="Proin habitant vestibulum" Title="Parturient nulla" UserId="Pretium inceptos vestibulum"/>
+						<Model:Activity Description="Adipiscing nunc ultricies lobortis venenatis" Title="Tristique interdum" UserId="Platea primis"/>
+						<Model:Activity Description="Rutrum parturient" Title="Odio orci" UserId="Nascetur vulputate"/>
+						<Model:Activity Description="Rhoncus fames" Title="Vestibulum augue vestibulum dolor" UserId="Felis curabitur pede quam sapien"/>
+						<Model:Activity Description="Quis ipsum" Title="Pharetra adipiscing" UserId="Semper urna"/>
+					</Model:User.Activities>
+					<Model:User.OwnedActivities>
+						<Model:Activity Description="Lorem non per viverra" Title="Justo lacus parturient placerat sodales" UserId="Vestibulum sed cras"/>
+						<Model:Activity Description="Sociis taciti metus sem" Title="Duis phasellus magna massa" UserId="Morbi sit pulvinar aliquam"/>
+						<Model:Activity Description="Nam vestibulum nunc amet" Title="Consequat convallis vel tellus" UserId="Sagittis sed"/>
+						<Model:Activity Description="Senectus arcu neque" Title="Ante integer" UserId="Adipiscing dignissim netus parturient"/>
+						<Model:Activity Description="Quisque vestibulum purus" Title="Nulla porta" UserId="Diam risus vivamus elementum vestibulum"/>
+					</Model:User.OwnedActivities>
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Owner>
+			<Model:Activity.Selected>
+				<Command:RelayCommand/>
+			</Model:Activity.Selected>
+		</Model:Activity>
+		<Model:Activity Description="Per faucibus habitant parturient" Title="Quis adipiscing non" UserId="Auctor curabitur egestas">
+			<Model:Activity.ID>
+				<System:Guid/>
+			</Model:Activity.ID>
+			<Model:Activity.Members>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Quisque lorem" FirstName="Fusce sapien sed" ID="40" MobilePhone="Morbi volutpat adipiscing maecenas" Name="Etiam quis" Password="Urna semper vestibulum vivamus vestibulum">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Cras blandit tristique" FirstName="Praesent sem vestibulum tincidunt aliquet" ID="44" MobilePhone="Commodo taciti conubia venenatis vestibulum" Name="Aliquam parturient" Password="Accumsan duis sociis bibendum ultricies">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Sit tellus" FirstName="Amet ante" ID="63" MobilePhone="Augue vel tempus egestas euismod" Name="Cubilia nulla nunc dapibus" Password="Tempor proin arcu">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Eget curabitur elit eleifend" FirstName="Diam vulputate" ID="58" MobilePhone="Faucibus vestibulum sed erat" Name="Adipiscing nam tortor turpis dictumst" Password="Facilisi enim parturient varius">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Interdum fames feugiat" FirstName="Phasellus inceptos est" ID="62" MobilePhone="Eros felis" Name="Dolor habitant dis vestibulum" Password="Aenean hac adipiscing">
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Members>
+			<Model:Activity.Owner>
+				<Model:User BirthDate="08/06/2016 09:06:29" EMailAddress="Sem vestibulum lacus convallis" FirstName="Consequat justo sed" ID="92" MobilePhone="Congue lorem parturient cursus vestibulum" Name="Vestibulum phasellus" Password="Adipiscing dignissim elementum inceptos urna">
+					<Model:User.Activities>
+						<Model:Activity Description="Dictum lectus facilisis" Title="Magna interdum" UserId="Cras libero duis massa"/>
+						<Model:Activity Description="Nunc feugiat vel" Title="Lobortis vestibulum metus euismod sit" UserId="Gravida morbi adipiscing"/>
+						<Model:Activity Description="Ligula nam" Title="Fermentum fringilla" UserId="Neque netus litora amet"/>
+						<Model:Activity Description="Luctus magnis vestibulum laoreet porta" Title="Parturient iaculis nulla nascetur lacinia" UserId="Sed dis pharetra habitasse"/>
+						<Model:Activity Description="Himenaeos mattis posuere mauris sagittis" Title="Placerat natoque hendrerit pulvinar ante" UserId="Senectus potenti arcu pretium diam"/>
+					</Model:User.Activities>
+					<Model:User.OwnedActivities>
+						<Model:Activity Description="Elit risus sociosqu montes" Title="Purus eget mollis imperdiet" UserId="Velit suscipit"/>
+						<Model:Activity Description="Vitae est malesuada sodales" Title="Enim rhoncus" UserId="Erat eros vestibulum nibh penatibus"/>
+						<Model:Activity Description="Nisi ultrices" Title="Class torquent" UserId="Porttitor curae nisl viverra hac"/>
+						<Model:Activity Description="Odio orci aliquam donec" Title="Leo nunc adipiscing vehicula" UserId="Nostra ornare"/>
+						<Model:Activity Description="Parturient nec quam" Title="Mus pede platea" UserId="Non primis integer per rutrum"/>
+					</Model:User.OwnedActivities>
+					<Model:User.Selected>
+						<Command:RelayCommand/>
+					</Model:User.Selected>
+				</Model:User>
+			</Model:Activity.Owner>
+			<Model:Activity.Selected>
+				<Command:RelayCommand/>
+			</Model:Activity.Selected>
+		</Model:Activity>
+	</ViewModel:MyActivitiesViewModel.AllActivities>
+</ViewModel:MyActivitiesViewModel>
