@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using BeeBack.Web.Interfaces;
 using Microsoft.AspNet.Identity;
+using BeeBack.Web.Services;
 
 namespace BeeBack.Web.Controllers.Api
 {
@@ -14,8 +15,14 @@ namespace BeeBack.Web.Controllers.Api
     {
         private readonly IActivityService _activityService;
 
+        public ActivitiesController()
+        {
+            _activityService = new ActivityService();
+        }
+
         public ActivitiesController(IActivityService activityService)
         {
+            //remove this contructor, added so I can wwork on mobile part
             _activityService = activityService;
         }
 
