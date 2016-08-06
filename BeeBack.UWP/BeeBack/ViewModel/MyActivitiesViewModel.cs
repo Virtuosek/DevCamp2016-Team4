@@ -3,6 +3,7 @@ using BeeBack.Model;
 using BeeBack.Pages;
 using BeeBack.Services.Interfaces;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Practices.ServiceLocation;
 using System;
@@ -11,38 +12,56 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace BeeBack.ViewModel
 {
     public class MyActivitiesViewModel : ViewModelBase
     {
-        public ObservableCollection<Activity> AllActivities { get; set; }
-        private readonly IDataService _dataService;
+        public ICommand SelectActivityCommand { get; set; }
+        public Visibility AllActivitiesVisibility => AllActivities?.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+        public Visibility MyActivitiesVisibility => MyActivities?.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+        public Visibility MySubscriptionsVisibility => MySubscriptions?.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
 
-        public MyActivitiesViewModel(IDataService dataService)
+        public ObservableCollection<Activity> AllActivities { get; set; }
+        public ObservableCollection<Activity> MyActivities { get; set; }
+        public ObservableCollection<Activity> MySubscriptions { get; set; }
+
+        private readonly IDataService _dataService;
+        private readonly ICustomNavigationService _customNavigationService;
+
+
+        public MyActivitiesViewModel(IDataService dataService, ICustomNavigationService customNavigationService)
         {
             _dataService = dataService;
+            _customNavigationService = customNavigationService;
 
-            Messenger.Default.Register<ActivitySelectedMessage>(this, _activityselectedmessage);
+            SelectActivityCommand = new RelayCommand<SelectionChangedEventArgs>(OnSelectActivity);
 
             LoadDatas();
+        }
+
+        private void OnSelectActivity(SelectionChangedEventArgs obj)
+        {
+            if (obj.AddedItems.Count > 0)
+            {
+                ServiceLocator.Current.GetInstance<ActivityViewModel>().Activity = obj.AddedItems[0] as Activity;
+                _customNavigationService.Navigate(typeof(ActivityPage));
+            }
         }
 
         private async void LoadDatas()
         {
             AllActivities = new ObservableCollection<Activity>(await _dataService.GetAllPublicActivities());
+            MySubscriptions = new ObservableCollection<Activity>(await _dataService.GetSubscribedActivities());
+            MyActivities = new ObservableCollection<Activity>(await _dataService.GetUserActivities());
+
             RaisePropertyChanged(() => AllActivities);
+            RaisePropertyChanged(() => AllActivitiesVisibility);
+            RaisePropertyChanged(() => MySubscriptions);
+            RaisePropertyChanged(() => MyActivities);
         }
-
-        private void _activityselectedmessage(ActivitySelectedMessage msg)
-        {
-            // mettre référence à activité sélectionnée
-            ServiceLocator.Current.GetInstance<ActivityViewModel>().Activity = msg.SelectedActivity;
-
-            NavigationMessage msgnav = new NavigationMessage();
-            msgnav.DestinationPageType = typeof(ActivityPage);
-            Messenger.Default.Send<NavigationMessage>(msgnav);
-        }
-
     }
 }

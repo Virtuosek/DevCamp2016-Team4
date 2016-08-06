@@ -97,6 +97,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\IntPresenterConverter.cs" />
+    <Compile Include="Converters\InverseVisibilityConverter.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Pages\ActivityEditPage.xaml.cs">
       <DependentUpon>ActivityEditPage.xaml</DependentUpon>

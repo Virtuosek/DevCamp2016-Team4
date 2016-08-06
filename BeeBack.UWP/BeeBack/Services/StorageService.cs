@@ -102,16 +102,12 @@ namespace BeeBack.Services
             StorageFile file = null;
 
             if (folder == null)
-            {
                 return null;
-            }
 
             if (string.IsNullOrWhiteSpace(fileName))
-            {
                 return null;
-            }
 
-            file = await folder.CreateFileAsync(fileName);
+            file = await folder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
             return file;
         }
     }
