@@ -34,6 +34,7 @@ namespace BeeBack.ViewModel
             SimpleIoc.Default.Register<ActivityViewModel>();
             SimpleIoc.Default.Register<SplashScreenViewModel>();
             SimpleIoc.Default.Register<UserViewModel>();
+            SimpleIoc.Default.Register<ActivityEditViewModel>();
         }
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
@@ -42,5 +43,6 @@ namespace BeeBack.ViewModel
         public ActivityViewModel ActivityVM => ServiceLocator.Current.GetInstance<ActivityViewModel>();
         public SplashScreenViewModel SplashScreenVM => ServiceLocator.Current.GetInstance<SplashScreenViewModel>();
         public UserViewModel UserVM => ServiceLocator.Current.GetInstance<UserViewModel>();
+        public ActivityEditViewModel ActivityEditVM => ServiceLocator.Current.GetInstance<ActivityEditViewModel>();
     }
 }
