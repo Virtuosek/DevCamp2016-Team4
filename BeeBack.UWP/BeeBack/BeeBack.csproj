@@ -160,6 +160,7 @@
     <None Include="Win10_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\football.png" />
     <Content Include="Assets\intro5.jpg" />
     <Content Include="Assets\Logo\logo.png" />
     <Content Include="Properties\Default.rd.xml" />

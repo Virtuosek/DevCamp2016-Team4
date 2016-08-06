@@ -15,18 +15,33 @@ namespace BeeBack.Model
         public Guid ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string PictureUrl { get; set; }
+        private string _pictureurl;
+
+        public string PictureUrl
+        {
+            get
+            {
+                string rst = (_pictureurl == null || string.IsNullOrEmpty(_pictureurl)) ? "ms-appx:///Assets/football.png" : _pictureurl;
+                return rst;
+            }
+            set { _pictureurl = value; }
+        }
+
+
         public string UserId { get; set; }
         private User _owner;
 
         public User Owner
         {
             get { return _owner; }
-            set { _owner = value;
-                RaisePropertyChanged("Owner"); }
+            set
+            {
+                _owner = value;
+                RaisePropertyChanged("Owner");
+            }
         }
 
-        
+
         public List<User> Members { get; set; }
         public RelayCommand Save
         {
@@ -37,7 +52,7 @@ namespace BeeBack.Model
         }
         private void _save()
         {
-            if (this.ID==null )
+            if (this.ID == null)
             {
                 // Append
             }
