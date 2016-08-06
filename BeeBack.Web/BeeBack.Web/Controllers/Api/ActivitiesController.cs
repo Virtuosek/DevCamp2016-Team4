@@ -1,4 +1,5 @@
-﻿using BeeBack.Data.Models;
+﻿using System;
+using BeeBack.Data.Models;
 using BeeBack.Web.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -65,5 +66,14 @@ namespace BeeBack.Web.Controllers.Api
                     .ToListAsync();
             }
         }
+
+        //public async Task<bool> Trigger(Guid id)
+        //{
+        //    using (ApplicationDbContext context = new ApplicationDbContext())
+        //    {
+        //        var activity = context.UserActivity.Find(id);
+
+        //    }
+        //}
     }
 }
