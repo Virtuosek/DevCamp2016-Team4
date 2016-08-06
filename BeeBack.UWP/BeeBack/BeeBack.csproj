@@ -99,6 +99,9 @@
     <Compile Include="Converters\IntPresenterConverter.cs" />
     <Compile Include="Converters\InverseVisibilityConverter.cs" />
     <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="Messages\ActivityMapCoordinateMessage.cs" />
+    <Compile Include="Messages\SetUserModelMessage.cs" />
+    <Compile Include="Model\Location.cs" />
     <Compile Include="Pages\ActivityEditPage.xaml.cs">
       <DependentUpon>ActivityEditPage.xaml</DependentUpon>
     </Compile>
@@ -163,6 +166,7 @@
     <Content Include="Assets\football.png" />
     <Content Include="Assets\intro5.jpg" />
     <Content Include="Assets\Logo\logo.png" />
+    <Content Include="Assets\pinBee.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

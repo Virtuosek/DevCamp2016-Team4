@@ -15,6 +15,7 @@ namespace BeeBack.Model
         public Guid ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public Location Location { get; set; }
         private string _pictureurl;
 
         public string PictureUrl

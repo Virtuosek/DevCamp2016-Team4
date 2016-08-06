@@ -9,6 +9,7 @@ using GalaSoft.MvvmLight.Threading;
 using Microsoft.Practices.ServiceLocation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -21,18 +22,37 @@ namespace BeeBack.ViewModel
     {
         private IDataService _dataService;
         private Activity _activity;
-        public ActivityViewModel(IDataService dataService)
+        private readonly ICustomNavigationService _customNavigationService;
+
+        public ICommand LoadedCommand { get; set; }
+        public ICommand UserTappedCommand { get; set; }
+        public ObservableCollection<User> Subscribers { get; set; }
+        public Activity Activity
+        {
+            get { return _activity; }
+            set
+            {
+                _activity = value;
+                RaisePropertyChanged(() => Activity);
+            }
+        }
+
+        public ActivityViewModel(IDataService dataService, ICustomNavigationService customNavigationService)
         {
             _dataService = dataService;
-            _activity = new Activity();
+            _customNavigationService = customNavigationService;
+
+            LoadedCommand = new RelayCommand(OnLoaded);
+            UserTappedCommand = new RelayCommand<User>(OnUserTapped);
+
             if (IsInDesignModeStatic)
-            {
                 CreateDummyActivity();
-            }
-            else
-            {
-                Messenger.Default.Register<UserSelectedMessage>(this, _userselectedmessage);
-            }
+        }
+
+        private void OnUserTapped(User user)
+        {
+            Messenger.Default.Send(new SetUserModelMessage { User = user });
+            _customNavigationService.Navigate(typeof(UserPage));
         }
 
         private void CreateDummyActivity()
@@ -55,24 +75,19 @@ namespace BeeBack.ViewModel
             }
         }
 
-        private async void _loaded()
+        private async void OnLoaded()
         {
             await CheckMembers();
+            Messenger.Default.Send(new ActivityMapCoordinateMessage { Latitude = Activity.Location.Latitude, Longitude = Activity.Location.Longitude });
         }
-        public RelayCommand Loaded
-        {
-            get
-            {
-                return new RelayCommand(_loaded);
-            }
-        }
-        private void _userselectedmessage(UserSelectedMessage msg)
-        {
-            NavigationMessage msgnav = new NavigationMessage();
-            ServiceLocator.Current.GetInstance<UserViewModel>().User = msg.SelectedUser;
-            msgnav.DestinationPageType = typeof(UserPage);
-            Messenger.Default.Send<NavigationMessage>(msgnav);
-        }
+       
+        //private void _userselectedmessage(UserSelectedMessage msg)
+        //{
+        //    NavigationMessage msgnav = new NavigationMessage();
+        //    ServiceLocator.Current.GetInstance<UserViewModel>().User = msg.SelectedUser;
+        //    msgnav.DestinationPageType = typeof(UserPage);
+        //    Messenger.Default.Send<NavigationMessage>(msgnav);
+        //}
       
         private async Task CheckMembers()
         {
@@ -90,15 +105,7 @@ namespace BeeBack.ViewModel
                 }
             }
         }
-        public Activity Activity
-        {
-            get { return _activity; }
-            set
-            {
-                _activity = value;
-                RaisePropertyChanged(() => Activity);
-            }
-        }
+   
 
     }
 }

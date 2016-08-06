@@ -27,8 +27,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Text="{Binding Name}" FontSize="24"/>
-            <TextBlock Text="{Binding FirstName}" FontSize="24" Margin="10,0,0,0"/>
+            <TextBlock Text="{Binding Lastname}" FontSize="24"/>
+            <TextBlock Text="{Binding Firstname}" FontSize="24" Margin="10,0,0,0"/>
         </StackPanel>
         <StackPanel Grid.Row="1">
             <TextBlock FontSize="24" Text="{Binding Activities.Count, ConverterParameter=Activités, Converter={StaticResource IntPresenterConverter}, Mode=OneWay}"/>
