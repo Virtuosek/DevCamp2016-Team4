@@ -64,7 +64,7 @@
 
                 <TextBlock Text="{Binding Activity.Title}" FontSize="34" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Foreground="{StaticResource Blue}"/>
 
-                <Grid Grid.Column="1" Tapped="{Binding UserSelectedCommand}">
+                <Grid  Grid.Column="1">
                     <Border BorderBrush="#FFBFBFBF" BorderThickness="1" Background="#FFE7E7E7">
                         <StackPanel Margin="5">
                             <TextBlock Text="Créé par :"  TextAlignment="Center"/>
