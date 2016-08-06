@@ -8,6 +8,11 @@
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     x:Class="BeeBack.Pages.ActivityPage"
     mc:Ignorable="d">
+    <Interactivity:Interaction.Behaviors>
+        <Core:EventTriggerBehavior EventName="Loaded">
+            <Core:InvokeCommandAction Command="{Binding Loaded, Mode=OneWay}"/>
+        </Core:EventTriggerBehavior>
+    </Interactivity:Interaction.Behaviors>
 
     <Page.Resources>
         <ResourceDictionary>
@@ -24,7 +29,7 @@
                         </Core:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
                     <StackPanel>
-                        <TextBlock Text="{Binding Name}" Foreground="{StaticResource BBTextForegroundColor}"/>
+                        <TextBlock Text="{Binding UserName}" Foreground="{StaticResource BBTextForegroundColor}"/>
                         <TextBlock Text="{Binding FirstName}" Foreground="{StaticResource BBTextForegroundColor}"/>
                         <TextBlock Text="{Binding MobilePhone}" Foreground="{StaticResource BBTextForegroundColor}"/>
                     </StackPanel>
@@ -41,7 +46,6 @@
     <Page.DataContext>
         <Binding Mode="OneWay" Path="ActivityVM" Source="{StaticResource Locator}"/>
     </Page.DataContext>
-
     <Grid Background="Transparent" DataContext="{Binding Activity}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
