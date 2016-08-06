@@ -9,6 +9,7 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.System;
 
 namespace BeeBack.ViewModel
 {
@@ -48,7 +49,17 @@ namespace BeeBack.ViewModel
 
             DoLogin = new RelayCommand(OnLoginExecute);
         }
-
+        public RelayCommand CreateAccount
+        {
+            get
+            {
+                return new RelayCommand(_createaccount);
+            }
+        }
+        private async void _createaccount()
+        {
+            await Launcher.LaunchUriAsync(new Uri("http://beeback.azurewebsites.net/Account/Register", UriKind.Absolute));
+        }
         private async void OnLoginExecute()
         {
             try

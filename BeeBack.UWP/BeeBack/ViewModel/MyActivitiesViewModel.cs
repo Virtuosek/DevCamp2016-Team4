@@ -32,6 +32,21 @@ namespace BeeBack.ViewModel
         private readonly IDataService _dataService;
         private readonly ICustomNavigationService _customNavigationService;
 
+        public RelayCommand AddActivity
+        {
+            get
+            {
+                return new RelayCommand(_addactivity);
+            }
+        }
+
+        private void _addactivity()
+        {
+            NavigationMessage msg = new NavigationMessage();
+            msg.DestinationPageType = typeof(ActivityEditPage);
+            Messenger.Default.Send<NavigationMessage>(msg);
+        }
+
 
         public MyActivitiesViewModel(IDataService dataService, ICustomNavigationService customNavigationService)
         {

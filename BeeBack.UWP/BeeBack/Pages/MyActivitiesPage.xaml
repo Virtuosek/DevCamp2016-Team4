@@ -54,18 +54,23 @@
         <Binding Mode="OneWay" Path="MyActivitiesVM" Source="{StaticResource Locator}"/>
     </Page.DataContext>
 
-    <Pivot>
-        <PivotItem>
-            <PivotItem.Header>
-                <TextBlock Text="Toutes les activités" FontSize="24"/>
-            </PivotItem.Header>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
 
-            <PivotItem.Content>
+        <Pivot>
+            <PivotItem>
+                <PivotItem.Header>
+                    <TextBlock Text="Toutes les activités" FontSize="24"/>
+                </PivotItem.Header>
+
                 <Grid>
                     <GridView Grid.Row="1" x:Name="AllActivitiesGrid"
-			            Margin="0,8" Visibility="{Binding AllActivitiesVisibility}"
-			            ItemsSource="{Binding AllActivities}" 
-                        ItemTemplate="{StaticResource ActivityItemTemplate}" >
+						Margin="0,8" Visibility="{Binding AllActivitiesVisibility}"
+						ItemsSource="{Binding AllActivities}" 
+						ItemTemplate="{StaticResource ActivityItemTemplate}" >
 
                         <Interactivity:Interaction.Behaviors>
                             <Core:EventTriggerBehavior EventName="SelectionChanged">
@@ -74,22 +79,20 @@
                         </Interactivity:Interaction.Behaviors>
 
                     </GridView>
-                    <TextBlock Visibility="{Binding AllActivitiesVisibility, Converter={StaticResource InverseVisibilityConverter}}" Text="Il n'y a pas d'acivités" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"></TextBlock>
+                    <TextBlock Visibility="{Binding AllActivitiesVisibility, Converter={StaticResource InverseVisibilityConverter}}" Text="Il n'y a pas d'acivités" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"/>
                 </Grid>
-            </PivotItem.Content>
-        </PivotItem>
+            </PivotItem>
 
-        <PivotItem>
-            <PivotItem.Header>
-                <TextBlock Text="Mes abonnements" FontSize="24"/>
-            </PivotItem.Header>
+            <PivotItem>
+                <PivotItem.Header>
+                    <TextBlock Text="Mes abonnements" FontSize="24"/>
+                </PivotItem.Header>
 
-            <PivotItem.Content>
                 <Grid>
                     <GridView Grid.Row="1" Visibility="{Binding MySubscriptionsVisibility}"
-			            Margin="0,8" 
-			            ItemsSource="{Binding SubscriptionsActivities}" 
-                        ItemTemplate="{StaticResource ActivityItemTemplate}" >
+						Margin="0,8" 
+						ItemsSource="{Binding SubscriptionsActivities}" 
+						ItemTemplate="{StaticResource ActivityItemTemplate}" >
 
                         <Interactivity:Interaction.Behaviors>
                             <Core:EventTriggerBehavior EventName="SelectionChanged">
@@ -98,21 +101,19 @@
                         </Interactivity:Interaction.Behaviors>
 
                     </GridView>
-                    <TextBlock Visibility="{Binding MySubscriptionsVisibility, Converter={StaticResource InverseVisibilityConverter}}" Text="Il n'y a pas d'acivités" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"></TextBlock>
+                    <TextBlock Visibility="{Binding MySubscriptionsVisibility, Converter={StaticResource InverseVisibilityConverter}}" Text="Il n'y a pas d'acivités" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"/>
                 </Grid>
-            </PivotItem.Content>
-        </PivotItem>
+            </PivotItem>
 
-        <PivotItem>
-            <PivotItem.Header>
-                <TextBlock Text="Mes activités" FontSize="24"/>
-            </PivotItem.Header>
+            <PivotItem>
+                <PivotItem.Header>
+                    <TextBlock Text="Mes activités" FontSize="24"/>
+                </PivotItem.Header>
 
-            <PivotItem.Content>
                 <GridView Grid.Row="1" 
-			            Margin="0,8" 
-			            ItemsSource="{Binding MyActivities}" 
-                        ItemTemplate="{StaticResource ActivityItemTemplate}" >
+					Margin="0,8" 
+					ItemsSource="{Binding MyActivities}" 
+					ItemTemplate="{StaticResource ActivityItemTemplate}" >
 
                     <Interactivity:Interaction.Behaviors>
                         <Core:EventTriggerBehavior EventName="SelectionChanged">
@@ -121,7 +122,11 @@
                     </Interactivity:Interaction.Behaviors>
 
                 </GridView>
-            </PivotItem.Content>
-        </PivotItem>
-    </Pivot>
+            </PivotItem>
+        </Pivot>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Content="+"
+                    Style="{StaticResource BBButtonStyle}" Command="{Binding AddActivity, Mode=OneWay}"/>
+        </StackPanel>
+    </Grid>
 </Page>

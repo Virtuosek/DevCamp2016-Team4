@@ -41,7 +41,13 @@
                     <Button Content="Login" 
                             Command="{Binding DoLogin, Mode=OneWay}" 
                             HorizontalAlignment="Center" Background="#FF4A90BE" Foreground="White" Width="130" Margin="0,20,0,0" />
-                    <HyperlinkButton Content="Créer un compte" Foreground="#FF4A90BE" HorizontalAlignment="Center" />
+                    <HyperlinkButton Content="Créer un compte" Foreground="#FF4A90BE" HorizontalAlignment="Center" >
+                        <i:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="Click">
+                                <core:InvokeCommandAction Command="{Binding CreateAccount, Mode=OneWay}"/>
+                            </core:EventTriggerBehavior>
+                        </i:Interaction.Behaviors>
+                    </HyperlinkButton>
                 </StackPanel>
             </Border>
 
