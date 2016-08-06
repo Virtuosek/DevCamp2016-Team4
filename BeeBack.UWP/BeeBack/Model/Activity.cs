@@ -28,7 +28,7 @@ namespace BeeBack.Model
         }
         private void _save()
         {
-            if (this.ID==null || this.ID==0)
+            if (this.ID==null )
             {
                 // Append
             }
