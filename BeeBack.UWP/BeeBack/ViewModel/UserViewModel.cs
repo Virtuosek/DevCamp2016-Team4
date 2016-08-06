@@ -1,5 +1,7 @@
-﻿using BeeBack.Model;
+﻿using BeeBack.Messages;
+using BeeBack.Model;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,7 @@ namespace BeeBack.ViewModel
 {
     public class UserViewModel : ViewModelBase
     {
+        private User _user;
         public UserViewModel()
         {
             _user = new User();
@@ -19,7 +22,7 @@ namespace BeeBack.ViewModel
             _user.PictureUrl = "http://www.cassio.be/images/steffpetit.jpg";
             //_user.MobilePhone = "+32475123456";
             Activity a;
-            for (int i = 0; i<10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 a = new Activity();
                 a.Title = "jfkldsjfmlkjdsfdsqfjsl lkj mls fs lkj ldskj fmlq";
@@ -27,14 +30,28 @@ namespace BeeBack.ViewModel
                 _user.Activities.Add(a);
             }
 
+            Messenger.Default.Register<SetUserModelMessage>(this, OnSetUserMessageReceived);
+
         }
-        private User _user;
+
+        private void OnSetUserMessageReceived(SetUserModelMessage message)
+        {
+            User = message.User;
+        }
+
 
         public User User
         {
             get { return _user; }
-            set { _user = value; RaisePropertyChanged("User"); }
+            set
+            {
+                _user = value;
+                RaisePropertyChanged("User");
+            }
         }
+
+
+
 
     }
 }

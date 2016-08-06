@@ -7,13 +7,15 @@
     xmlns:Converters="using:LeSoir.Converters"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     x:Class="BeeBack.Pages.ActivityPage"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps" 
     mc:Ignorable="d">
 
     <Interactivity:Interaction.Behaviors>
         <Core:EventTriggerBehavior EventName="Loaded">
-            <Core:InvokeCommandAction Command="{Binding Loaded, Mode=OneWay}"/>
+            <Core:InvokeCommandAction Command="{Binding LoadedCommand, Mode=OneWay}"/>
         </Core:EventTriggerBehavior>
     </Interactivity:Interaction.Behaviors>
+    
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -55,17 +57,29 @@
     </Page.DataContext>
 
     <ScrollViewer>
-        <StackPanel>
-            <Grid Padding="12">
+        <StackPanel Orientation="Vertical">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="{Binding Activity.Title}" FontSize="34" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Foreground="{StaticResource Blue}"/>
+                <Maps:MapControl x:Name="MapControl"  MapServiceToken="zT422KzyGYsSDVRMuDhZ~zx-JAtTJT9IUq_yGPOFiqQ~AgF-DUoM9sECtx2ey5f6oebnvYzQieMNtjLyTbp0LrbXmOxVZ3Vj9W1U317Ef5gC"
+                    ZoomInteractionMode="Disabled" 
+                    LandmarksVisible="True" Grid.ColumnSpan="2"
+                    IsRightTapEnabled="true" />
+                
+                <TextBlock Margin="12 12 0 12" Text="{Binding Activity.Title}" FontSize="34"  TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Foreground="{StaticResource Blue}"/>
 
-                <Grid  Grid.Column="1">
-                    <Border BorderBrush="#FFBFBFBF" BorderThickness="1" Background="#FFE7E7E7">
+                <Grid  Grid.Column="1" Margin="12">
+                    
+                    <Interactivity:Interaction.Behaviors>
+                        <Core:EventTriggerBehavior EventName="Tapped">
+                            <Core:InvokeCommandAction Command="{Binding UserTappedCommand}" CommandParameter="{Binding Activity.Owner}"/>
+                        </Core:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
+                    
+                    <Border BorderBrush="#FFBFBFBF" BorderThickness="1" Background="#FFCFCFCF">
                         <StackPanel Margin="5">
                             <TextBlock Text="Créé par :"  TextAlignment="Center"/>
 
@@ -86,8 +100,11 @@
 
             </Grid>
 
-            <TextBlock Text="{Binding Activity.Description}"/>
+            <TextBlock Text="{Binding Activity.Description}" Margin="12,0"/>
 
+            <ListView ItemsSource="{Binding Subscribers}">
+
+            </ListView>
 
         </StackPanel>
     </ScrollViewer>
