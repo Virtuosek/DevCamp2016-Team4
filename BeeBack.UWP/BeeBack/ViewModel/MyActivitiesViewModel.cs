@@ -76,7 +76,9 @@ namespace BeeBack.ViewModel
             RaisePropertyChanged(() => AllActivities);
             RaisePropertyChanged(() => AllActivitiesVisibility);
             RaisePropertyChanged(() => MySubscriptions);
+            RaisePropertyChanged(() => MySubscriptionsVisibility);
             RaisePropertyChanged(() => MyActivities);
+            RaisePropertyChanged(() => MyActivitiesVisibility);
         }
     }
 }

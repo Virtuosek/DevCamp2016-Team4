@@ -101,7 +101,7 @@
                         </Interactivity:Interaction.Behaviors>
 
                     </GridView>
-                    <TextBlock Visibility="{Binding MySubscriptionsVisibility, Converter={StaticResource InverseVisibilityConverter}}" Text="Il n'y a pas d'acivités" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"/>
+                    <TextBlock Visibility="{Binding MySubscriptionsVisibility, Converter={StaticResource InverseVisibilityConverter}}" Text="Vous n'avez pas d'abonnements" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"/>
                 </Grid>
             </PivotItem>
 
@@ -110,18 +110,22 @@
                     <TextBlock Text="Mes activités" FontSize="24"/>
                 </PivotItem.Header>
 
-                <GridView Grid.Row="1" 
-					Margin="0,8" 
+                <Grid>
+                    <GridView Grid.Row="1" 
+					Margin="0,8" Visibility="{Binding MyActivitiesVisibility}"
 					ItemsSource="{Binding MyActivities}" 
 					ItemTemplate="{StaticResource ActivityItemTemplate}" >
 
-                    <Interactivity:Interaction.Behaviors>
-                        <Core:EventTriggerBehavior EventName="SelectionChanged">
-                            <Core:InvokeCommandAction Command="{Binding SelectActivityCommand}"/>
-                        </Core:EventTriggerBehavior>
-                    </Interactivity:Interaction.Behaviors>
+                        <Interactivity:Interaction.Behaviors>
+                            <Core:EventTriggerBehavior EventName="SelectionChanged">
+                                <Core:InvokeCommandAction Command="{Binding SelectActivityCommand}"/>
+                            </Core:EventTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
 
-                </GridView>
+                    </GridView>
+
+                    <TextBlock Visibility="{Binding MyActivitiesVisibility, Converter={StaticResource InverseVisibilityConverter}}" Text="Vous n'avez pas créé d'activités" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"/>
+                </Grid>
             </PivotItem>
         </Pivot>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">

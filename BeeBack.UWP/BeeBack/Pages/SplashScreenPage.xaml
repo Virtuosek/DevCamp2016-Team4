@@ -29,7 +29,7 @@
                           IsEnabled="True" 
                           Width="50"  Foreground="White"
                           Height="50"/>
-                <TextBlock Text="Connection in progress"
+                <TextBlock Text="Connexion en cours ..."
                        HorizontalAlignment="Center"
                        FontSize="20"
                        Margin="30" Foreground="White" />
