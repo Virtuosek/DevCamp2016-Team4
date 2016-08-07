@@ -5,7 +5,7 @@
 <div class="activity" data-activityId="@Model.Id">
     <h3>
         Détail de l'activité
-        <a class="btn btn-embossed btn-info view subscribe subscribe-add pull-right" data-activityId="@Model.Id">
+        <a class="btn btn-embossed btn-info view subscribe @Html.Raw(Model.IsSubscribed ? "subscribe-remove": "subscribe-add") pull-right" data-activityId="@Model.Id">
             <i class="fa fa-heart-o">&nbsp;S'abonner</i>
             <i class="fa fa-heart">&nbsp;Se désabonner</i>
         </a>
@@ -41,26 +41,26 @@
     <div class="row">
         <div class="col-md-6">
             <div class="row">
-                <h3>Créateur</h3><br />
+                <h3>Créateur</h3><br/>
                 <div class="user">
                     <div class="col-md-3">
-                        <img class="img img-circle img-responsive" src="@Model.User.PictureUrl" />
+                        <img class="img img-circle img-responsive" src="@Model.User.PictureUrl"/>
                     </div>
                     <div class="col-md-9">
-                        <p>@Model.User.Firstname<br />@Model.User.Lastname</p>
+                        <p>@Model.User.Firstname<br/>@Model.User.Lastname</p>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <h3>Driver</h3><br />
+                <h3>Driver</h3><br/>
                 @if (Model.Driver != null)
                 {
                     <div class="user">
                         <div class="col-md-3">
-                            <img class="img img-circle img-responsive" src="@Model.User.PictureUrl" />
+                            <img class="img img-circle img-responsive" src="@Model.Driver.PictureUrl"/>
                         </div>
                         <div class="col-md-9">
-                            <p>@Model.User.Firstname<br />@Model.User.Lastname</p>
+                            <p>@Model.Driver.Firstname<br/>@Model.Driver.Lastname</p>
                         </div>
                     </div>
                 }
@@ -69,30 +69,52 @@
                     <strong>Cette activité n'a pas encore trouvé de pilote.</strong>
                 }
             </div>
+            <div class="row">
+                <div>
+                    <br />
+                    <p>
+                        <a class="btn btn-xs btn-embossed btn-primary view" role="button" href="@Url.Action("Index")">
+                            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Retourner à la liste
+                        </a>
+
+                        <a class="btn btn-xs btn-embossed btn-info view" role="button" href="@Url.Action("Edit", new {id = Model.Id})">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Modifier l'activité
+                        </a>
+
+                        <a class="btn btn-xs btn-embossed btn-danger view" role="button" href="@Url.Action("Delete", new {id = Model.Id})">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Supprimer l'activité
+                        </a>
+
+                        <a class="btn btn-xs btn-embossed btn-warning view activity-trigger" role="button" href="#">
+                            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span> {Déclencher}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h3>Abonnés</h3><br />
+            @foreach (var user in Model.Subscribers)
+            {
+                <div class="row">
+                    <div class="user">
+                        <div class="col-md-3">
+                            <img class="img img-circle img-responsive" src="@user.PictureUrl"/>
+                        </div>
+                        <div class="col-md-9">
+                            <p>@user.Firstname<br/>@user.Lastname</p>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+            }
         </div>
     </div>
+
+
 </div>
 
-<div>
-    <br/>
-    <p>
-        <a class="btn btn-xs btn-embossed btn-primary view" role="button" href="@Url.Action("Index")">
-            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Retourner à la liste
-        </a>
-
-        <a class="btn btn-xs btn-embossed btn-info view" role="button" href="@Url.Action("Edit", new {id = Model.Id})">
-            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Modifier l'activité
-        </a>
-
-        <a class="btn btn-xs btn-embossed btn-danger view" role="button" href="@Url.Action("Delete", new {id = Model.Id})">
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Supprimer l'activité
-        </a>
-
-        <a class="btn btn-xs btn-embossed btn-warning view activity-trigger" role="button" href="#">
-            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span> {Déclencher}
-        </a>
-    </p>
-</div>
 
 @section scripts{
     <script type="text/javascript">

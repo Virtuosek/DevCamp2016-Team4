@@ -30,7 +30,7 @@ namespace BeeBack.Web.Services
             return Activities.Take(2).ToList();
         }
 
-        public async Task<Activity> GetActivity(Guid id)
+        public async Task<Activity> GetActivity(Guid id, bool includeUserActivities = false)
         {
             await Task.Delay(0);
 

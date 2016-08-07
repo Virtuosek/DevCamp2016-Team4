@@ -12,6 +12,7 @@ namespace BeeBack.Web.ViewModels.Activities
         string Description { get; set; }
         string UserId { get; set; }
         bool IsSubscribed { get; set; }
+        string ShortCode { get; set; }
     }
 
     public class ActivityViewModel : IActivityViewModel
@@ -52,7 +53,8 @@ namespace BeeBack.Web.ViewModels.Activities
                 Id = model.ID,
                 Title = model.Title,
                 Description = model.Description,
-                UserId = model.UserId
+                UserId = model.UserId,
+                ShortCode = model.ShortCode
             };
 
             if (model.UserActivities != null && userId != null)
