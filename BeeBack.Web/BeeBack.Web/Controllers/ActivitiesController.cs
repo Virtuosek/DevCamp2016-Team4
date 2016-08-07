@@ -27,7 +27,7 @@ namespace BeeBack.Web.Controllers
 
             var viewModel = new ActivitiesIndexViewModel
             {
-                Activities = activities.Select(model => model.ToViewModel<ActivityListItemViewModel>())
+                Activities = activities.Select(model => model.ToViewModel<ActivityListItemViewModel>(User.Identity.GetUserId()))
             };
 
             return View(viewModel);

@@ -45,16 +45,20 @@ namespace BeeBack.Web.ViewModels.Activities
 
     public static class ActivityExtension
     {
-        public static T ToViewModel<T>(this Activity model) where T : IActivityViewModel, new()
+        public static T ToViewModel<T>(this Activity model, string userId = null) where T : IActivityViewModel, new()
         {
             var viewModel = new T
             {
                 Id = model.ID,
                 Title = model.Title,
                 Description = model.Description,
-                UserId = model.UserId,
-                IsSubscribed = model.UserActivities.Any(ua => ua.UserID == model.UserId)
+                UserId = model.UserId
             };
+
+            if (model.UserActivities != null && userId != null)
+            {
+                viewModel.IsSubscribed = model.UserActivities.Any(ua => ua.UserID == userId);
+            }
 
             return viewModel;
         }

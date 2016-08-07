@@ -2,6 +2,7 @@
 using System.Web.Http;
 using BeeBack.Web.Models;
 using BeeBack.Web.Models.Twilio;
+using BeeBack.Web.Services;
 
 namespace BeeBack.Web.Controllers.Api
 {
@@ -25,6 +26,11 @@ namespace BeeBack.Web.Controllers.Api
                         if (user != null)
                         {
                             activity.Driver = user;
+                            context.SaveChanges();
+
+                            var smsService = new SmsActivityNotificationService();
+                            smsService.SendDriverConfirmation(activity);
+
                             return true;
                         }
                     }
