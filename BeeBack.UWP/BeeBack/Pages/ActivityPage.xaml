@@ -6,9 +6,72 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Converters="using:LeSoir.Converters"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
-    x:Class="BeeBack.Pages.ActivityPage"
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps" 
+    xmlns:Media="using:Microsoft.Xaml.Interactions.Media" x:Name="page"
+    x:Class="BeeBack.Pages.ActivityPage" 
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Dictionary1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="Heart" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+                <Setter Property="Text" Value="&#xE00B;"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="Foreground" Value="Red"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Margin" Value="0,-70,0,0"/>
+            </Style>
+            <Storyboard x:Name="HeartFalls">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="-150"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimation Duration="0:0:2" To="800" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock" d:IsOptimized="True"/>
+                <DoubleAnimation Duration="0:0:2" To="730" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock1" d:IsOptimized="True"/>
+                <DoubleAnimation Duration="0:0:2" To="760" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock2" d:IsOptimized="True"/>
+                <DoubleAnimation Duration="0:0:2" To="800" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock3" d:IsOptimized="True"/>
+                <DoubleAnimation Duration="0:0:2" To="740" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock4" d:IsOptimized="True"/>
+                <DoubleAnimation Duration="0:0:2" To="750" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock5" d:IsOptimized="True"/>
+                <DoubleAnimation Duration="0:0:2" To="770" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock6" d:IsOptimized="True"/>
+                <DoubleAnimation Duration="0:0:2" To="765" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock7" d:IsOptimized="True"/>
+                <DoubleAnimation Duration="0" To="-100" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock1" d:IsOptimized="True"/>
+                <DoubleAnimation Duration="0" To="-76" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock2" d:IsOptimized="True"/>
+                <DoubleAnimation Duration="0" To="170" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock7" d:IsOptimized="True"/>
+                <DoubleAnimation Duration="0" To="145" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock6" d:IsOptimized="True"/>
+                <DoubleAnimation Duration="0" To="120" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock5" d:IsOptimized="True"/>
+                <DoubleAnimation Duration="0" To="95" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock4" d:IsOptimized="True"/>
+                <DoubleAnimation Duration="0" To="56" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock3" d:IsOptimized="True"/>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="720"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock5">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="800"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock1">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="600"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock2">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="900"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock3">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="340"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock4">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="240"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <Interactivity:Interaction.Behaviors>
         <Core:EventTriggerBehavior EventName="Loaded">
@@ -16,14 +79,6 @@
         </Core:EventTriggerBehavior>
     </Interactivity:Interaction.Behaviors>
 
-    <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Dictionary1.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Page.Resources>
-    
     <Page.DataContext>
         <Binding Mode="OneWay" Path="ActivityVM" Source="{StaticResource Locator}"/>
     </Page.DataContext>
@@ -38,9 +93,9 @@
                     </Grid.ColumnDefinitions>
 
                     <Maps:MapControl x:Name="MapControl"  MapServiceToken="zT422KzyGYsSDVRMuDhZ~zx-JAtTJT9IUq_yGPOFiqQ~AgF-DUoM9sECtx2ey5f6oebnvYzQieMNtjLyTbp0LrbXmOxVZ3Vj9W1U317Ef5gC"
-                        ZoomInteractionMode="Disabled" 
-                        LandmarksVisible="True" Grid.ColumnSpan="2"
-                        IsRightTapEnabled="true" />
+						ZoomInteractionMode="Disabled" 
+						LandmarksVisible="True" Grid.ColumnSpan="2"
+						IsRightTapEnabled="true" />
 
                     <TextBlock Margin="12 12 0 12" Text="{Binding Activity.Title}" FontSize="34"  TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Foreground="{StaticResource Blue}"/>
 
@@ -52,21 +107,21 @@
                             </Core:EventTriggerBehavior>
                         </Interactivity:Interaction.Behaviors>
 
-                        <Border BorderBrush="#FFBFBFBF" BorderThickness="1" Background="#FFCFCFCF">
+                        <Border BorderBrush="#FFBFBFBF" BorderThickness="1" Background="#7FCFCFCF">
                             <StackPanel Margin="5">
-                                <TextBlock Text="Organisateur"  TextAlignment="Center"/>
+                                <TextBlock Text="Conducteur"  TextAlignment="Center"/>
 
                                 <Ellipse Width="80" Height="80" >
                                     <Ellipse.Fill>
                                         <ImageBrush >
                                             <ImageBrush.ImageSource>
-                                                <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" UriSource="{Binding Activity.Owner.PictureUrl}" />
+                                                <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" UriSource="{Binding Activity.Driver.PictureUrl}" />
                                             </ImageBrush.ImageSource>
                                         </ImageBrush>
                                     </Ellipse.Fill>
                                 </Ellipse>
 
-                                <TextBlock Text="{Binding Activity.Owner.FullName}" />
+                                <TextBlock Text="{Binding Activity.Driver.FullName}" />
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -75,30 +130,89 @@
 
                 <TextBlock Text="{Binding Activity.Description}" Margin="12,12,12,0" TextWrapping="Wrap" FontSize="16"/>
 
-                <ListView ItemsSource="{Binding Subscribers}">
+                <Border BorderBrush="#FFBFBFBF" BorderThickness="1" Background="#7FCFCFCF">
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Organisateur"  TextAlignment="Center"/>
 
-                </ListView>
+                        <Ellipse Width="80" Height="80" >
+                            <Ellipse.Fill>
+                                <ImageBrush >
+                                    <ImageBrush.ImageSource>
+                                        <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" UriSource="{Binding Activity.Owner.PictureUrl}" />
+                                    </ImageBrush.ImageSource>
+                                </ImageBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
 
+                        <TextBlock Text="{Binding Activity.Owner.FullName}" />
+                    </StackPanel>
+                </Border>
+
+                <ListView ItemsSource="{Binding Subscribers}"/>
 
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,12,12">
                 <Button 
-                    FontFamily="Segoe MDL2 Assets"
-                    Content="{Binding IsSubscribed, Mode=TwoWay, Converter={StaticResource BoolToFavoriteIconConverter}}" 
-                    Margin="8" Background="{StaticResource Red}"
-                    Width="50" Height="50" FontSize="25"
-                    Template="{StaticResource RoundButtonControlTemplate}" 
-                    Style="{StaticResource BBButtonStyle}" BorderThickness="0">
+					FontFamily="Segoe MDL2 Assets"
+					Content="{Binding IsSubscribed, Converter={StaticResource BoolToFavoriteIconConverter}, Mode=TwoWay}" 
+					Margin="8" Background="{StaticResource Red}"
+					Width="50" Height="50" FontSize="25"
+					Template="{StaticResource RoundButtonControlTemplate}" 
+					Style="{StaticResource BBButtonStyle}" BorderThickness="0">
 
                     <Interactivity:Interaction.Behaviors>
                         <Core:EventTriggerBehavior EventName="Click">
                             <Core:InvokeCommandAction Command="{Binding SetSubscribtionCommand, Mode=OneWay}"/>
                         </Core:EventTriggerBehavior>
+                        <Core:EventTriggerBehavior EventName="Click">
+                            <Media:ControlStoryboardAction Storyboard="{Binding HeartFalls}"/>
+                        </Core:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
 
                 </Button>
             </StackPanel>
+            <TextBlock x:Name="textBlock" Style="{StaticResource Heart}" FontSize="24" RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <CompositeTransform/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock x:Name="textBlock1" Style="{StaticResource Heart}" FontSize="48" RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <CompositeTransform/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock x:Name="textBlock2" Style="{StaticResource Heart}" FontSize="36" RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <CompositeTransform/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock x:Name="textBlock3" Style="{StaticResource Heart}" FontSize="19" RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <CompositeTransform/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock x:Name="textBlock4" Style="{StaticResource Heart}" FontSize="34" RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <CompositeTransform/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock x:Name="textBlock5" Style="{StaticResource Heart}" FontSize="67" RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <CompositeTransform/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock x:Name="textBlock6" Style="{StaticResource Heart}" FontSize="14" RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <CompositeTransform/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock x:Name="textBlock7" Style="{StaticResource Heart}" RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <CompositeTransform/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+
         </Grid>
     </ScrollViewer>
 

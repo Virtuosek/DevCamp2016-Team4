@@ -12,6 +12,98 @@
                 <ResourceDictionary Source="/Dictionary1.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
+            <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="Button">
+                <Grid x:Name="RootGrid" Background="Transparent">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal"/>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Target="textBlock.(UIElement.Visibility)" Value="Visible"/>
+                                    <Setter Target="textBlock1.(UIElement.Visibility)" Value="Visible"/>
+                                    <Setter Target="textBlock2.(UIElement.Visibility)" Value="Visible"/>
+                                </VisualState.Setters>
+                                <Storyboard>
+                                    <DoubleAnimation Duration="0:0:0.1" To="0.01" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="ellipse" d:IsOptimized="True"/>
+                                    <DoubleAnimation Duration="0:0:0.1" To="0.01" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="ellipse" d:IsOptimized="True"/>
+                                    <DoubleAnimation Duration="0:0:0.1" To="0.01" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="contentPresenter" d:IsOptimized="True"/>
+                                    <DoubleAnimation Duration="0:0:0.1" To="0.01" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="contentPresenter" d:IsOptimized="True"/>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-25"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-40"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-55"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-30"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-15"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="16"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock2">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="25"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="45"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="64"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock2">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-30"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-12"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="29"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock1">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-35"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-10"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="24"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock1">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="9"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="17"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="textBlock">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="textBlock1">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="textBlock2">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="Disabled"/>
+                            <VisualState x:Name="PointerOver"/>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <Ellipse x:Name="ellipse" 
+            			Fill="{TemplateBinding Background}" RenderTransformOrigin="0.5,0.5">
+                        <Ellipse.RenderTransform>
+                            <CompositeTransform/>
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+                    <TextBlock x:Name="textBlock" FontFamily="Segoe MDL2 Assets" Text="&#xE735;" HorizontalAlignment="Center" VerticalAlignment="Bottom" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="#FFFFF300">
+                        <TextBlock.RenderTransform>
+                            <CompositeTransform/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock x:Name="textBlock1" FontFamily="Segoe MDL2 Assets" Text="&#xE735;" HorizontalAlignment="Center" VerticalAlignment="Bottom" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="#FFFFF300">
+                        <TextBlock.RenderTransform>
+                            <CompositeTransform/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock x:Name="textBlock2" FontFamily="Segoe MDL2 Assets" Text="&#xE735;" HorizontalAlignment="Center" VerticalAlignment="Bottom" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Foreground="#FFFFF300">
+                        <TextBlock.RenderTransform>
+                            <CompositeTransform/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <ContentPresenter x:Name="contentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                        <ContentPresenter.RenderTransform>
+                            <CompositeTransform/>
+                        </ContentPresenter.RenderTransform>
+                    </ContentPresenter>
+                </Grid>
+            </ControlTemplate>
 
         </ResourceDictionary>
     </Page.Resources>
@@ -58,6 +150,12 @@
                     Width="35" Height="35"
                     Content="&#xE7A7;" Margin="10" Command="{Binding New, Mode=OneWay}" 
                     Template="{StaticResource RoundButtonControlTemplate}" />
+            <Button HorizontalAlignment="Center" Style="{StaticResource BBButtonStyle}"
+                    FontFamily="Segoe MDL2 Assets"
+                    Width="35" Height="35"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    Content="&#xE7A7;" Margin="10" Template="{StaticResource ButtonControlTemplate1}" />
             <Button VerticalAlignment="Top"
                         Grid.Row="2"
                         Grid.Column="1"

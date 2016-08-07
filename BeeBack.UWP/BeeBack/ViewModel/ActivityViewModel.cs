@@ -61,6 +61,8 @@ namespace BeeBack.ViewModel
 
             if (IsInDesignModeStatic)
                 CreateDummyActivity();
+
+
         }
 
         private void OnSetSubscribtion()
@@ -99,6 +101,29 @@ namespace BeeBack.ViewModel
         {
             await CheckMembers();
             Messenger.Default.Send(new ActivityMapCoordinateMessage { Latitude = Activity.Location.Latitude, Longitude = Activity.Location.Longitude });
+
+            var timer = new System.Threading.Timer(async (e) =>
+            {
+                await RefreshActivity();
+            }, null, 0, 5000);
+        }
+
+        private async Task RefreshActivity()
+        {
+            try
+            {
+                Activity = await _dataService.GetActivity(Activity.ID);
+                if (Activity.DriverId.HasValue)
+                {
+                    Activity.Driver = await _dataService.GetUser(Activity.DriverId.Value);
+                    RaisePropertyChanged(() => Activity.Driver);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Can't catch activity : {ex.Message}");
+            }
         }
 
         private async Task CheckMembers()
@@ -108,12 +133,18 @@ namespace BeeBack.ViewModel
                 Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
                 for (int i = 0; i < Activity.Members.Count; i++)
                 {
+                    User user = null;
                     try
                     {
-                        Activity.Members[i] = await _dataService.GetUser(Activity.Members[i].ID);
+                        user = await _dataService.GetUser(Activity.Members[i].ID);
                     }
-                    catch
-                    { }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.Message);
+                    }
+
+                    if (user != null)
+                        Subscribers.Add(user);
                 }
             }
         }
