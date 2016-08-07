@@ -4,6 +4,7 @@ using BeeBack.Pages;
 using BeeBack.Services.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
 using Microsoft.Practices.ServiceLocation;
@@ -58,6 +59,7 @@ namespace BeeBack.ViewModel
             LoadedCommand = new RelayCommand(OnLoaded);
             UserTappedCommand = new RelayCommand<User>(OnUserTapped);
             SetSubscribtionCommand = new RelayCommand(OnSetSubscribtion);
+            SimpleIoc.Default.GetInstance<UserViewModel>().User = null; //hack ?
 
             if (IsInDesignModeStatic)
                 CreateDummyActivity();
@@ -99,6 +101,8 @@ namespace BeeBack.ViewModel
 
         private async void OnLoaded()
         {
+            Subscribers = null;
+
             await CheckMembers();
             Messenger.Default.Send(new ActivityMapCoordinateMessage { Latitude = Activity.Location.Latitude, Longitude = Activity.Location.Longitude });
 
@@ -142,16 +146,20 @@ namespace BeeBack.ViewModel
 
             Subscribers = new ObservableCollection<User>();
             Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
-            var useractivities = await _dataService.GetActivitySubscribers(Activity.ID);
-            foreach (var userActivity in useractivities)
+
+            if (Subscribers == null || Subscribers.Count == 0)
             {
-                if (userActivity.UserId != Activity.Owner.ID)
+                var useractivities = await _dataService.GetActivitySubscribers(Activity.ID);
+                foreach (var userActivity in useractivities)
                 {
-                    var user = await _dataService.GetUser(userActivity.UserId);
-                    Subscribers.Add(user);
+                    if (userActivity.UserId != Activity.Owner.ID)
+                    {
+                        var user = await _dataService.GetUser(userActivity.UserId);
+                        Subscribers.Add(user);
+                    }
                 }
+                RaisePropertyChanged(() => Subscribers);
             }
-            RaisePropertyChanged(() => Subscribers);
         }
     }
 }
