@@ -37,6 +37,16 @@ namespace BeeBack.Web.Controllers.Api
             return activities;
         }
 
+        [Route(template: "api/activities/getactivity")]
+        public async Task<Activity> GetActivity(Guid id)
+        {
+            var activity = await _activityService
+                .GetActivity(id);
+
+            return activity;
+        }
+
+
         /// <summary>
         /// Returns activities created by the authenticated user
         /// </summary>

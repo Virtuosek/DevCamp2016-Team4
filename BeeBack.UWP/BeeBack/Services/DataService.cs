@@ -134,5 +134,10 @@ namespace BeeBack.Services
 
             return client;
         }
+
+        public Task<Activity> GetActivity(Guid iD)
+        {
+            //throw new NotImplementedException();
+        }
     }
 }
