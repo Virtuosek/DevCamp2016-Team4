@@ -94,7 +94,7 @@ namespace BeeBack.Services
         {
             using (var request = InitRequest())
             {
-                return await CachedFile.TryLoad<User>($"{UrlBase}{UrlUser}/{userID}", new TimeSpan(0,5,0), false, false, request);
+                return await CachedFile.TryLoad<User>($"{UrlBase}{UrlUser}/{userID}", new TimeSpan(0, 5, 0), false, false, request);
             }
         }
         public async Task<List<User>> GetAllUsers()
@@ -140,7 +140,7 @@ namespace BeeBack.Services
         {
             using (var request = InitRequest())
             {
-                return await CachedFile.TryLoad<Activity>(UrlBase + UrlGetActivity , new TimeSpan(0), false, false, request);
+                return await CachedFile.TryLoad<Activity>($"{UrlBase}{UrlGetActivity}/{iD}", new TimeSpan(0), false, true, request);
             }
         }
     }

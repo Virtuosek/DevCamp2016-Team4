@@ -112,13 +112,18 @@ namespace BeeBack.ViewModel
         {
             try
             {
-                Activity = await _dataService.GetActivity(Activity.ID);
-                if (Activity.DriverId.HasValue)
+                await DispatcherHelper.UIDispatcher.TryRunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
                 {
-                    Activity.Driver = await _dataService.GetUser(Activity.DriverId.Value);
-                    RaisePropertyChanged(() => Activity.Driver);
-                }
+                    var activity = await _dataService.GetActivity(Activity.ID);
 
+                    if (activity != null && activity.DriverId.HasValue)
+                    {
+                        Activity = activity;
+                        Activity.Driver = await _dataService.GetUser(Activity.DriverId.Value);
+
+                        RaisePropertyChanged(() => Activity.Driver);
+                    }
+                });
             }
             catch (Exception ex)
             {
