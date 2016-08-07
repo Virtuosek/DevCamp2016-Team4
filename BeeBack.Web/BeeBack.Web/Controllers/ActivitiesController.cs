@@ -13,7 +13,7 @@ namespace BeeBack.Web.Controllers
     public class ActivitiesController : Controller
     {
         private readonly IActivityService _activityService;
-        
+
         public ActivitiesController(IActivityService activityService)
         {
             _activityService = activityService;
@@ -23,7 +23,7 @@ namespace BeeBack.Web.Controllers
         // GET: Activities
         public async Task<ActionResult> Index()
         {
-            var activities = await _activityService.GetActivities();
+            var activities = await _activityService.GetActivities(includeUserActivities: true);
 
             var viewModel = new ActivitiesIndexViewModel
             {

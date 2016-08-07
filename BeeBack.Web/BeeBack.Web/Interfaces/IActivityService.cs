@@ -7,7 +7,7 @@ namespace BeeBack.Web.Interfaces
 {
     public interface IActivityService : IDisposable
     {
-        Task<IEnumerable<Activity>> GetActivities();
+        Task<IEnumerable<Activity>> GetActivities(bool includeUserActivities = false);
         Task<List<Activity>> GetUserActivities(string userId);
         Task<List<Activity>> GetSubscribedActivities(string userId);
         Task<Activity> GetActivity(Guid id);
