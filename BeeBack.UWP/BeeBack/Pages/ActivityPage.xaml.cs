@@ -32,7 +32,7 @@ namespace BeeBack.Pages
             MapIcon myPOI = new MapIcon { Location = MapControl.Center, NormalizedAnchorPoint = new Point(0.5, 1.0), Title = "My position", ZIndex = 0, Image = image};
             MapControl.MapElements.Add(myPOI);
 
-            MapControl.ZoomLevel = 10;
+            MapControl.ZoomLevel = 12;
         }
 
         private void OnDriverImageFailed(object sender, Windows.UI.Xaml.ExceptionRoutedEventArgs e)

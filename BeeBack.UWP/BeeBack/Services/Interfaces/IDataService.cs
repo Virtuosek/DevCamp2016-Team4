@@ -17,5 +17,6 @@ namespace BeeBack.Services.Interfaces
         Task<User> GetCurrentUser();
         Task<User> GetUser(Guid UserID);
         Task<Activity> GetActivity(Guid iD);
+        Task<List<UserActivity>> GetActivitySubscribers(Guid iD);
     }
 }

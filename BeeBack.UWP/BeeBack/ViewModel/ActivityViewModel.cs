@@ -62,13 +62,12 @@ namespace BeeBack.ViewModel
             if (IsInDesignModeStatic)
                 CreateDummyActivity();
 
-
         }
 
         private void OnSetSubscribtion()
         {
-            //Activity.IsSubscribed = !Activity.IsSubscribed;
-            //IsSubscribed = Activity.IsSubscribed;
+            Activity.IsSubscribed = !Activity.IsSubscribed;
+            IsSubscribed = Activity.IsSubscribed;
         }
 
         private void OnUserTapped(User user)
@@ -141,24 +140,18 @@ namespace BeeBack.ViewModel
                 }
             }
 
+            Subscribers = new ObservableCollection<User>();
             Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
-
-
-            for (int i = 0; i < Activity.Members.Count; i++)
+            var useractivities = await _dataService.GetActivitySubscribers(Activity.ID);
+            foreach (var userActivity in useractivities)
             {
-                User user = null;
-                try
+                if (userActivity.UserId != Activity.Owner.ID)
                 {
-                    user = await _dataService.GetUser(Activity.Members[i].ID);
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex.Message);
-                }
-
-                if (user != null)
+                    var user = await _dataService.GetUser(userActivity.UserId);
                     Subscribers.Add(user);
+                }
             }
+            RaisePropertyChanged(() => Subscribers);
         }
     }
 }

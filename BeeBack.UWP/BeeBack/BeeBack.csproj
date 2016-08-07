@@ -104,6 +104,7 @@
     <Compile Include="Messages\ActivityMapCoordinateMessage.cs" />
     <Compile Include="Messages\SetUserModelMessage.cs" />
     <Compile Include="Model\Location.cs" />
+    <Compile Include="Model\UserActivity.cs" />
     <Compile Include="Pages\ActivityEditPage.xaml.cs">
       <DependentUpon>ActivityEditPage.xaml</DependentUpon>
     </Compile>

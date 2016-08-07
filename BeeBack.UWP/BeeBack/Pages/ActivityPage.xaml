@@ -38,10 +38,18 @@
         <Binding Mode="OneWay" Path="ActivityVM" Source="{StaticResource Locator}"/>
     </Page.DataContext>
 
-    <ScrollViewer>
+    <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Hidden">
         <Grid>
             <StackPanel Orientation="Vertical">
-                <Grid>
+                
+                <Grid Height="130">
+                    <Border Height="130" >
+                        <Image Source="{Binding Activity.PictureUrl}" Stretch="UniformToFill" Grid.ColumnSpan="2" VerticalAlignment="Center" />
+                    </Border>
+                    <TextBlock Margin="12 12 0 12" Text="{Binding Activity.Title}" FontSize="34"  TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Foreground="White"/>
+                </Grid>
+
+                <Grid Height="232">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="auto" />
@@ -52,21 +60,51 @@
 						LandmarksVisible="True" Grid.ColumnSpan="2"
 						IsRightTapEnabled="true" />
 
-                    <TextBlock Margin="12 12 0 12" Text="{Binding Activity.Title}" FontSize="34"  TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Foreground="{StaticResource Blue}"/>
 
-                    <Grid  Grid.Column="1" Margin="12">
+                    <Grid  Grid.Column="1" Margin="12 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        
+                        <Border BorderBrush="#FFBFBFBF" BorderThickness="1" Background="#7FCFCFCF" VerticalAlignment="Top" Margin="0 10 0 0">
 
-                        <Interactivity:Interaction.Behaviors>
-                            <Core:EventTriggerBehavior EventName="Tapped">
-                                <Core:InvokeCommandAction Command="{Binding UserTappedCommand}" CommandParameter="{Binding Activity.Driver}"/>
-                            </Core:EventTriggerBehavior>
-                        </Interactivity:Interaction.Behaviors>
+                            <Interactivity:Interaction.Behaviors>
+                                <Core:EventTriggerBehavior EventName="Tapped">
+                                    <Core:InvokeCommandAction Command="{Binding UserTappedCommand}" CommandParameter="{Binding Activity.Owner}"/>
+                                </Core:EventTriggerBehavior>
+                            </Interactivity:Interaction.Behaviors>
+                            
+                            <StackPanel Margin="5">
+                                <TextBlock Text="Créé par"  TextAlignment="Center"/>
 
-                        <Border BorderBrush="#FFBFBFBF" BorderThickness="1" Background="#7FCFCFCF">
+                                <Ellipse Width="50" Height="50" >
+                                    <Ellipse.Fill>
+                                        <ImageBrush >
+                                            <ImageBrush.ImageSource>
+                                                <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" ImageFailed="OnDriverImageFailed" UriSource="{Binding Activity.Owner.PictureUrl}" />
+                                            </ImageBrush.ImageSource>
+                                        </ImageBrush>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+
+                                <TextBlock Text="{Binding Activity.Owner.FullName}" />
+                            </StackPanel>
+                        </Border>
+                        
+                        <Border BorderBrush="#FFBFBFBF" BorderThickness="1" Background="#7FCFCFCF" VerticalAlignment="Top" Grid.Row="1" Margin="0 10 0 0">
+
+                            <Interactivity:Interaction.Behaviors>
+                                <Core:EventTriggerBehavior EventName="Tapped">
+                                    <Core:InvokeCommandAction Command="{Binding UserTappedCommand}" CommandParameter="{Binding Activity.Driver}"/>
+                                </Core:EventTriggerBehavior>
+                            </Interactivity:Interaction.Behaviors>
+
                             <StackPanel Margin="5">
                                 <TextBlock Text="Conducteur"  TextAlignment="Center"/>
 
-                                <Ellipse Width="80" Height="80" >
+                                <Ellipse Width="50" Height="50" >
+                                    
                                     <Ellipse.Fill>
                                         <ImageBrush >
                                             <ImageBrush.ImageSource>
@@ -84,39 +122,24 @@
                 </Grid>
 
                 <TextBlock Text="{Binding Activity.Description}" Margin="12,12,12,0" TextWrapping="Wrap" FontSize="16"/>
-                <StackPanel Orientation="Vertical">
-                    <Border HorizontalAlignment="Left" BorderThickness="1" MaxWidth="120">
 
-                        <Interactivity:Interaction.Behaviors>
-                            <Core:EventTriggerBehavior EventName="Tapped">
-                                <Core:InvokeCommandAction Command="{Binding UserTappedCommand}" CommandParameter="{Binding Activity.Owner}"/>
-                            </Core:EventTriggerBehavior>
-                        </Interactivity:Interaction.Behaviors>
+                <Rectangle Fill="#FF6E6E6E" Margin="12,10,12,20" Height="1"></Rectangle>
 
-                        <StackPanel Margin="5">
-                            <TextBlock Text="Organisateur"  TextAlignment="Center"/>
+                <StackPanel Orientation="Vertical" Margin="12 0 12 0">
 
-                            <Ellipse Width="80" Height="80" >
-                                <Ellipse.Fill>
-                                    <ImageBrush >
-                                        <ImageBrush.ImageSource>
-                                            <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" UriSource="{Binding Activity.Owner.PictureUrl}" />
-                                        </ImageBrush.ImageSource>
-                                    </ImageBrush>
-                                </Ellipse.Fill>
-                            </Ellipse>
+                    <TextBlock Text="Abonnés" Margin="0,0,0,0" Foreground="Black"></TextBlock>
 
-                            <TextBlock Text="{Binding Activity.Owner.FullName}" />
-                        </StackPanel>
-                    </Border>
-
-                    <Rectangle Fill="#FF6E6E6E" Margin="24,10,24,20" Height="1"></Rectangle>
-                    <TextBlock Text="Abonnés" Margin="12,0,12,12"></TextBlock>
                     <ListView ItemsSource="{Binding Subscribers}" >
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"></StackPanel>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="5">
-                                    <Ellipse Width="80" Height="80" >
+                                    <Ellipse Width="50" Height="50" >
                                         <Ellipse.Fill>
                                             <ImageBrush >
                                                 <ImageBrush.ImageSource>
@@ -125,8 +148,6 @@
                                             </ImageBrush>
                                         </Ellipse.Fill>
                                     </Ellipse>
-
-                                    <TextBlock Text="{Binding FullName}" />
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>

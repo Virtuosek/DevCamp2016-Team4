@@ -21,6 +21,8 @@ namespace BeeBack.Services
         public static readonly string UrlSubscriptions = "api/activities/subscribed";
         public static readonly string UrlOwnedActivities = "api/activities/owned";
         public static readonly string UrlGetActivity = "api/activities/getactivity";
+        public static readonly string UrlActivitySubscribers = "api/activities/subscribed";
+
         public static readonly string UrlUser = "api/users";
         public static readonly string UrlLogin = "api/login";
 
@@ -141,6 +143,14 @@ namespace BeeBack.Services
             using (var request = InitRequest())
             {
                 return await CachedFile.TryLoad<Activity>($"{UrlBase}{UrlGetActivity}/{iD}", new TimeSpan(0), false, true, request);
+            }
+        }
+
+        public async Task<List<UserActivity>> GetActivitySubscribers(Guid iD)
+        {
+            using (var request = InitRequest())
+            {
+                return await CachedFile.TryLoad<List<UserActivity>>($"{UrlBase}{UrlActivitySubscribers}/{iD}", new TimeSpan(0), false, true, request);
             }
         }
     }
