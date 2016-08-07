@@ -67,8 +67,8 @@ namespace BeeBack.ViewModel
 
         private void OnSetSubscribtion()
         {
-            Activity.IsSubscribed = !Activity.IsSubscribed;
-            IsSubscribed = Activity.IsSubscribed;
+            //Activity.IsSubscribed = !Activity.IsSubscribed;
+            //IsSubscribed = Activity.IsSubscribed;
         }
 
         private void OnUserTapped(User user)

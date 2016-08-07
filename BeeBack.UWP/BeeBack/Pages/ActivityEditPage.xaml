@@ -155,7 +155,7 @@
                     Width="35" Height="35"
                     Grid.Row="2"
                     Grid.ColumnSpan="2"
-                    Content="&#xE7A7;" Margin="10" Template="{StaticResource ButtonControlTemplate1}" />
+                    Content="&#xE7A7;" Margin="10" Template="{StaticResource ButtonControlTemplate1}" Visibility="Collapsed" />
             <Button VerticalAlignment="Top"
                         Grid.Row="2"
                         Grid.Column="1"
