@@ -24,6 +24,8 @@ namespace BeeBack.Web.ViewModels.Activities
 
         public string UserId { get; set; }
 
+        public string ShortCode { get; set; }
+
         public Activity ToModel()
         {
             return new Activity
@@ -31,7 +33,8 @@ namespace BeeBack.Web.ViewModels.Activities
                 ID = Id,
                 Title = Title,
                 Description = Description,
-                UserId = UserId
+                UserId = UserId,
+                ShortCode = ShortCode
             };
         }
     }
