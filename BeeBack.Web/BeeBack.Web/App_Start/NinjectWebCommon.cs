@@ -12,20 +12,20 @@ using Ninject.Web.Common;
 
 namespace BeeBack.Web
 {
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper Bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             Bootstrapper.Initialize(CreateKernel);
         }
-        
+
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -33,7 +33,7 @@ namespace BeeBack.Web
         {
             Bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -65,6 +65,7 @@ namespace BeeBack.Web
         {
             //kernel.Bind<IActivityService>().To<FakeActivityService>();
             kernel.Bind<IActivityService>().To<ActivityService>();
-        }        
+            kernel.Bind<IUserService>().To<UserService>();
+        }
     }
 }
