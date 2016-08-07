@@ -113,6 +113,12 @@ namespace BeeBack.ViewModel
             try
             {
                 Activity = await _dataService.GetActivity(Activity.ID);
+                if (Activity.DriverId.HasValue)
+                {
+                    Activity.Driver = await _dataService.GetUser(Activity.DriverId.Value);
+                    RaisePropertyChanged(() => Activity.Driver);
+                }
+
             }
             catch (Exception ex)
             {

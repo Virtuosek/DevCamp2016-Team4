@@ -44,6 +44,7 @@ namespace BeeBack.Model
             }
         }
 
+        public Guid? DriverId { get; set; }
 
         private User _driver;
 

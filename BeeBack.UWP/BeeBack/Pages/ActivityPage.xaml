@@ -121,7 +121,7 @@
                                     </Ellipse.Fill>
                                 </Ellipse>
 
-                                <TextBlock Text="{Binding Activity.Owner.FullName}" />
+                                <TextBlock Text="{Binding Activity.Driver.FullName}" />
                             </StackPanel>
                         </Border>
                     </Grid>
