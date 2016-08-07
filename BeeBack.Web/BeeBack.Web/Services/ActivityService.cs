@@ -37,10 +37,14 @@ namespace BeeBack.Web.Services
                             .ToListAsync();
         }
 
-        public async Task<Activity> GetActivity(Guid id)
+        public async Task<Activity> GetActivity(Guid id, bool includeUserActivities = false)
         {
-            return await _db.Activities
-                .FirstOrDefaultAsync(x => x.ID == id);
+            IQueryable<Activity> activities = _db.Activities;
+            if (includeUserActivities)
+            {
+                activities = activities.Include(a => a.UserActivities);
+            }
+            return await activities.FirstOrDefaultAsync(x => x.ID == id);
         }
 
         public async Task<List<ApplicationUser>> GetActivitySubscribers(Guid id)

@@ -10,7 +10,7 @@ namespace BeeBack.Web.Interfaces
         Task<IEnumerable<Activity>> GetActivities(bool includeUserActivities = false);
         Task<List<Activity>> GetUserActivities(string userId);
         Task<List<Activity>> GetSubscribedActivities(string userId);
-        Task<Activity> GetActivity(Guid id);
+        Task<Activity> GetActivity(Guid id, bool includeUserActivities = false);
         Task<List<ApplicationUser>> GetActivitySubscribers(Guid id);
         Task AddActivity(Activity activity);
         Task EditActivity(Activity activity);

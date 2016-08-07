@@ -43,16 +43,20 @@ namespace BeeBack.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var activity = await _activityService.GetActivity(id.Value);
+            var activity = await _activityService.GetActivity(id.Value, true);
 
             if (activity == null)
             {
                 return HttpNotFound();
             }
 
-            var viewModel = activity.ToViewModel<ActivityDetailViewModel>();
+            var viewModel = activity.ToViewModel<ActivityDetailViewModel>(User.Identity.GetUserId());
             viewModel.Fill(activity);
-            viewModel.Subscribers = await _activityService.GetActivitySubscribers(id.Value);
+
+            var subscribers = await _activityService.GetActivitySubscribers(id.Value);
+            subscribers = subscribers.Where(s => s.Id != activity.UserId && s.Id != activity.DriverId).ToList();
+            viewModel.Subscribers = subscribers;
+
             viewModel.User = _userService.GetUserById(activity.UserId);
             viewModel.Driver = _userService.GetUserById(activity.DriverId);
 
@@ -118,9 +122,12 @@ namespace BeeBack.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var model = viewModel.ToModel();
+                var activity = await _activityService.GetActivity(viewModel.Id);
+                activity.Title = viewModel.Title;
+                activity.Description = viewModel.Description;
+                activity.ShortCode = viewModel.ShortCode;
 
-                await _activityService.EditActivity(model);
+                await _activityService.EditActivity(activity);
 
                 return RedirectToAction("Index");
             }

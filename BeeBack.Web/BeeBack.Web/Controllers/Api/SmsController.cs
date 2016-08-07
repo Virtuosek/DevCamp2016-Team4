@@ -4,6 +4,8 @@ using BeeBack.Web.Models;
 using BeeBack.Web.Models.Twilio;
 using BeeBack.Web.Services;
 using System.Data.Entity;
+using System.Net.Http;
+using System.Text;
 
 namespace BeeBack.Web.Controllers.Api
 {
@@ -11,8 +13,10 @@ namespace BeeBack.Web.Controllers.Api
     {
         [HttpPost]
         [Route("api/sms/reply")]
-        public bool PostReply(TwiML message)
+        public HttpResponseMessage PostReply(TwiML message)
         {
+            string responseText = "La requête n'est pas correcte !";
+
             var parts = message.Body.ToLower().Split(' ');
             if (parts[0] == "oui")
             {
@@ -36,12 +40,21 @@ namespace BeeBack.Web.Controllers.Api
                             var smsService = new SmsActivityNotificationService();
                             smsService.SendDriverConfirmation(activity);
 
-                            return true;
+                            responseText = "Merci !";
                         }
                     }
                 }
             }
-            return false;
+
+            HttpResponseMessage response = new HttpResponseMessage()
+            {
+                Content = new StringContent(
+               responseText,
+               Encoding.UTF8,
+               "plain/text")
+            };
+
+            return response;
         }
 
         [HttpPost]
