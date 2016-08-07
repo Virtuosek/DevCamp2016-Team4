@@ -112,13 +112,16 @@ namespace BeeBack.ViewModel
         {
             try
             {
-                Activity = await _dataService.GetActivity(Activity.ID);
-                if (Activity.DriverId.HasValue)
+                await DispatcherHelper.UIDispatcher.TryRunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
                 {
-                    Activity.Driver = await _dataService.GetUser(Activity.DriverId.Value);
-                    RaisePropertyChanged(() => Activity.Driver);
-                }
+                    var activity = await _dataService.GetActivity(Activity.ID);
 
+                    if (activity != null && activity.DriverId.HasValue)
+                    {
+                        Activity.DriverId = activity.DriverId;
+                        await CheckMembers();
+                    }
+                });
             }
             catch (Exception ex)
             {
@@ -128,9 +131,20 @@ namespace BeeBack.ViewModel
 
         private async Task CheckMembers()
         {
+            if (!string.IsNullOrEmpty(Activity.Owner.Email))
+            {
+                if (Activity.DriverId.HasValue)
+                {
+                    Activity.Driver = await _dataService.GetUser(Activity.DriverId.Value);
+                    RaisePropertyChanged(() => Activity.Driver);
+                }
+            }
+
             if (string.IsNullOrEmpty(Activity.Owner.Email))
             {
                 Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
+               
+
                 for (int i = 0; i < Activity.Members.Count; i++)
                 {
                     User user = null;

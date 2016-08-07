@@ -58,7 +58,7 @@
 
                         <Interactivity:Interaction.Behaviors>
                             <Core:EventTriggerBehavior EventName="Tapped">
-                                <Core:InvokeCommandAction Command="{Binding UserTappedCommand}" CommandParameter="{Binding Activity.Owner}"/>
+                                <Core:InvokeCommandAction Command="{Binding UserTappedCommand}" CommandParameter="{Binding Activity.Driver}"/>
                             </Core:EventTriggerBehavior>
                         </Interactivity:Interaction.Behaviors>
 
@@ -70,7 +70,7 @@
                                     <Ellipse.Fill>
                                         <ImageBrush >
                                             <ImageBrush.ImageSource>
-                                                <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" UriSource="{Binding Activity.Driver.PictureUrl}" />
+                                                <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" ImageFailed="OnDriverImageFailed" UriSource="{Binding Activity.Driver.PictureUrl}" />
                                             </ImageBrush.ImageSource>
                                         </ImageBrush>
                                     </Ellipse.Fill>
@@ -84,26 +84,38 @@
                 </Grid>
 
                 <TextBlock Text="{Binding Activity.Description}" Margin="12,12,12,0" TextWrapping="Wrap" FontSize="16"/>
+                <StackPanel Orientation="Vertical">
+                    <Border HorizontalAlignment="Left" BorderThickness="1" MaxWidth="120">
 
-                <Border BorderBrush="#FFBFBFBF" BorderThickness="1" Background="#7FCFCFCF">
-                    <StackPanel Margin="5">
-                        <TextBlock Text="Organisateur"  TextAlignment="Center"/>
+                        <Interactivity:Interaction.Behaviors>
+                            <Core:EventTriggerBehavior EventName="Tapped">
+                                <Core:InvokeCommandAction Command="{Binding UserTappedCommand}" CommandParameter="{Binding Activity.Owner}"/>
+                            </Core:EventTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
 
-                        <Ellipse Width="80" Height="80" >
-                            <Ellipse.Fill>
-                                <ImageBrush >
-                                    <ImageBrush.ImageSource>
-                                        <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" UriSource="{Binding Activity.Owner.PictureUrl}" />
-                                    </ImageBrush.ImageSource>
-                                </ImageBrush>
-                            </Ellipse.Fill>
-                        </Ellipse>
+                        <StackPanel Margin="5">
+                            <TextBlock Text="Organisateur"  TextAlignment="Center"/>
 
-                        <TextBlock Text="{Binding Activity.Owner.FullName}" />
-                    </StackPanel>
-                </Border>
+                            <Ellipse Width="80" Height="80" >
+                                <Ellipse.Fill>
+                                    <ImageBrush >
+                                        <ImageBrush.ImageSource>
+                                            <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" UriSource="{Binding Activity.Owner.PictureUrl}" />
+                                        </ImageBrush.ImageSource>
+                                    </ImageBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
 
-                <ListView ItemsSource="{Binding Subscribers}"/>
+                            <TextBlock Text="{Binding Activity.Owner.FullName}" />
+                        </StackPanel>
+                    </Border>
+
+                    <Rectangle Fill="#FF6E6E6E" Margin="24,10,24,20"></Rectangle>
+                    <TextBlock Text="Abonnés" Margin="12,0,12,12"></TextBlock>
+                    <ListView ItemsSource="{Binding Subscribers}"/>
+
+                </StackPanel>
+
 
             </StackPanel>
 
@@ -118,7 +130,7 @@
 
                     <Interactivity:Interaction.Behaviors>
                         <Core:EventTriggerBehavior EventName="Click">
-                            <Media:ControlStoryboardAction>
+                            <!--<Media:ControlStoryboardAction>
                                 <Media:ControlStoryboardAction.Storyboard>
                                     <Storyboard x:Name="HeartFalls" x:Key="HeartFalls">
                                         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock">
@@ -167,7 +179,7 @@
                                     </Storyboard>
 
                                 </Media:ControlStoryboardAction.Storyboard>
-                            </Media:ControlStoryboardAction>
+                            </Media:ControlStoryboardAction>-->
                             <Core:InvokeCommandAction Command="{Binding SetSubscribtionCommand, Mode=OneWay}"/>
                         </Core:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
@@ -217,57 +229,4 @@
 
         </Grid>
     </ScrollViewer>
-
-
-    <!--<Grid Background="Transparent" DataContext="{Binding Activity}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-        </Grid>
-        <TextBlock Text="{Binding Title}" FontSize="48" TextWrapping="WrapWholeWords"/>
-        <Grid HorizontalAlignment="Right" Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            
-            <TextBlock Text="Géré par"/>
-
-            <Grid Width="150" Height="75" Background="Purple" >
-                
-                <Interactivity:Interaction.Behaviors>
-                    <Core:EventTriggerBehavior EventName="Tapped">
-                        <Core:InvokeCommandAction Command="{Binding Selected, Mode=OneWay}"/>
-                    </Core:EventTriggerBehavior>
-                </Interactivity:Interaction.Behaviors>
-                
-                <StackPanel>
-                    <TextBlock Text="{Binding Owner.UserName}" Foreground="White" />
-                    <TextBlock Text="{Binding Owner.FirstName}" Foreground="White" />
-                    <TextBlock Text="{Binding Owner.MobilePhone}" Foreground="White" />
-                </StackPanel>
-            </Grid>
-            
-        </Grid>
-        <StackPanel Grid.Row="1">
-            <TextBlock Text="{Binding Members.Count, ConverterParameter=Abonnés, Converter={StaticResource IntPresenterConverter}, Mode=OneWay}"/>
-            <ScrollViewer VerticalScrollMode="Disabled" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                <ListView Height="80" 
-					ItemsSource="{Binding Members}" 
-					ItemTemplate="{StaticResource UsersDataTemplate}" 
-					ItemsPanel="{StaticResource ItemsPanelTemplate1}"/>
-            </ScrollViewer>
-        </StackPanel>
-        <StackPanel Grid.Row="2">
-            <TextBlock Text="{Binding Title}"/>
-            <TextBlock Text="{Binding Description}"/>
-        </StackPanel>
-    </Grid>-->
 </Page>
