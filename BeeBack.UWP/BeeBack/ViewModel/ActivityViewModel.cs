@@ -108,8 +108,9 @@ namespace BeeBack.ViewModel
             }, null, 0, 2000);
         }
 
-        private Task RefreshActivity()
+        private async Task RefreshActivity()
         {
+            //Activity = await _dataService.GetActivity(Activity.ID);
         }
 
         private async Task CheckMembers()
