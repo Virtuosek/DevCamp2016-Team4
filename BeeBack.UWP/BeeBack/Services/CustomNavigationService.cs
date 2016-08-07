@@ -47,7 +47,6 @@ namespace BeeBack.Services
 
         private void RegisterKey()
         {
-            _pages.Add(typeof(SecondPage), "SecondPageKey");
             _pages.Add(typeof(LoginPage), "LoginPage");
             _pages.Add(typeof(RootPage), "RootPage");
 

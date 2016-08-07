@@ -28,7 +28,6 @@ namespace BeeBack.ViewModel
             else
                 SimpleIoc.Default.Register<IDataService, DataService>();
 
-            SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<LoginViewModel>();
             SimpleIoc.Default.Register<MyActivitiesViewModel>();
             SimpleIoc.Default.Register<ActivityViewModel>();
@@ -37,7 +36,6 @@ namespace BeeBack.ViewModel
             SimpleIoc.Default.Register<ActivityEditViewModel>();
         }
 
-        public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
         public LoginViewModel LoginVM => ServiceLocator.Current.GetInstance<LoginViewModel>();
         public MyActivitiesViewModel MyActivitiesVM => ServiceLocator.Current.GetInstance<MyActivitiesViewModel>();
         public ActivityViewModel ActivityVM => ServiceLocator.Current.GetInstance<ActivityViewModel>();
