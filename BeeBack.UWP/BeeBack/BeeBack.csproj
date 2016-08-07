@@ -166,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\football.png" />
+    <Content Include="Assets\incognitoUser.png" />
     <Content Include="Assets\intro5.jpg" />
     <Content Include="Assets\Logo\logo.png" />
     <Content Include="Assets\pinBee.png" />

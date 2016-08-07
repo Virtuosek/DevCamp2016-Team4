@@ -6,11 +6,24 @@ namespace BeeBack.Model
 {
     public class User : ObservableObject
     {
+        private const string _unknownUserUrl = "ms-appx:///Assets/incognitoUser.png";
         public Guid ID { get; set; }
         public string UserName { get; set; }
         public string Lastname { get; set; }
         public string Firstname { get; set; }
-        public string PictureUrl { get; set; }
+
+        private string _pictureUrl;
+
+        public string PictureUrl
+        {
+            get { return string.IsNullOrEmpty(_pictureUrl) ? _unknownUserUrl : _pictureUrl; }
+            set
+            {
+                _pictureUrl = value;
+                RaisePropertyChanged(() => PictureUrl);
+            }
+        }
+
         public DateTime BirthDate { get; set; }
         public int Age
         {

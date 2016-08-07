@@ -105,12 +105,19 @@ namespace BeeBack.ViewModel
             var timer = new System.Threading.Timer(async (e) =>
             {
                 await RefreshActivity();
-            }, null, 0, 2000);
+            }, null, 0, 5000);
         }
 
         private async Task RefreshActivity()
         {
-            //Activity = await _dataService.GetActivity(Activity.ID);
+            try
+            {
+                Activity = await _dataService.GetActivity(Activity.ID);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Can't catch activity : {ex.Message}");
+            }
         }
 
         private async Task CheckMembers()
