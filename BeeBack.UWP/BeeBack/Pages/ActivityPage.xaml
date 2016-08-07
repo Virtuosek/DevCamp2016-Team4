@@ -25,51 +25,6 @@
                 <Setter Property="FontSize" Value="18"/>
                 <Setter Property="Margin" Value="0,-70,0,0"/>
             </Style>
-            <Storyboard x:Name="HeartFalls">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="-150"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimation Duration="0:0:2" To="800" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0:0:2" To="730" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock1" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0:0:2" To="760" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock2" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0:0:2" To="800" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock3" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0:0:2" To="740" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock4" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0:0:2" To="750" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock5" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0:0:2" To="770" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock6" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0:0:2" To="765" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock7" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0" To="-100" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock1" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0" To="-76" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock2" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0" To="170" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock7" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0" To="145" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock6" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0" To="120" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock5" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0" To="95" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock4" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0" To="56" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock3" d:IsOptimized="True"/>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="720"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock5">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="800"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock1">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="600"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock2">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="900"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock3">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="340"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock4">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="240"/>
-                </DoubleAnimationUsingKeyFrames>
-            </Storyboard>
         </ResourceDictionary>
     </Page.Resources>
 
@@ -163,10 +118,57 @@
 
                     <Interactivity:Interaction.Behaviors>
                         <Core:EventTriggerBehavior EventName="Click">
+                            <Media:ControlStoryboardAction>
+                                <Media:ControlStoryboardAction.Storyboard>
+                                    <Storyboard x:Name="HeartFalls" x:Key="HeartFalls">
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="-150"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0:0:2" To="800" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0:0:2" To="830" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock1" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0:0:2" To="860" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock2" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0:0:2" To="900" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock3" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0:0:2" To="840" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock4" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0:0:2" To="850" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock5" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0:0:2" To="870" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock6" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0:0:2" To="865" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock7" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0" To="-100" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock1" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0" To="-76" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock2" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0" To="170" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock7" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0" To="145" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock6" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0" To="120" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock5" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0" To="95" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock4" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0" To="56" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock3" d:IsOptimized="True"/>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="720"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock5">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="800"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock1">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="600"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock2">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="900"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock3">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="340"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock4">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="240"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+
+                                </Media:ControlStoryboardAction.Storyboard>
+                            </Media:ControlStoryboardAction>
                             <Core:InvokeCommandAction Command="{Binding SetSubscribtionCommand, Mode=OneWay}"/>
-                        </Core:EventTriggerBehavior>
-                        <Core:EventTriggerBehavior EventName="Click">
-                            <Media:ControlStoryboardAction Storyboard="{Binding HeartFalls}"/>
                         </Core:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
 
