@@ -237,6 +237,10 @@
     <Compile Include="Migrations\201608061939389_add picture url.Designer.cs">
       <DependentUpon>201608061939389_add picture url.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608070755415_ActivityDriverAndShortcode.cs" />
+    <Compile Include="Migrations\201608070755415_ActivityDriverAndShortcode.Designer.cs">
+      <DependentUpon>201608070755415_ActivityDriverAndShortcode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -464,6 +468,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608061939389_add picture url.resx">
       <DependentUpon>201608061939389_add picture url.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608070755415_ActivityDriverAndShortcode.resx">
+      <DependentUpon>201608070755415_ActivityDriverAndShortcode.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

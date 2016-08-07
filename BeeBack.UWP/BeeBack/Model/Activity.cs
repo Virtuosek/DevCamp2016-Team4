@@ -12,6 +12,8 @@ namespace BeeBack.Model
 {
     public class Activity : ObservableObject
     {
+        private const string _emptyActivityUrl = "ms-appx:///Assets/football.png";
+
         public Guid ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
@@ -23,8 +25,7 @@ namespace BeeBack.Model
         {
             get
             {
-                string rst = (_pictureurl == null || string.IsNullOrEmpty(_pictureurl)) ? "ms-appx:///Assets/football.png" : _pictureurl;
-                return rst;
+                return string.IsNullOrEmpty(_pictureurl) ? _emptyActivityUrl : _pictureurl;
             }
             set { _pictureurl = value; }
         }
@@ -39,10 +40,28 @@ namespace BeeBack.Model
             set
             {
                 _owner = value;
-                RaisePropertyChanged("Owner");
+                RaisePropertyChanged(() => Owner);
             }
         }
 
+        public Guid? DriverId { get; set; }
+
+        private User _driver;
+
+        public User Driver
+        {
+            get
+            {
+                if (_driver == null)
+                    _driver = new User();
+                return _driver;
+            }
+            set
+            {
+                _driver = value;
+                RaisePropertyChanged(() => Driver);
+            }
+        }
 
         public List<User> Members { get; set; }
         public RelayCommand Save
@@ -80,6 +99,7 @@ namespace BeeBack.Model
         {
             Members = new List<User>();
             Owner = new User();
+            Driver = new User();
         }
 
     }

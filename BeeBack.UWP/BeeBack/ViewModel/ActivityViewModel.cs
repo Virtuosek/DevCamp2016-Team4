@@ -67,8 +67,8 @@ namespace BeeBack.ViewModel
 
         private void OnSetSubscribtion()
         {
-            Activity.IsSubscribed = !Activity.IsSubscribed;
-            IsSubscribed = Activity.IsSubscribed;
+            //Activity.IsSubscribed = !Activity.IsSubscribed;
+            //IsSubscribed = Activity.IsSubscribed;
         }
 
         private void OnUserTapped(User user)
@@ -105,19 +105,46 @@ namespace BeeBack.ViewModel
             var timer = new System.Threading.Timer(async (e) =>
             {
                 await RefreshActivity();
-            }, null, 0, 2000);
+            }, null, 0, 5000);
         }
 
         private async Task RefreshActivity()
         {
-            //Activity = await _dataService.GetActivity(Activity.ID);
+            try
+            {
+                await DispatcherHelper.UIDispatcher.TryRunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+                {
+                    var activity = await _dataService.GetActivity(Activity.ID);
+
+                    if (activity != null && activity.DriverId.HasValue)
+                    {
+                        Activity.DriverId = activity.DriverId;
+                        await CheckMembers();
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Can't catch activity : {ex.Message}");
+            }
         }
 
         private async Task CheckMembers()
         {
+            if (!string.IsNullOrEmpty(Activity.Owner.Email))
+            {
+                if (Activity.DriverId.HasValue)
+                {
+                    Activity.Driver = await _dataService.GetUser(Activity.DriverId.Value);
+                    RaisePropertyChanged(() => Activity.Driver);
+                }
+            }
+
             if (string.IsNullOrEmpty(Activity.Owner.Email))
             {
                 Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
+               
+
                 for (int i = 0; i < Activity.Members.Count; i++)
                 {
                     User user = null;

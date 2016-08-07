@@ -23,6 +23,12 @@ namespace BeeBack.Web.Models
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
 
+        public string DriverId { get; set; }
+        public ApplicationUser Driver { get; set; }
+
+        [Required]
+        public string ShortCode { get; set; }
+
         public List<UserActivity> UserActivities { get; set; }
     }
 }

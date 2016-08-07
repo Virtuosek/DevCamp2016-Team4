@@ -25,51 +25,6 @@
                 <Setter Property="FontSize" Value="18"/>
                 <Setter Property="Margin" Value="0,-70,0,0"/>
             </Style>
-            <Storyboard x:Name="HeartFalls">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="-150"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimation Duration="0:0:2" To="800" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0:0:2" To="730" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock1" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0:0:2" To="760" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock2" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0:0:2" To="800" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock3" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0:0:2" To="740" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock4" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0:0:2" To="750" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock5" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0:0:2" To="770" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock6" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0:0:2" To="765" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock7" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0" To="-100" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock1" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0" To="-76" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock2" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0" To="170" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock7" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0" To="145" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock6" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0" To="120" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock5" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0" To="95" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock4" d:IsOptimized="True"/>
-                <DoubleAnimation Duration="0" To="56" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock3" d:IsOptimized="True"/>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="720"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock5">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="800"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock1">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="600"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock2">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="900"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock3">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="340"/>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock4">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="240"/>
-                </DoubleAnimationUsingKeyFrames>
-            </Storyboard>
         </ResourceDictionary>
     </Page.Resources>
 
@@ -103,25 +58,25 @@
 
                         <Interactivity:Interaction.Behaviors>
                             <Core:EventTriggerBehavior EventName="Tapped">
-                                <Core:InvokeCommandAction Command="{Binding UserTappedCommand}" CommandParameter="{Binding Activity.Owner}"/>
+                                <Core:InvokeCommandAction Command="{Binding UserTappedCommand}" CommandParameter="{Binding Activity.Driver}"/>
                             </Core:EventTriggerBehavior>
                         </Interactivity:Interaction.Behaviors>
 
-                        <Border BorderBrush="#FFBFBFBF" BorderThickness="1" Background="#FFCFCFCF">
+                        <Border BorderBrush="#FFBFBFBF" BorderThickness="1" Background="#7FCFCFCF">
                             <StackPanel Margin="5">
-                                <TextBlock Text="Organisateur"  TextAlignment="Center"/>
+                                <TextBlock Text="Conducteur"  TextAlignment="Center"/>
 
                                 <Ellipse Width="80" Height="80" >
                                     <Ellipse.Fill>
                                         <ImageBrush >
                                             <ImageBrush.ImageSource>
-                                                <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" UriSource="{Binding Activity.Owner.PictureUrl}" />
+                                                <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" ImageFailed="OnDriverImageFailed" UriSource="{Binding Activity.Driver.PictureUrl}" />
                                             </ImageBrush.ImageSource>
                                         </ImageBrush>
                                     </Ellipse.Fill>
                                 </Ellipse>
 
-                                <TextBlock Text="{Binding Activity.Owner.FullName}" />
+                                <TextBlock Text="{Binding Activity.Driver.FullName}" />
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -129,8 +84,37 @@
                 </Grid>
 
                 <TextBlock Text="{Binding Activity.Description}" Margin="12,12,12,0" TextWrapping="Wrap" FontSize="16"/>
+                <StackPanel Orientation="Vertical">
+                    <Border HorizontalAlignment="Left" BorderThickness="1" MaxWidth="120">
 
-                <ListView ItemsSource="{Binding Subscribers}"/>
+                        <Interactivity:Interaction.Behaviors>
+                            <Core:EventTriggerBehavior EventName="Tapped">
+                                <Core:InvokeCommandAction Command="{Binding UserTappedCommand}" CommandParameter="{Binding Activity.Owner}"/>
+                            </Core:EventTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+
+                        <StackPanel Margin="5">
+                            <TextBlock Text="Organisateur"  TextAlignment="Center"/>
+
+                            <Ellipse Width="80" Height="80" >
+                                <Ellipse.Fill>
+                                    <ImageBrush >
+                                        <ImageBrush.ImageSource>
+                                            <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" UriSource="{Binding Activity.Owner.PictureUrl}" />
+                                        </ImageBrush.ImageSource>
+                                    </ImageBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <TextBlock Text="{Binding Activity.Owner.FullName}" />
+                        </StackPanel>
+                    </Border>
+
+                    <Rectangle Fill="#FF6E6E6E" Margin="24,10,24,20"></Rectangle>
+                    <TextBlock Text="Abonnés" Margin="12,0,12,12"></TextBlock>
+                    <ListView ItemsSource="{Binding Subscribers}"/>
+
+                </StackPanel>
 
 
             </StackPanel>
@@ -146,10 +130,57 @@
 
                     <Interactivity:Interaction.Behaviors>
                         <Core:EventTriggerBehavior EventName="Click">
+                            <!--<Media:ControlStoryboardAction>
+                                <Media:ControlStoryboardAction.Storyboard>
+                                    <Storyboard x:Name="HeartFalls" x:Key="HeartFalls">
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="-150"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimation Duration="0:0:2" To="800" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0:0:2" To="830" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock1" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0:0:2" To="860" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock2" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0:0:2" To="900" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock3" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0:0:2" To="840" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock4" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0:0:2" To="850" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock5" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0:0:2" To="870" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock6" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0:0:2" To="865" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock7" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0" To="-100" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock1" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0" To="-76" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock2" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0" To="170" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock7" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0" To="145" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock6" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0" To="120" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock5" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0" To="95" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock4" d:IsOptimized="True"/>
+                                        <DoubleAnimation Duration="0" To="56" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="textBlock3" d:IsOptimized="True"/>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="720"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock5">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="800"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock1">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="600"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock2">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="900"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock3">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="340"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="textBlock4">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="240"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+
+                                </Media:ControlStoryboardAction.Storyboard>
+                            </Media:ControlStoryboardAction>-->
                             <Core:InvokeCommandAction Command="{Binding SetSubscribtionCommand, Mode=OneWay}"/>
-                        </Core:EventTriggerBehavior>
-                        <Core:EventTriggerBehavior EventName="Click">
-                            <Media:ControlStoryboardAction Storyboard="{Binding HeartFalls}"/>
                         </Core:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
 
@@ -198,57 +229,4 @@
 
         </Grid>
     </ScrollViewer>
-
-
-    <!--<Grid Background="Transparent" DataContext="{Binding Activity}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-        </Grid>
-        <TextBlock Text="{Binding Title}" FontSize="48" TextWrapping="WrapWholeWords"/>
-        <Grid HorizontalAlignment="Right" Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            
-            <TextBlock Text="Géré par"/>
-
-            <Grid Width="150" Height="75" Background="Purple" >
-                
-                <Interactivity:Interaction.Behaviors>
-                    <Core:EventTriggerBehavior EventName="Tapped">
-                        <Core:InvokeCommandAction Command="{Binding Selected, Mode=OneWay}"/>
-                    </Core:EventTriggerBehavior>
-                </Interactivity:Interaction.Behaviors>
-                
-                <StackPanel>
-                    <TextBlock Text="{Binding Owner.UserName}" Foreground="White" />
-                    <TextBlock Text="{Binding Owner.FirstName}" Foreground="White" />
-                    <TextBlock Text="{Binding Owner.MobilePhone}" Foreground="White" />
-                </StackPanel>
-            </Grid>
-            
-        </Grid>
-        <StackPanel Grid.Row="1">
-            <TextBlock Text="{Binding Members.Count, ConverterParameter=Abonnés, Converter={StaticResource IntPresenterConverter}, Mode=OneWay}"/>
-            <ScrollViewer VerticalScrollMode="Disabled" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                <ListView Height="80" 
-					ItemsSource="{Binding Members}" 
-					ItemTemplate="{StaticResource UsersDataTemplate}" 
-					ItemsPanel="{StaticResource ItemsPanelTemplate1}"/>
-            </ScrollViewer>
-        </StackPanel>
-        <StackPanel Grid.Row="2">
-            <TextBlock Text="{Binding Title}"/>
-            <TextBlock Text="{Binding Description}"/>
-        </StackPanel>
-    </Grid>-->
 </Page>

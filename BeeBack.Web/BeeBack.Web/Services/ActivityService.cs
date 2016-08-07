@@ -12,24 +12,29 @@ namespace BeeBack.Web.Services
     {
         private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
-        public async Task<IEnumerable<Activity>> GetActivities()
+        public async Task<IEnumerable<Activity>> GetActivities(bool includeUserActivities = false)
         {
-            return await _db.Activities.ToListAsync();
+            IQueryable<Activity> activities = _db.Activities;
+            if (includeUserActivities)
+            {
+                activities = activities.Include(a => a.UserActivities);
+            }
+            return await activities.ToListAsync();
         }
 
         public async Task<List<Activity>> GetUserActivities(string userId)
         {
             return await _db.Activities
-                .Where(a => a.UserId == userId)
-                .ToListAsync();
+                            .Where(a => a.UserId == userId)
+                            .ToListAsync();
         }
 
         public async Task<List<Activity>> GetSubscribedActivities(string userId)
         {
             return await _db.UserActivity
-                .Where(a => a.UserID == userId)
-                .Select(a => a.Activity)
-                .ToListAsync();
+                            .Where(a => a.UserID == userId)
+                            .Select(a => a.Activity)
+                            .ToListAsync();
         }
 
         public async Task<Activity> GetActivity(Guid id)

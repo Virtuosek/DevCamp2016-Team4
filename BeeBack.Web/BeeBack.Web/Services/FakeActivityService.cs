@@ -9,7 +9,7 @@ namespace BeeBack.Web.Services
 {
     public class FakeActivityService : IActivityService
     {
-        public async Task<IEnumerable<Activity>> GetActivities()
+        public async Task<IEnumerable<Activity>> GetActivities(bool includeUserActivities)
         {
             await Task.Delay(0);
 

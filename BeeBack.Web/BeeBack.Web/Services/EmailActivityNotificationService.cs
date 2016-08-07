@@ -27,5 +27,10 @@ namespace BeeBack.Web.Services
 
             client.SendMailAsync(message);
         }
+
+        public void SendDriverConfirmation(Activity activity)
+        {
+            
+        }
     }
 }
