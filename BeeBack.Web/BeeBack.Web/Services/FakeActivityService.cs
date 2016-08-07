@@ -37,6 +37,11 @@ namespace BeeBack.Web.Services
             return Activities.FirstOrDefault(x => x.ID == id);
         }
 
+        public Task<List<ApplicationUser>> GetActivitySubscribers(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task AddActivity(Activity activity)
         {
             await Task.Delay(0);

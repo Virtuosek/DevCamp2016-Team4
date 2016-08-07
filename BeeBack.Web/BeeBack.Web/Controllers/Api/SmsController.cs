@@ -2,6 +2,8 @@
 using System.Web.Http;
 using BeeBack.Web.Models;
 using BeeBack.Web.Models.Twilio;
+using BeeBack.Web.Services;
+using System.Data.Entity;
 
 namespace BeeBack.Web.Controllers.Api
 {
@@ -18,13 +20,22 @@ namespace BeeBack.Web.Controllers.Api
 
                 using (ApplicationDbContext context = new ApplicationDbContext())
                 {
-                    var activity = context.Activities.FirstOrDefault(a => a.ShortCode == shortcode);
+                    var activity = context
+                        .Activities.Include(a => a.UserActivities)
+                        .Include("UserActivities.User")
+                        .FirstOrDefault(a => a.ShortCode == shortcode);
+
                     if (activity != null)
                     {
                         var user = context.Users.FirstOrDefault(u => u.PhoneNumber == message.From);
                         if (user != null)
                         {
                             activity.Driver = user;
+                            context.SaveChanges();
+
+                            var smsService = new SmsActivityNotificationService();
+                            smsService.SendDriverConfirmation(activity);
+
                             return true;
                         }
                     }

@@ -100,5 +100,14 @@ namespace BeeBack.Web.Controllers.Api
                 return true;
             }
         }
+
+        [Route(template:"api/activities/subscribed/{id}")]
+        public List<UserActivity> GetSubscribedForActivity(Guid id)
+        {
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
+                return context.UserActivity.Where(ua => ua.ActivityID == id).ToList();
+            }
+        } 
     }
 }

@@ -245,6 +245,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -254,10 +255,13 @@
     <Compile Include="Services\ActivityService.cs" />
     <Compile Include="Services\EmailActivityNotificationService.cs" />
     <Compile Include="Services\FakeActivityService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Services\SmsActivityNotificationService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Activities\ActivitiesIndexViewModel.cs" />
     <Compile Include="ViewModels\Activities\ActivityCreateEditViewModel.cs" />
+    <Compile Include="ViewModels\Activities\ActivityDetailViewModel.cs" />
     <Compile Include="ViewModels\Activities\ActivityListItemViewModel.cs" />
     <Compile Include="ViewModels\Activities\ActivityViewModel.cs" />
   </ItemGroup>

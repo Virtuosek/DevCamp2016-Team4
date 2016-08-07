@@ -39,7 +39,16 @@ namespace BeeBack.Web.Services
 
         public async Task<Activity> GetActivity(Guid id)
         {
-            return await _db.Activities.FirstOrDefaultAsync(x => x.ID == id);
+            return await _db.Activities
+                .FirstOrDefaultAsync(x => x.ID == id);
+        }
+
+        public async Task<List<ApplicationUser>> GetActivitySubscribers(Guid id)
+        {
+            return await _db.UserActivity
+                            .Where(ua => ua.ActivityID == id)
+                            .Select(ua => ua.User)
+                            .ToListAsync();
         }
 
         public async Task AddActivity(Activity activity)

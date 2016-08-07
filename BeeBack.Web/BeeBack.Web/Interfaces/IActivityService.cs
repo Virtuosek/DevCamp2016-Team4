@@ -11,6 +11,7 @@ namespace BeeBack.Web.Interfaces
         Task<List<Activity>> GetUserActivities(string userId);
         Task<List<Activity>> GetSubscribedActivities(string userId);
         Task<Activity> GetActivity(Guid id);
+        Task<List<ApplicationUser>> GetActivitySubscribers(Guid id);
         Task AddActivity(Activity activity);
         Task EditActivity(Activity activity);
         Task DeleteActivity(Activity activity);

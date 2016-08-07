@@ -1,4 +1,6 @@
-﻿@model BeeBack.Web.ViewModels.Activities.ActivityViewModel
+﻿@using System.Globalization
+@using BeeBack.Web.Models
+@model BeeBack.Web.ViewModels.Activities.ActivityDetailViewModel
 
 <div class="activity" data-activityId="@Model.Id">
     <h3>
@@ -28,11 +30,51 @@
                 @Html.DisplayFor(model => model.Description)
             </dd>
 
-    </dl>
-    <hr />
-</div></div>
+        </dl>
+        <hr />
+    </div>
+    <div>
+        <div id="map"></div>
+        <hr />
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <h3>Créateur</h3><br />
+                <div class="user">
+                    <div class="col-md-3">
+                        <img class="img img-circle img-responsive" src="@Model.User.PictureUrl" />
+                    </div>
+                    <div class="col-md-9">
+                        <p>@Model.User.Firstname<br />@Model.User.Lastname</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h3>Driver</h3><br />
+                @if (Model.Driver != null)
+                {
+                    <div class="user">
+                        <div class="col-md-3">
+                            <img class="img img-circle img-responsive" src="@Model.User.PictureUrl" />
+                        </div>
+                        <div class="col-md-9">
+                            <p>@Model.User.Firstname<br />@Model.User.Lastname</p>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <strong>Cette activité n'a pas encore trouvé de pilote.</strong>
+                }
+            </div>
+        </div>
+    </div>
+</div>
 
 <div>
+    <br />
     <p>
         <a class="btn btn-xs btn-embossed btn-primary view" role="button" href="@Url.Action("Index")">
             <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Retourner à la liste
@@ -51,3 +93,43 @@
         </a>
     </p>
 </div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        var map;
+
+        var activityLocation = {
+            lat: @(Model.ActivityLatitude),
+            lng: @(Model.ActivityLongitude)
+        };
+
+        function initMap() {
+            map = new window.google.maps.Map(document.getElementById('map'),
+            {
+                center: activityLocation,
+                zoom: 12,
+                styles:
+                    [{ "featureType": "administrative", "elementType": "labels.text.fill", "stylers": [{ "color": "#444444" }] }, { "featureType": "landscape", "elementType": "all", "stylers": [{ "color": "#f3f9fa" }] }, { "featureType": "landscape", "elementType": "labels.text", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "on" }, { "saturation": "-100" }, { "lightness": "0" }, { "gamma": "1" }] }, { "featureType": "poi.park", "elementType": "all", "stylers": [{ "color": "#c2e0be" }] }, { "featureType": "poi.park", "elementType": "labels.text", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.school", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.school", "elementType": "labels.text", "stylers": [{ "visibility": "off" }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "saturation": "0" }, { "lightness": "20" }] }, { "featureType": "road.highway", "elementType": "all", "stylers": [{ "lightness": "20" }] }, { "featureType": "road.arterial", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "on" }] }, { "featureType": "water", "elementType": "geometry.fill", "stylers": [{ "color": "#7ed5f9" }] }, { "featureType": "water", "elementType": "labels.text", "stylers": [{ "visibility": "off" }] }]
+                ,
+                scrollwheel: false,
+                navigationControl: false,
+                mapTypeControl: false,
+                scaleControl: false,
+                draggable: false,
+                mapTypeId: window.google.maps.MapTypeId.ROADMAP
+
+            });
+
+            var marker = new window.google.maps.Marker({
+                position: activityLocation,
+                map: map,
+                title: 'Activité'
+            });
+        };
+
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=@(Constants.GoogleApiKey)&callback=initMap">
+    </script>
+}
