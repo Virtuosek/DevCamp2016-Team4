@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using BeeBack.Web.Models;
 
 namespace BeeBack.Web.ViewModels.Activities
@@ -10,6 +11,7 @@ namespace BeeBack.Web.ViewModels.Activities
         string Title { get; set; }
         string Description { get; set; }
         string UserId { get; set; }
+        bool IsSubscribed { get; set; }
     }
 
     public class ActivityViewModel : IActivityViewModel
@@ -23,6 +25,8 @@ namespace BeeBack.Web.ViewModels.Activities
         public string Description { get; set; }
 
         public string UserId { get; set; }
+
+        public bool IsSubscribed { get; set; }
 
         public string ShortCode { get; set; }
 
@@ -48,7 +52,8 @@ namespace BeeBack.Web.ViewModels.Activities
                 Id = model.ID,
                 Title = model.Title,
                 Description = model.Description,
-                UserId = model.UserId
+                UserId = model.UserId,
+                IsSubscribed = model.UserActivities.Any(ua => ua.UserID == model.UserId)
             };
 
             return viewModel;

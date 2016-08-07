@@ -37,7 +37,7 @@ namespace BeeBack.Web.Controllers.Api
             return activities;
         }
 
-        [Route(template: "api/activities/getactivity")]
+        [Route(template: "api/activities/getactivity/{id}")]
         public async Task<Activity> GetActivity(Guid id)
         {
             var activity = await _activityService
