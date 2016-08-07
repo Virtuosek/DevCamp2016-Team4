@@ -118,10 +118,8 @@ namespace BeeBack.ViewModel
 
                     if (activity != null && activity.DriverId.HasValue)
                     {
-                        Activity = activity;
-                        Activity.Driver = await _dataService.GetUser(Activity.DriverId.Value);
-
-                        RaisePropertyChanged(() => Activity.Driver);
+                        Activity.DriverId = activity.DriverId;
+                        await CheckMembers();
                     }
                 });
             }
@@ -133,9 +131,20 @@ namespace BeeBack.ViewModel
 
         private async Task CheckMembers()
         {
+            if (!string.IsNullOrEmpty(Activity.Owner.Email))
+            {
+                if (Activity.DriverId.HasValue)
+                {
+                    Activity.Driver = await _dataService.GetUser(Activity.DriverId.Value);
+                    RaisePropertyChanged(() => Activity.Driver);
+                }
+            }
+
             if (string.IsNullOrEmpty(Activity.Owner.Email))
             {
                 Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
+               
+
                 for (int i = 0; i < Activity.Members.Count; i++)
                 {
                     User user = null;

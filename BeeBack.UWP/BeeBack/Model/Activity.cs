@@ -50,7 +50,12 @@ namespace BeeBack.Model
 
         public User Driver
         {
-            get { return _driver; }
+            get
+            {
+                if (_driver == null)
+                    _driver = new User();
+                return _driver;
+            }
             set
             {
                 _driver = value;

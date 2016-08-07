@@ -62,7 +62,8 @@ namespace BeeBack.ViewModel
         {
             if (obj.AddedItems.Count > 0)
             {
-                ServiceLocator.Current.GetInstance<ActivityViewModel>().Activity = obj.AddedItems[0] as Activity;
+                var activity = obj.AddedItems[0] as Activity;
+                ServiceLocator.Current.GetInstance<ActivityViewModel>().Activity = activity;
                 _customNavigationService.Navigate(typeof(ActivityPage));
             }
         }
