@@ -76,6 +76,15 @@
                 zoom: 10,
                 styles:
                     [{ "featureType": "administrative", "elementType": "labels.text.fill", "stylers": [{ "color": "#444444" }] }, { "featureType": "landscape", "elementType": "all", "stylers": [{ "color": "#f3f9fa" }] }, { "featureType": "landscape", "elementType": "labels.text", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "on" }, { "saturation": "-100" }, { "lightness": "0" }, { "gamma": "1" }] }, { "featureType": "poi.park", "elementType": "all", "stylers": [{ "color": "#c2e0be" }] }, { "featureType": "poi.park", "elementType": "labels.text", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.school", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.school", "elementType": "labels.text", "stylers": [{ "visibility": "off" }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "saturation": "0" }, { "lightness": "20" }] }, { "featureType": "road.highway", "elementType": "all", "stylers": [{ "lightness": "20" }] }, { "featureType": "road.arterial", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "on" }] }, { "featureType": "water", "elementType": "geometry.fill", "stylers": [{ "color": "#7ed5f9" }] }, { "featureType": "water", "elementType": "labels.text", "stylers": [{ "visibility": "off" }] }]
+                ,
+                options: $.extend({
+                    scrollwheel: false,
+                    navigationControl: false,
+                    mapTypeControl: false,
+                    scaleControl: false,
+                    draggable: false,
+                    mapTypeId: window.google.maps.MapTypeId.ROADMAP
+                }, options)
             });
 
             var marker = new window.google.maps.Marker({
