@@ -128,14 +128,14 @@
                 </Grid>
             </PivotItem>
         </Pivot>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,12,12">
             <Button Content="&#xE710;"
                     FontFamily="Segoe MDL2 Assets"
                     Margin="8"
-                    Width="35" Height="35"
+                    Width="50" Height="50"
                     Template="{StaticResource RoundButtonControlTemplate}" 
                     Style="{StaticResource BBButtonStyle}" 
-                    Command="{Binding AddActivity, Mode=OneWay}"/>
+                    Command="{Binding AddActivity, Mode=OneWay}" BorderThickness="0"/>
         </StackPanel>
     </Grid>
 </Page>

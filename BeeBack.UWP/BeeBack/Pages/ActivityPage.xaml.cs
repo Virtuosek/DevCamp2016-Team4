@@ -25,7 +25,7 @@ namespace BeeBack.Pages
                 Longitude = message.Longitude
             });
 
-            MapControl.ZoomLevel = 8;
+            MapControl.ZoomLevel = 10;
         }
     }
 

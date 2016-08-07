@@ -96,6 +96,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BoolToFavoriteIconConverter.cs" />
     <Compile Include="Converters\IntPresenterConverter.cs" />
     <Compile Include="Converters\InverseVisibilityConverter.cs" />
     <Compile Include="Converters\IsFavoriteConverter.cs" />

@@ -15,7 +15,7 @@
             <Core:InvokeCommandAction Command="{Binding LoadedCommand, Mode=OneWay}"/>
         </Core:EventTriggerBehavior>
     </Interactivity:Interaction.Behaviors>
-    
+
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -23,90 +23,83 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <!--<Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Dictionary1.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            <Converters:IntPresenterConverter x:Key="IntPresenterConverter"/>
-            <DataTemplate x:Key="UsersDataTemplate">
-                <Grid Width="150"
-            		Height="75" Background="Purple" >
-                    <Interactivity:Interaction.Behaviors>
-                        <Core:EventTriggerBehavior EventName="Tapped">
-                            <Core:InvokeCommandAction Command="{Binding Selected, Mode=OneWay}"/>
-                        </Core:EventTriggerBehavior>
-                    </Interactivity:Interaction.Behaviors>
-                    <StackPanel>
-                        <TextBlock Text="{Binding UserName, Mode=TwoWay}" Foreground="White" />
-                        <TextBlock Text="{Binding FirstName, Mode=TwoWay}" Foreground="White" />
-                        <TextBlock Text="{Binding MobilePhone, Mode=TwoWay}" Foreground="White" />
-                    </StackPanel>
-                </Grid>
-            </DataTemplate>
-            <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
-                <ItemsStackPanel Orientation="Horizontal" 
-            		ScrollViewer.HorizontalScrollBarVisibility="Visible" 
-            		ScrollViewer.VerticalScrollBarVisibility="Disabled" />
-            </ItemsPanelTemplate>
-        </ResourceDictionary>
-
-    </Page.Resources>-->
+    
     <Page.DataContext>
         <Binding Mode="OneWay" Path="ActivityVM" Source="{StaticResource Locator}"/>
     </Page.DataContext>
 
     <ScrollViewer>
-        <StackPanel Orientation="Vertical">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
+        <Grid>
+            <StackPanel Orientation="Vertical">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
 
-                <Maps:MapControl x:Name="MapControl"  MapServiceToken="zT422KzyGYsSDVRMuDhZ~zx-JAtTJT9IUq_yGPOFiqQ~AgF-DUoM9sECtx2ey5f6oebnvYzQieMNtjLyTbp0LrbXmOxVZ3Vj9W1U317Ef5gC"
-                    ZoomInteractionMode="Disabled" 
-                    LandmarksVisible="True" Grid.ColumnSpan="2"
-                    IsRightTapEnabled="true" />
-                
-                <TextBlock Margin="12 12 0 12" Text="{Binding Activity.Title}" FontSize="34"  TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Foreground="{StaticResource Blue}"/>
+                    <Maps:MapControl x:Name="MapControl"  MapServiceToken="zT422KzyGYsSDVRMuDhZ~zx-JAtTJT9IUq_yGPOFiqQ~AgF-DUoM9sECtx2ey5f6oebnvYzQieMNtjLyTbp0LrbXmOxVZ3Vj9W1U317Ef5gC"
+                        ZoomInteractionMode="Disabled" 
+                        LandmarksVisible="True" Grid.ColumnSpan="2"
+                        IsRightTapEnabled="true" />
 
-                <Grid  Grid.Column="1" Margin="12">
-                    
-                    <Interactivity:Interaction.Behaviors>
-                        <Core:EventTriggerBehavior EventName="Tapped">
-                            <Core:InvokeCommandAction Command="{Binding UserTappedCommand}" CommandParameter="{Binding Activity.Owner}"/>
-                        </Core:EventTriggerBehavior>
-                    </Interactivity:Interaction.Behaviors>
-                    
-                    <Border BorderBrush="#FFBFBFBF" BorderThickness="1" Background="#FFCFCFCF">
-                        <StackPanel Margin="5">
-                            <TextBlock Text="Créé par :"  TextAlignment="Center"/>
+                    <TextBlock Margin="12 12 0 12" Text="{Binding Activity.Title}" FontSize="34"  TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Foreground="{StaticResource Blue}"/>
 
-                            <Ellipse Width="80" Height="80" >
-                                <Ellipse.Fill>
-                                    <ImageBrush >
-                                        <ImageBrush.ImageSource>
-                                            <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" UriSource="{Binding Activity.Owner.PictureUrl}" />
-                                        </ImageBrush.ImageSource>
-                                    </ImageBrush>
-                                </Ellipse.Fill>
-                            </Ellipse>
+                    <Grid  Grid.Column="1" Margin="12">
 
-                            <TextBlock Text="{Binding Activity.Owner.FullName}" />
-                        </StackPanel>
-                    </Border>
+                        <Interactivity:Interaction.Behaviors>
+                            <Core:EventTriggerBehavior EventName="Tapped">
+                                <Core:InvokeCommandAction Command="{Binding UserTappedCommand}" CommandParameter="{Binding Activity.Owner}"/>
+                            </Core:EventTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+
+                        <Border BorderBrush="#FFBFBFBF" BorderThickness="1" Background="#FFCFCFCF">
+                            <StackPanel Margin="5">
+                                <TextBlock Text="Organisateur"  TextAlignment="Center"/>
+
+                                <Ellipse Width="80" Height="80" >
+                                    <Ellipse.Fill>
+                                        <ImageBrush >
+                                            <ImageBrush.ImageSource>
+                                                <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" UriSource="{Binding Activity.Owner.PictureUrl}" />
+                                            </ImageBrush.ImageSource>
+                                        </ImageBrush>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+
+                                <TextBlock Text="{Binding Activity.Owner.FullName}" />
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
                 </Grid>
 
-            </Grid>
+                <TextBlock Text="{Binding Activity.Description}" Margin="12,12,12,0" TextWrapping="Wrap" FontSize="16"/>
 
-            <TextBlock Text="{Binding Activity.Description}" Margin="12,0"/>
+                <ListView ItemsSource="{Binding Subscribers}">
 
-            <ListView ItemsSource="{Binding Subscribers}">
+                </ListView>
 
-            </ListView>
 
-        </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,12,12">
+                <Button 
+                    FontFamily="Segoe MDL2 Assets"
+                    Content="{Binding IsSubscribed, Mode=TwoWay, Converter={StaticResource BoolToFavoriteIconConverter}}" 
+                    Margin="8" Background="{StaticResource Red}"
+                    Width="50" Height="50" FontSize="25"
+                    Template="{StaticResource RoundButtonControlTemplate}" 
+                    Style="{StaticResource BBButtonStyle}" BorderThickness="0">
+
+                    <Interactivity:Interaction.Behaviors>
+                        <Core:EventTriggerBehavior EventName="Click">
+                            <Core:InvokeCommandAction Command="{Binding SetSubscribtionCommand, Mode=OneWay}"/>
+                        </Core:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
+
+                </Button>
+            </StackPanel>
+        </Grid>
     </ScrollViewer>
 
 

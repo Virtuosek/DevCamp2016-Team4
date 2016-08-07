@@ -24,8 +24,21 @@ namespace BeeBack.ViewModel
         private Activity _activity;
         private readonly ICustomNavigationService _customNavigationService;
 
+        public bool _iSubscribed;
+        public bool IsSubscribed
+        {
+            get { return _iSubscribed; }
+            set
+            {
+                _iSubscribed = value;
+                RaisePropertyChanged(() => IsSubscribed);
+            }
+        }
+
         public ICommand LoadedCommand { get; set; }
         public ICommand UserTappedCommand { get; set; }
+        public ICommand SetSubscribtionCommand { get; set; }
+
         public ObservableCollection<User> Subscribers { get; set; }
         public Activity Activity
         {
@@ -44,9 +57,16 @@ namespace BeeBack.ViewModel
 
             LoadedCommand = new RelayCommand(OnLoaded);
             UserTappedCommand = new RelayCommand<User>(OnUserTapped);
+            SetSubscribtionCommand = new RelayCommand(OnSetSubscribtion);
 
             if (IsInDesignModeStatic)
                 CreateDummyActivity();
+        }
+
+        private void OnSetSubscribtion()
+        {
+            Activity.IsSubscribed = !Activity.IsSubscribed;
+            IsSubscribed = Activity.IsSubscribed;
         }
 
         private void OnUserTapped(User user)
@@ -80,15 +100,7 @@ namespace BeeBack.ViewModel
             await CheckMembers();
             Messenger.Default.Send(new ActivityMapCoordinateMessage { Latitude = Activity.Location.Latitude, Longitude = Activity.Location.Longitude });
         }
-       
-        //private void _userselectedmessage(UserSelectedMessage msg)
-        //{
-        //    NavigationMessage msgnav = new NavigationMessage();
-        //    ServiceLocator.Current.GetInstance<UserViewModel>().User = msg.SelectedUser;
-        //    msgnav.DestinationPageType = typeof(UserPage);
-        //    Messenger.Default.Send<NavigationMessage>(msgnav);
-        //}
-      
+
         private async Task CheckMembers()
         {
             if (string.IsNullOrEmpty(Activity.Owner.Email))
@@ -105,7 +117,5 @@ namespace BeeBack.ViewModel
                 }
             }
         }
-   
-
     }
 }

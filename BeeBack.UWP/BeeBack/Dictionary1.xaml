@@ -6,6 +6,7 @@
     xmlns:local="using:BeeBack">
 
     <SolidColorBrush x:Key="Blue" Color="#FF4A90BE"/>
+    <SolidColorBrush x:Key="Red" Color="#FFc0392b"/>
     <SolidColorBrush x:Key="BBButtonBackgroundColor" Color="#FF1ABC9C"/>
     <SolidColorBrush x:Key="BBTextForegroundColor" Color="White"/>
     <SolidColorBrush x:Key="BBUserBackgroundColor" Color="#FF660076"/>
@@ -58,18 +59,11 @@
                                     <Thickness>-2</Thickness>
                                 </Setter.Value>
                             </Setter>
-                            <Setter Target="shadow.(FrameworkElement.Margin)">
-                                <Setter.Value>
-                                    <Thickness>0,0,-4,-4</Thickness>
-                                </Setter.Value>
-                            </Setter>
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Ellipse Fill="Gray"
-    			x:Name="shadow"
-    			Margin="2,2,-2,-2"/>
+          
             <Ellipse x:Name="ellipse" 
     			Fill="{TemplateBinding Background}"/>
             <ContentPresenter x:Name="contentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>

@@ -17,6 +17,7 @@ namespace BeeBack.Model
         public string Description { get; set; }
         public Location Location { get; set; }
         private string _pictureurl;
+        public bool IsSubscribed { get; set; }
 
         public string PictureUrl
         {
