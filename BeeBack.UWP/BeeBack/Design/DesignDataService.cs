@@ -74,5 +74,10 @@ namespace BeeBack.Design
         {
             throw new NotImplementedException();
         }
+
+        public Task<List<UserActivity>> GetActivitySubscribers(Guid iD)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

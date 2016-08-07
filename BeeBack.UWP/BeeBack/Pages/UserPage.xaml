@@ -21,7 +21,7 @@
         <Binding Mode="OneWay" Path="UserVM" Source="{StaticResource Locator}"/>
     </Page.DataContext>
 
-    <Grid Background="Transparent" DataContext="{Binding User}">
+    <Grid Background="Transparent" DataContext="{Binding User, Mode=TwoWay}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>

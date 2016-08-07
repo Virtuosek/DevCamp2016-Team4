@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Background="{StaticResource Blue}" >
-            <Image Source="ms-appx:///Assets/Logo/logo.png" Width="40" HorizontalAlignment="Left" Margin="8" Tapped="Image_Tapped"/>
+            <Image Source="ms-appx:///Assets/Logo/logoTransparent.png" Width="40" HorizontalAlignment="Left" Margin="8" Tapped="Image_Tapped"/>
             <TextBlock Text="BeeBack" Margin="8" FontSize="24" Foreground="White" />
         </StackPanel>
         

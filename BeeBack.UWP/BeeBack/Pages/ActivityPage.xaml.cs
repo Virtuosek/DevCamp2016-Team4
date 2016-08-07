@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Xaml.Media.Imaging;
 
 namespace BeeBack.Pages
@@ -26,13 +28,16 @@ namespace BeeBack.Pages
                 Longitude = message.Longitude
             });
 
-            MapControl.ZoomLevel = 10;
+            var image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/pinBee.png"));
+            MapIcon myPOI = new MapIcon { Location = MapControl.Center, NormalizedAnchorPoint = new Point(0.5, 1.0), Title = "My position", ZIndex = 0, Image = image};
+            MapControl.MapElements.Add(myPOI);
+
+            MapControl.ZoomLevel = 12;
         }
 
         private void OnDriverImageFailed(object sender, Windows.UI.Xaml.ExceptionRoutedEventArgs e)
         {
-            BitmapImage bitmapImage = sender as BitmapImage;
-            bitmapImage.UriSource = new Uri("ms-appx:///Assets/incognitoUser.png");
+
         }
     }
 

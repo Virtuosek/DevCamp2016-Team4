@@ -4,6 +4,7 @@ using BeeBack.Pages;
 using BeeBack.Services.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
 using Microsoft.Practices.ServiceLocation;
@@ -58,17 +59,17 @@ namespace BeeBack.ViewModel
             LoadedCommand = new RelayCommand(OnLoaded);
             UserTappedCommand = new RelayCommand<User>(OnUserTapped);
             SetSubscribtionCommand = new RelayCommand(OnSetSubscribtion);
+            SimpleIoc.Default.GetInstance<UserViewModel>().User = null; //hack ?
 
             if (IsInDesignModeStatic)
                 CreateDummyActivity();
-
 
         }
 
         private void OnSetSubscribtion()
         {
-            //Activity.IsSubscribed = !Activity.IsSubscribed;
-            //IsSubscribed = Activity.IsSubscribed;
+            Activity.IsSubscribed = !Activity.IsSubscribed;
+            IsSubscribed = Activity.IsSubscribed;
         }
 
         private void OnUserTapped(User user)
@@ -94,11 +95,14 @@ namespace BeeBack.ViewModel
                     _activity.Owner = u;
                 }
                 _activity.Members.Add(u);
+                Subscribers.Add(u);
             }
         }
 
         private async void OnLoaded()
         {
+            Subscribers = null;
+
             await CheckMembers();
             Messenger.Default.Send(new ActivityMapCoordinateMessage { Latitude = Activity.Location.Latitude, Longitude = Activity.Location.Longitude });
 
@@ -140,26 +144,21 @@ namespace BeeBack.ViewModel
                 }
             }
 
-            if (string.IsNullOrEmpty(Activity.Owner.Email))
+            Subscribers = new ObservableCollection<User>();
+            Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
+
+            if (Subscribers == null || Subscribers.Count == 0)
             {
-                Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
-               
-
-                for (int i = 0; i < Activity.Members.Count; i++)
+                var useractivities = await _dataService.GetActivitySubscribers(Activity.ID);
+                foreach (var userActivity in useractivities)
                 {
-                    User user = null;
-                    try
+                    if (userActivity.UserId != Activity.Owner.ID)
                     {
-                        user = await _dataService.GetUser(Activity.Members[i].ID);
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine(ex.Message);
-                    }
-
-                    if (user != null)
+                        var user = await _dataService.GetUser(userActivity.UserId);
                         Subscribers.Add(user);
+                    }
                 }
+                RaisePropertyChanged(() => Subscribers);
             }
         }
     }

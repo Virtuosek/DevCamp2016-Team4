@@ -91,7 +91,7 @@
                 <Grid>
                     <GridView Grid.Row="1" Visibility="{Binding MySubscriptionsVisibility}"
 						Margin="0,8" 
-						ItemsSource="{Binding SubscriptionsActivities}" 
+						ItemsSource="{Binding MySubscriptions}" 
 						ItemTemplate="{StaticResource ActivityItemTemplate}" >
 
                         <Interactivity:Interaction.Behaviors>
