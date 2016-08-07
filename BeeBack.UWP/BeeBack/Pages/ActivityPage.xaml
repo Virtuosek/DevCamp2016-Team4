@@ -148,9 +148,7 @@
                     </StackPanel>
                 </Border>
 
-                <ListView ItemsSource="{Binding Subscribers}">
                 <ListView ItemsSource="{Binding Subscribers}"/>
-
 
             </StackPanel>
 
