@@ -21,3 +21,10 @@
 .item .img-responsive {
     cursor: default;
 }
+
+/* Map */
+
+#map {
+    height: 300px;
+}
+
