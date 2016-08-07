@@ -38,6 +38,7 @@ namespace BeeBack
             if (MainFrame.CanGoBack)
             {
                 MainFrame.GoBack();
+                e.Handled = true;
             }
         }
 
