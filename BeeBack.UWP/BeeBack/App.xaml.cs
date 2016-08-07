@@ -50,6 +50,12 @@ namespace BeeBack
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
+               
+                    if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+                    {
+                        var v = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
+                        v.TryEnterFullScreenMode();
+                    }
                 rootFrame.Navigate(typeof(SplashScreenPage), e.Arguments);
             }
             // Ensure the current window is active
