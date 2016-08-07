@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BeeBack.Web.Interfaces;
+﻿using BeeBack.Web.Interfaces;
 using BeeBack.Web.Models;
 
 namespace BeeBack.Web.Services
@@ -12,7 +7,7 @@ namespace BeeBack.Web.Services
     {
         public void NotifySubscribedUsers(Activity activity)
         {
-            var twilio = new Twilio.TwilioRestClient("SK801c217a29edcb346742b0e3f64ff34b", "vQxk9lem1tQAkZNgmZwNAVmpqYxqxl28");
+            var twilio = new Twilio.TwilioRestClient("ACba61716bbf4e431290e8d11868616813", "a0bea4676879689faba0c055e116c263");
             var phoneNumber = twilio.GetIncomingPhoneNumber("PN807993f491b0c08be90ed6df0481b49d");
 
             foreach (var userActivity in activity.UserActivities)
