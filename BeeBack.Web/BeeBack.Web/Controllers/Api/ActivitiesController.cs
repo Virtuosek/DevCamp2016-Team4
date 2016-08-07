@@ -87,9 +87,16 @@ namespace BeeBack.Web.Controllers.Api
         {
             using (ApplicationDbContext context = new ApplicationDbContext())
             {
-                var activity = context.Activities.Find(id);
-                var smsService = new SmsActivityNotificationService();
-                smsService.NotifySubscribedUsers(activity);
+                var activity = context.Activities
+                                      .Include(a => a.UserActivities)
+                                      .Include("UserActivities.User")
+                                      .FirstOrDefault(a => a.ID == id);
+
+                if (activity != null)
+                {
+                    var smsService = new SmsActivityNotificationService();
+                    smsService.NotifySubscribedUsers(activity);
+                }
                 return true;
             }
         }
