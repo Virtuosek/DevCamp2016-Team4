@@ -16,6 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Xaml.Controls;
 
 namespace BeeBack.ViewModel
 {
@@ -39,6 +40,7 @@ namespace BeeBack.ViewModel
         public ICommand LoadedCommand { get; set; }
         public ICommand UserTappedCommand { get; set; }
         public ICommand SetSubscribtionCommand { get; set; }
+        public ICommand SubscriberSelectionChangedCommand { get; set; }
 
         public ObservableCollection<User> Subscribers { get; set; }
         public Activity Activity
@@ -59,11 +61,21 @@ namespace BeeBack.ViewModel
             LoadedCommand = new RelayCommand(OnLoaded);
             UserTappedCommand = new RelayCommand<User>(OnUserTapped);
             SetSubscribtionCommand = new RelayCommand(OnSetSubscribtion);
+            SubscriberSelectionChangedCommand = new RelayCommand<SelectionChangedEventArgs>(OnSubscriberSelectionChanged);
+
             SimpleIoc.Default.GetInstance<UserViewModel>().User = null; //hack ?
 
             if (IsInDesignModeStatic)
                 CreateDummyActivity();
 
+        }
+
+        private void OnSubscriberSelectionChanged(SelectionChangedEventArgs obj)
+        {
+            if (obj.AddedItems.Count > 0)
+            {
+                OnUserTapped(obj.AddedItems.First() as User);
+            }
         }
 
         private void OnSetSubscribtion()
@@ -155,7 +167,8 @@ namespace BeeBack.ViewModel
                     if (userActivity.UserId != Activity.Owner.ID)
                     {
                         var user = await _dataService.GetUser(userActivity.UserId);
-                        Subscribers.Add(user);
+                        if (!Subscribers.Contains(user))
+                            Subscribers.Add(user);
                     }
                 }
                 RaisePropertyChanged(() => Subscribers);

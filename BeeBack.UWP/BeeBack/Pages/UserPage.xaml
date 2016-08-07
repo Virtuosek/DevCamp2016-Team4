@@ -54,9 +54,8 @@
                 <TextBlock Grid.Row="1" Grid.Column="1" Margin="8" Text="{Binding PhoneNumber}"/>
                 <TextBlock Grid.Row="2" Text="Âge" Margin="8"/>
                 <TextBlock Grid.Row="2" Grid.Column="1" Margin="8" Text="{Binding Age}"/>
-
-
             </Grid>
+            
         </StackPanel>
         <StackPanel Grid.Row="1">
             <TextBlock FontSize="24" Text="{Binding Activities.Count, ConverterParameter=Activités, Converter={StaticResource IntPresenterConverter}, Mode=OneWay}"/>
