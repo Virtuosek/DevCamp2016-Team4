@@ -149,7 +149,7 @@
                             <Core:InvokeCommandAction Command="{Binding SetSubscribtionCommand, Mode=OneWay}"/>
                         </Core:EventTriggerBehavior>
                         <Core:EventTriggerBehavior EventName="Click">
-                            <Media:ControlStoryboardAction Storyboard="{Binding HeartFallss}"/>
+                            <Media:ControlStoryboardAction Storyboard="{Binding HeartFalls}"/>
                         </Core:EventTriggerBehavior>
                     </Interactivity:Interaction.Behaviors>
 
