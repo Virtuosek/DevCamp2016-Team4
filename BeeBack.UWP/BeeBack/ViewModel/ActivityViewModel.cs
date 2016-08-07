@@ -16,6 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace BeeBack.ViewModel
@@ -25,6 +26,8 @@ namespace BeeBack.ViewModel
         private IDataService _dataService;
         private Activity _activity;
         private readonly ICustomNavigationService _customNavigationService;
+        private DispatcherTimer _timer;
+
 
         public bool _iSubscribed;
         public bool IsSubscribed
@@ -41,6 +44,7 @@ namespace BeeBack.ViewModel
         public ICommand UserTappedCommand { get; set; }
         public ICommand SetSubscribtionCommand { get; set; }
         public ICommand SubscriberSelectionChangedCommand { get; set; }
+        public ICommand UnLoadedCommand { get; set; }
 
         public ObservableCollection<User> Subscribers { get; set; }
         public Activity Activity
@@ -61,13 +65,26 @@ namespace BeeBack.ViewModel
             LoadedCommand = new RelayCommand(OnLoaded);
             UserTappedCommand = new RelayCommand<User>(OnUserTapped);
             SetSubscribtionCommand = new RelayCommand(OnSetSubscribtion);
+            UnLoadedCommand = new RelayCommand(OnUnloaded);
             SubscriberSelectionChangedCommand = new RelayCommand<SelectionChangedEventArgs>(OnSubscriberSelectionChanged);
 
             SimpleIoc.Default.GetInstance<UserViewModel>().User = null; //hack ?
+            Subscribers = new ObservableCollection<User>();
 
             if (IsInDesignModeStatic)
                 CreateDummyActivity();
 
+        }
+
+        private void OnUnloaded()
+        {
+            if (_timer != null)
+            {
+                _timer.Stop();
+                _timer.Tick -= RefreshActivity;
+
+                Subscribers = new ObservableCollection<User>();
+            }
         }
 
         private void OnSubscriberSelectionChanged(SelectionChangedEventArgs obj)
@@ -113,31 +130,47 @@ namespace BeeBack.ViewModel
 
         private async void OnLoaded()
         {
-            Subscribers = null;
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromSeconds(5);
+            _timer.Tick += RefreshActivity;
+            _timer.Start();
 
             await CheckMembers();
-            Messenger.Default.Send(new ActivityMapCoordinateMessage { Latitude = Activity.Location.Latitude, Longitude = Activity.Location.Longitude });
 
-            var timer = new System.Threading.Timer(async (e) =>
+            Messenger.Default.Send(new ActivityMapCoordinateMessage { Latitude = Activity.Location.Latitude, Longitude = Activity.Location.Longitude });
+        }
+
+        private async void RefreshActivity(object sender, object e)
+        {
+            try
             {
-                await RefreshActivity();
-            }, null, 0, 5000);
+                var activity = await _dataService.GetActivity(Activity.ID);
+
+                if (activity != null && activity.DriverId.HasValue)
+                {
+                    Activity.DriverId = activity.DriverId;
+                    await CheckMembers();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Can't catch activity : {ex.Message}");
+            }
         }
 
         private async Task RefreshActivity()
         {
             try
             {
-                await DispatcherHelper.UIDispatcher.TryRunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
-                {
-                    var activity = await _dataService.GetActivity(Activity.ID);
+                var activity = await _dataService.GetActivity(Activity.ID);
 
-                    if (activity != null && activity.DriverId.HasValue)
-                    {
-                        Activity.DriverId = activity.DriverId;
-                        await CheckMembers();
-                    }
-                });
+                if (activity != null && activity.DriverId.HasValue)
+                {
+                    Activity.DriverId = activity.DriverId;
+                    await CheckMembers();
+                }
+
             }
             catch (Exception ex)
             {
@@ -147,32 +180,38 @@ namespace BeeBack.ViewModel
 
         private async Task CheckMembers()
         {
-            if (!string.IsNullOrEmpty(Activity.Owner.Email))
+            try
             {
-                if (Activity.DriverId.HasValue)
+                if (!string.IsNullOrEmpty(Activity.Owner.Email))
                 {
-                    Activity.Driver = await _dataService.GetUser(Activity.DriverId.Value);
-                    RaisePropertyChanged(() => Activity.Driver);
-                }
-            }
-
-            Subscribers = new ObservableCollection<User>();
-            Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
-
-            if (Subscribers == null || Subscribers.Count == 0)
-            {
-                var useractivities = await _dataService.GetActivitySubscribers(Activity.ID);
-                foreach (var userActivity in useractivities)
-                {
-                    if (userActivity.UserId != Activity.Owner.ID)
+                    if (Activity.DriverId.HasValue)
                     {
-                        var user = await _dataService.GetUser(userActivity.UserId);
-                        if (!Subscribers.Contains(user))
-                            Subscribers.Add(user);
+                        Activity.Driver = await _dataService.GetUser(Activity.DriverId.Value);
+                        RaisePropertyChanged(() => Activity.Driver);
                     }
                 }
-                RaisePropertyChanged(() => Subscribers);
+
+                Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
+
+                if (Subscribers == null || Subscribers.Count == 0)
+                {
+                    var useractivities = await _dataService.GetActivitySubscribers(Activity.ID);
+                    foreach (var userActivity in useractivities)
+                    {
+                        if (userActivity.UserId != Activity.Owner.ID)
+                        {
+                            var user = await _dataService.GetUser(userActivity.UserId);
+                            if (!Subscribers.Contains(user))
+                                Subscribers.Add(user);
+                        }
+                    }
+                }
             }
+            catch
+            {
+                //PAS BIEN
+            }
+
         }
     }
 }
