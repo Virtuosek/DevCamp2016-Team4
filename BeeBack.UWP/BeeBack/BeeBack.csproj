@@ -169,6 +169,7 @@
     <Content Include="Assets\incognitoUser.png" />
     <Content Include="Assets\intro5.jpg" />
     <Content Include="Assets\Logo\logo.png" />
+    <Content Include="Assets\Logo\logoTransparent.png" />
     <Content Include="Assets\pinBee.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

@@ -110,9 +110,27 @@
                         </StackPanel>
                     </Border>
 
-                    <Rectangle Fill="#FF6E6E6E" Margin="24,10,24,20"></Rectangle>
+                    <Rectangle Fill="#FF6E6E6E" Margin="24,10,24,20" Height="1"></Rectangle>
                     <TextBlock Text="Abonnés" Margin="12,0,12,12"></TextBlock>
-                    <ListView ItemsSource="{Binding Subscribers}"/>
+                    <ListView ItemsSource="{Binding Subscribers}" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="5">
+                                    <Ellipse Width="80" Height="80" >
+                                        <Ellipse.Fill>
+                                            <ImageBrush >
+                                                <ImageBrush.ImageSource>
+                                                    <BitmapImage DecodePixelHeight="80" DecodePixelWidth="80" UriSource="{Binding PictureUrl}" />
+                                                </ImageBrush.ImageSource>
+                                            </ImageBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+
+                                    <TextBlock Text="{Binding FullName}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
 
                 </StackPanel>
 

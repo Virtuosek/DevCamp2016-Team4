@@ -94,6 +94,7 @@ namespace BeeBack.ViewModel
                     _activity.Owner = u;
                 }
                 _activity.Members.Add(u);
+                Subscribers.Add(u);
             }
         }
 
@@ -140,26 +141,23 @@ namespace BeeBack.ViewModel
                 }
             }
 
-            if (string.IsNullOrEmpty(Activity.Owner.Email))
+            Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
+
+
+            for (int i = 0; i < Activity.Members.Count; i++)
             {
-                Activity.Owner = await _dataService.GetUser(Guid.Parse(Activity.UserId));
-               
-
-                for (int i = 0; i < Activity.Members.Count; i++)
+                User user = null;
+                try
                 {
-                    User user = null;
-                    try
-                    {
-                        user = await _dataService.GetUser(Activity.Members[i].ID);
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine(ex.Message);
-                    }
-
-                    if (user != null)
-                        Subscribers.Add(user);
+                    user = await _dataService.GetUser(Activity.Members[i].ID);
                 }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+
+                if (user != null)
+                    Subscribers.Add(user);
             }
         }
     }
