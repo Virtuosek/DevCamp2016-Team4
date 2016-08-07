@@ -255,7 +255,9 @@
     <Compile Include="Services\ActivityService.cs" />
     <Compile Include="Services\EmailActivityNotificationService.cs" />
     <Compile Include="Services\FakeActivityService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Services\SmsActivityNotificationService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Activities\ActivitiesIndexViewModel.cs" />
     <Compile Include="ViewModels\Activities\ActivityCreateEditViewModel.cs" />

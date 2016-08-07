@@ -13,10 +13,12 @@ namespace BeeBack.Web.Controllers
     public class ActivitiesController : Controller
     {
         private readonly IActivityService _activityService;
+        private readonly IUserService _userService;
 
-        public ActivitiesController(IActivityService activityService)
+        public ActivitiesController(IActivityService activityService, IUserService userService)
         {
             _activityService = activityService;
+            _userService = userService;
         }
 
         [AllowAnonymous]
@@ -27,7 +29,7 @@ namespace BeeBack.Web.Controllers
 
             var viewModel = new ActivitiesIndexViewModel
             {
-                Activities = activities.Select(model => model.ToViewModel<ActivityListItemViewModel>())
+                Activities = activities.Select(model => model.ToViewModel<ActivityListItemViewModel>(User.Identity.GetUserId()))
             };
 
             return View(viewModel);
@@ -50,6 +52,9 @@ namespace BeeBack.Web.Controllers
 
             var viewModel = activity.ToViewModel<ActivityDetailViewModel>();
             viewModel.Fill(activity);
+            viewModel.Subscribers = await _activityService.GetActivitySubscribers(id.Value);
+            viewModel.User = _userService.GetUserById(activity.UserId);
+            viewModel.Driver = _userService.GetUserById(activity.DriverId);
 
             return View(viewModel);
         }

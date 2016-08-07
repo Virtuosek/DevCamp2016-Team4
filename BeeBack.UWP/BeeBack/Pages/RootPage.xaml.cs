@@ -54,7 +54,7 @@ namespace BeeBack
 
         private void Image_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            MainFrame.Navigate(typeof(MyActivitiesPage));
+           // MainFrame.Navigate(typeof(MyActivitiesPage));
         }
 
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)
