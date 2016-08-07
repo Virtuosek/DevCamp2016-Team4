@@ -25,6 +25,6 @@
             <TextBlock Text="BeeBack" Margin="8" FontSize="24" Foreground="White" />
         </StackPanel>
         
-        <Frame x:Name="MainFrame" Grid.Row="1" Background="#FFEAEAEA"/>
+        <Frame x:Name="MainFrame" Grid.Row="1" Background="#FFEAEAEA" Navigated="MainFrame_Navigated"/>
     </Grid>
 </Page>
